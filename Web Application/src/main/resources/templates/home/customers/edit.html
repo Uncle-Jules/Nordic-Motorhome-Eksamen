@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Customer</title>
+</head>
+<body>
+    <form action="/customers/update" method="post">
+        <table>
+            <tr>
+                <td>Payment Details</td>
+                <td>
+                    <input type="text" name="payment_details" th:value="${customer.payment_details}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="id" name="id" th:value="${customer.id}" type="hidden"/>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>

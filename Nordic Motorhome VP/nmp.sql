@@ -22,7 +22,6 @@ CREATE TABLE motorhome
 (
 	id					INT									NOT NULL	PRIMARY KEY 	AUTO_INCREMENT,
     model				VARCHAR(45)							NOT NULL,
-    needs_repair		TINYINT								NOT NULL,
     odometer			INT									NOT NULL,
     price_per_day		INT									NOT NULL,
     registration_number	VARCHAR(10)							NOT NULL	UNIQUE,
@@ -57,7 +56,7 @@ CREATE TABLE customers
     first_name			VARCHAR(45)		NOT NULL,
     last_name			VARCHAR(45)		NOT NULL,
     address_id			INT				NOT NULL,
-	birth_date			DATETIME		NOT NULL,
+	birth_date			DATE			NOT NULL,
     payment_details		VARCHAR(45)		NOT NULL,
     driver_license		VARCHAR(20)		NOT NULL,
     FOREIGN KEY (address_id)

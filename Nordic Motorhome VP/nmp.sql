@@ -3,20 +3,12 @@ CREATE DATABASE nmp;
 
 USE nmp;
 
-DROP TABLE IF EXISTS brands;
-CREATE TABLE brands
-(
-	id			INT				NOT NULL	PRIMARY KEY		AUTO_INCREMENT,
-    brand_name	VARCHAR(20)		NOT NULL
-);
 
 DROP TABLE IF EXISTS models;
 CREATE TABLE models
 (
-    model		VARCHAR(20)		NOT NULL	PRIMARY KEY		UNIQUE,
-    brand_id	INT				NOT NULL,
-    FOREIGN KEY (brand_id)
-		REFERENCES brands (id)
+    model		VARCHAR(45)		NOT NULL	PRIMARY KEY,
+	brand_name 	VARCHAR(45)		NOT NULL	UNIQUE
 );
 DROP TABLE IF EXISTS accessories;
 CREATE TABLE accessories
@@ -29,7 +21,6 @@ DROP TABLE IF EXISTS motorhome;
 CREATE TABLE motorhome 
 (
 	id					INT									NOT NULL	PRIMARY KEY 	AUTO_INCREMENT,
-    brand				VARCHAR(45)							NOT NULL,
     model				VARCHAR(45)							NOT NULL,
     needs_repair		TINYINT								NOT NULL,
     odometer			INT									NOT NULL,
@@ -43,8 +34,8 @@ DROP TABLE IF EXISTS zip_codes;
 CREATE TABLE zip_codes
 (
 	zip				VARCHAR(10)		NOT NULL		PRIMARY KEY,
-    city			VARCHAR(85)		NOT NULL,
-    country			VARCHAR(50)		NOT NULL
+    city			VARCHAR(45)		NOT NULL,
+    country			VARCHAR(45)		NOT NULL
 );
 
 DROP TABLE IF EXISTS addresses;
@@ -53,7 +44,7 @@ CREATE TABLE addresses
 	id					INT				NOT NULL		PRIMARY KEY		AUTO_INCREMENT,
     street_name			VARCHAR(45)		NOT NULL,
     street_number		VARCHAR(5)		NOT NULL,
-    apartment_number	VARCHAR(6),
+    apartment_number	VARCHAR(10),
     zip_code			VARCHAR(10)		NOT NULL,
     FOREIGN KEY (zip_code)
 		REFERENCES zip_codes (zip)
@@ -63,8 +54,8 @@ DROP TABLE IF EXISTS customers;
 CREATE TABLE customers
 (
 	id					INT				NOT NULL		PRIMARY KEY		AUTO_INCREMENT,
-    first_name			VARCHAR(25)		NOT NULL,
-    last_name			VARCHAR(25)		NOT NULL,
+    first_name			VARCHAR(45)		NOT NULL,
+    last_name			VARCHAR(45)		NOT NULL,
     address_id			INT				NOT NULL,
 	birth_date			DATETIME		NOT NULL,
     payment_details		VARCHAR(45)		NOT NULL,
@@ -73,8 +64,8 @@ CREATE TABLE customers
 		REFERENCES addresses (id)
 );
 
-DROP TABLE IF EXISTS contracts;
-CREATE TABLE contracts 
+DROP TABLE IF EXISTS reservations;
+CREATE TABLE reservations 
 (
 	id					INT			NOT NULL		PRIMARY KEY		AUTO_INCREMENT,
 	motorhome_id		INT			NOT NULL, 

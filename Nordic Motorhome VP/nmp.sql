@@ -17,12 +17,13 @@ CREATE TABLE accessories
     accessory	VARCHAR(45)		NOT NULL
 );
 
-DROP TABLE IF EXISTS motorhome;
-CREATE TABLE motorhome 
+DROP TABLE IF EXISTS motorhomes;
+CREATE TABLE motorhomes 
 (
 	id					INT									NOT NULL	PRIMARY KEY 	AUTO_INCREMENT,
+    type				VARCHAR(45)							NOT NULL,
     model				VARCHAR(45)							NOT NULL,
-    odometer			INT									NOT NULL,
+    mileage				INT									NOT NULL,
     price_per_day		INT									NOT NULL,
     registration_number	VARCHAR(10)							NOT NULL	UNIQUE,
 	FOREIGN KEY (model)
@@ -75,7 +76,7 @@ CREATE TABLE reservations
     distance_to_pickup	INT			NOT NULL,
 	accessory_id 		INT			NOT NULL,
     FOREIGN KEY (motorhome_id)
-		REFERENCES motorhome (id),
+		REFERENCES motorhomes (id),
     FOREIGN KEY (customer_id)
 		REFERENCES customers (id),
 	FOREIGN KEY (accessory_id)
@@ -105,4 +106,10 @@ INSERT INTO addresses VALUES
 
 INSERT INTO customers VALUES 
 (1, 'Rasmus', 'Falk','+45 22 22 22 22', 1, '2020-05-28', "credit card", 'XMP-232'),
-(2, 'Rasmusiiii', 'Falk','+45 22 22 22 22', 1, '2020-05-28', "credit card", 'XMP-232')
+(2, 'Rasmus', 'Falk-Jensen','+45 22 22 22 22', 1, '2020-05-28', "credit card", 'XMP-232');
+
+INSERT INTO models VALUES
+("Cybertruck", "Tesla");
+
+INSERT INTO motorhomes VALUES
+(1, "Big chungus", "Cybertruck", 300, 548.95, "Mick-Dick");

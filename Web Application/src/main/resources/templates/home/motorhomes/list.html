@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List of all motorhomes</title>
+</head>
+<body>
+<table id="motorhomeTable" class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Mileage</th>
+        <th>Price per day</th>
+        <th>Registration number</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "motorhome: ${motorhomes}">
+        <td th:text="${motorhome.id}"/>
+        <td th:text="${motorhome.type}"/>
+        <td th:text="${motorhome.brand}"/>
+        <td th:text="${motorhome.model}"/>
+        <td th:text="${motorhome.mileage}"/>
+        <td th:text="${motorhome.price_per_day}"/>
+        <td th:text="${motorhome.registration_number}"/>
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>

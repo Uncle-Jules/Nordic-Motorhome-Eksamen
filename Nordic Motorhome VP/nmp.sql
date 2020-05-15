@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS nmp;
-CREATE DATABASE nmp; 
+DROP DATABASE IF EXISTS nmr;
+CREATE DATABASE nmr; 
 
-USE nmp;
+USE nmr;
 
 
 DROP TABLE IF EXISTS models;
@@ -55,10 +55,11 @@ CREATE TABLE customers
 	id					INT				NOT NULL		PRIMARY KEY		AUTO_INCREMENT,
     first_name			VARCHAR(45)		NOT NULL,
     last_name			VARCHAR(45)		NOT NULL,
+    phone_number		VARCHAR(45)		NOT NULL,
     address_id			INT				NOT NULL,
 	birth_date			DATE			NOT NULL,
     payment_details		VARCHAR(45)		NOT NULL,
-    driver_license		VARCHAR(20)		NOT NULL,
+    drivers_license		VARCHAR(20)		NOT NULL,
     FOREIGN KEY (address_id)
 		REFERENCES addresses (id)
 );
@@ -81,4 +82,27 @@ CREATE TABLE reservations
 		REFERENCES accessories (id)
 );
 
+INSERT INTO zip_codes VALUES
+('4180','Sorø','Denmark'),
+('2000','Frederiksberg','Denmark'),
+('2605','Brøndby','Denmark'),
+('3460','Birkerød','Denmark'),
+('2880','Bagsværd','Denmark'),
+('2100','Østerbro','Denmark'),
+('3520','Farum','Denmark'),
+('4171','Glumsø','Denmark'),
+('0918','Københavns Pakkecenter','Denmark');
 
+INSERT INTO addresses VALUES
+(1, 'Falskvej', '13', NULL, '4180'),
+(2, 'Storvej', '26', '3. th', '4171'),
+(3, 'Mellemvej', '6', '5. tv', '2605'),
+(4, 'Frederiksberg Bredegade', '13b', '337', '2000'),
+(5, 'Vejgade', '69', NULL, '3460'),
+(6, 'Viborggade', '35', NULL, '2100'),
+(7, 'Industrivej', '1', NULL, '0918'),
+(8, 'Farum Gydevej', '120', NULL, '3520');
+
+INSERT INTO customers VALUES 
+(1, 'Rasmus', 'Falk','+45 22 22 22 22', 1, '2020-05-28', "credit card", 'XMP-232'),
+(2, 'Rasmusiiii', 'Falk','+45 22 22 22 22', 1, '2020-05-28', "credit card", 'XMP-232')

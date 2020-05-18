@@ -22,13 +22,10 @@ public class CustomerRepo {
         return template.query(sql, rowMapper);
     }
     public void add(Customer customer, Address address, ZipCode zipCode){
-       // String sql = "INSERT INTO customers VALUES (0, ?, ?, ?, ?, ?, ?, ?)";
         String checkZipSql = "SELECT * FROM zip_codes WHERE zip = ?"; //Checking if the zip code is already declared.
         RowMapper<ZipCode> rowMapper = new BeanPropertyRowMapper<>(ZipCode.class);
         List<ZipCode> listZip = template.query(checkZipSql, rowMapper, customer.getZip_code_id());
-        System.out.println(customer.getZip_code_id());
         if(listZip.size() == 0) { // If zip code doesn't exist, add new zip code.
-            System.out.println("Zip Code if-statement");
             String insertZip = "INSERT INTO zip_codes VALUES (?, ?, ?)";
             template.update(insertZip, customer.getZip_code_id(), zipCode.getCity(), zipCode.getCountry());
         }
@@ -36,15 +33,12 @@ public class CustomerRepo {
         String checkAddressSql = "SELECT id FROM addresses WHERE street_name = ? AND street_number = ? AND apartment_number = ?";
         RowMapper<Address> addressRowMapper = new BeanPropertyRowMapper<>(Address.class);
         List<Address> listAddress = template.query(checkAddressSql, addressRowMapper, address.getStreet_name(), address.getStreet_number(), address.getApartment_number());
-        System.out.println(address.getStreet_name());
         if(listAddress.size() == 0) {
-            System.out.println("Address if-statement");
             String insertAddress = "INSERT INTO addresses VALUES (0, ?, ?, ?, ?)";
             template.update(insertAddress, address.getStreet_name(), address.getStreet_number(), address.getApartment_number(), customer.getZip_code_id());
         }
-
-
-        int id = template.query(checkAddressSql, addressRowMapper, address.getStreet_name(), address.getStreet_number(), address.getApartment_number()).get(0).getAddress_id();
+        
+        int id = template.query(checkAddressSql, addressRowMapper, address.getStreet_name(), address.getStreet_number(), address.getApartment_number()).get(0).getId();
         System.out.println(id);
         String insertCustomerSql = "INSERT INTO customers VALUES (0, ?, ?, ?, ?, ?, ?, ?)";
         template.update(insertCustomerSql, customer.getFirst_name(), customer.getLast_name(), customer.getPhone_number(), id, customer.getBirth_date(), customer.getPayment_details(), customer.getDrivers_license());

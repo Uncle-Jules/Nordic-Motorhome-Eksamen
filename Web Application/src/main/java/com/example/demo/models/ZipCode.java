@@ -6,7 +6,7 @@ import javax.persistence.Id;
 @Entity
 public class ZipCode {
     @Id
-    private String zip_code;
+    private String zip;
     private String city;
     private String country;
 
@@ -14,18 +14,18 @@ public class ZipCode {
 
     }
 
-    public ZipCode(String zip_code, String city, String country) {
-        this.zip_code = zip_code;
+    public ZipCode(String zip, String city, String country) {
+        this.zip = zip;
         this.city = city;
         this.country = country;
     }
 
-    public String getZip_code() {
-        return zip_code;
+    public String getZip() {
+        return zip;
     }
 
-    public void setZip_code(String zip_code) {
-        this.zip_code = zip_code;
+    public void setZip(String zip_code) {
+        this.zip = zip_code;
     }
 
     public String getCity() {

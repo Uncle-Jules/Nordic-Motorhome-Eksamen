@@ -48,7 +48,11 @@ public class HomeController {
 
     @GetMapping("/customers/view-one/{id}")
     public String viewCustomer(@PathVariable("id") int id, Model model) {
-        model.addAttribute("customer", customerService.findById(id));
+        Customer customer = customerService.findById(id);
+        Address address = customerService.getAddress(customer);
+        model.addAttribute("customer", customer);
+        model.addAttribute("address", address);
+        model.addAttribute("zip_code", customerService.getZipCode(address));
         return "home/customers/view-one";
     }
 
@@ -67,8 +71,6 @@ public class HomeController {
         customerService.delete(id);
         return "redirect:/customers/list";
     }
-
-
     @GetMapping("/motorhomes/list")
     public String motorhomeList(Model model){
         List<Motorhome> motorhomes = motorhomeService.fetchAll();

@@ -23,6 +23,12 @@ public class CustomerService {
     public Customer findById(int id){
         return customerRepo.findById(id);
     }
+    public Address getAddress(Customer customer) {
+        return customerRepo.getAddress(customer);
+    }
+    public ZipCode getZipCode(Address address) {
+        return customerRepo.getZipCode(address);
+    }
     public void update(int id, Customer c){
         customerRepo.update(id, c);
     }

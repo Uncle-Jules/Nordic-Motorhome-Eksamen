@@ -10,15 +10,17 @@ public class Address {
     private String street_number;
     private String street_name;
     private String apartment_number;
+    private String zip_code;
 
     public Address() {
     }
 
-    public Address(int id, String street_number, String street_name, String apartment_number) {
+    public Address(int id, String street_number, String street_name, String apartment_number, String zip_code) {
         this.id = id;
         this.street_number = street_number;
         this.street_name = street_name;
         this.apartment_number = apartment_number;
+        this.zip_code = zip_code;
     }
 
     public int getId() {
@@ -46,10 +48,18 @@ public class Address {
     }
 
     public String getApartment_number() {
-        return apartment_number;
+        return apartment_number == null || apartment_number.equals("") ? "" : ", " + apartment_number;
     }
 
     public void setApartment_number(String apartment_number) {
         this.apartment_number = apartment_number;
+    }
+
+    public String getZip_code() {
+        return zip_code;
+    }
+
+    public void setZip_code(String zip_code) {
+        this.zip_code = zip_code;
     }
 }

@@ -49,6 +49,18 @@ public class CustomerRepo {
         return template.queryForObject(sql, rowMapper, id);
     }
 
+    public Address getAddress(Customer customer){
+        String sql = "SELECT * FROM addresses WHERE id = ?";
+        RowMapper<Address> rowMapper = new BeanPropertyRowMapper(Address.class);
+        return template.queryForObject(sql, rowMapper, customer.getAddress_id());
+    }
+
+    public ZipCode getZipCode(Address address){
+        String sql = "SELECT * FROM zip_codes WHERE zip = ?";
+        RowMapper<ZipCode> rowMapper = new BeanPropertyRowMapper(ZipCode.class);
+        return template.queryForObject(sql, rowMapper, address.getZip_code());
+    }
+
     public void update(int id, Customer customer){
         String sql = "UPDATE customers SET payment_details = ? WHERE id = ?";
             template.update(sql, customer.getPayment_details(), id);

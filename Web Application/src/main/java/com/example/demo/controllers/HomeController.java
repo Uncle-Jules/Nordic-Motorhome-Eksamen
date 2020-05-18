@@ -1,7 +1,9 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Address;
 import com.example.demo.models.Customer;
 import com.example.demo.models.Motorhome;
+import com.example.demo.models.ZipCode;
 import com.example.demo.services.CustomerService;
 import com.example.demo.services.MotorhomeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +41,8 @@ public class HomeController {
     }
 
     @PostMapping("/customers/create")
-    public String addCustomer(@ModelAttribute Customer customer) {
-        customerService.add(customer);
+    public String addCustomer(@ModelAttribute Customer customer, @ModelAttribute Address address, @ModelAttribute ZipCode zipCode) {
+        customerService.add(customer, address, zipCode);
         return "redirect:/customers/list";
     }
 

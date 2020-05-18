@@ -1,6 +1,8 @@
 package com.example.demo.services;
 
+import com.example.demo.models.Address;
 import com.example.demo.models.Customer;
+import com.example.demo.models.ZipCode;
 import com.example.demo.repositories.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +17,8 @@ public class CustomerService {
     public List<Customer> fetchAll(){
         return customerRepo.fetchAll();
     }
-    public void add(Customer c){
-        customerRepo.add(c);
+    public void add(Customer customer, Address address, ZipCode zipCode){
+        customerRepo.add(customer, address, zipCode);
     }
     public Customer findById(int id){
         return customerRepo.findById(id);

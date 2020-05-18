@@ -1,7 +1,11 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Address;
 import com.example.demo.models.Customer;
+import com.example.demo.models.Motorhome;
+import com.example.demo.models.ZipCode;
 import com.example.demo.services.CustomerService;
+import com.example.demo.services.MotorhomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +20,8 @@ import java.util.List;
 public class HomeController {
     @Autowired
     CustomerService customerService;
+    @Autowired
+    MotorhomeService motorhomeService;
 
     @GetMapping("/")
     public String index() {
@@ -30,15 +36,13 @@ public class HomeController {
     }
 
     @GetMapping("/customers/create")
-    public String createCustomer(Model model) {
-        List<Customer> customers = customerService.fetchAll();
-        model.addAttribute("customer", customers);
+    public String createCustomer() {
         return "home/customers/create";
     }
 
     @PostMapping("/customers/create")
-    public String addCustomer(@ModelAttribute Customer customer) {
-        customerService.add(customer);
+    public String addCustomer(@ModelAttribute Customer customer, @ModelAttribute Address address, @ModelAttribute ZipCode zipCode) {
+        customerService.add(customer, address, zipCode);
         return "redirect:/customers/list";
     }
 
@@ -62,5 +66,37 @@ public class HomeController {
     public String deleteCustomer(@PathVariable("id") int id) {
         customerService.delete(id);
         return "redirect:/customers/list";
+    }
+
+
+    @GetMapping("/motorhomes/list")
+    public String motorhomeList(Model model){
+        List<Motorhome> motorhomes = motorhomeService.fetchAll();
+        model.addAttribute("motorhomes", motorhomes);
+        return "home/motorhomes/list";
+    }
+    @GetMapping("/motorhomes/create")
+    public String createMotorhome(Model model){
+        return "home/motorhomes/create";
+    }
+    @PostMapping("motorhomes/create")
+    public String addMotorhome(@ModelAttribute Motorhome motorhome){
+        motorhomeService.add(motorhome);
+        return "redirect:/motorhomes/list";
+    }
+    @GetMapping("motorhomes/view-one/{id}")
+    public String viewMotorhome(@PathVariable("id") int id, Model model) {
+        model.addAttribute("motorhome", motorhomeService.findById(id));
+        return "home/motorhomes/view-one";
+    }
+    @PostMapping("/motorhomes/update")
+    public String updateMotorhome(@ModelAttribute Motorhome motorhome) {
+        motorhomeService.update(motorhome.getId(), motorhome);
+        return "redirect:/motorhomes/list";
+    }
+    @GetMapping("/motorhomes/delete/{id}")
+    public String deleteMotorhome(@PathVariable("id") int id) {
+        motorhomeService.delete(id);
+        return "redirect:/motorhomes/list";
     }
 }

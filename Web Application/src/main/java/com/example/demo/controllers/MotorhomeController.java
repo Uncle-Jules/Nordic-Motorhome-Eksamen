@@ -1,7 +1,10 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.Motorhome;
+import com.example.demo.models.Type;
+import com.example.demo.repositories.TypeRepo;
 import com.example.demo.services.MotorhomeService;
+import com.example.demo.services.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,8 @@ import java.util.List;
 public class MotorhomeController {
     @Autowired
     MotorhomeService motorhomeService;
+    @Autowired
+    TypeService typeService;
 
     @GetMapping("/list")
     public String motorhomeList(Model model){
@@ -23,9 +28,12 @@ public class MotorhomeController {
     }
     @GetMapping("/create")
     public String createMotorhome(Model model){
+        List<Type> types = typeService.fetchAll();
+        model.addAttribute("types", types);
         return "home/motorhomes/create";
     }
-    @PostMapping("motorhomes/create")
+
+    @PostMapping("/create")
     public String addMotorhome(@ModelAttribute Motorhome motorhome){
         motorhomeService.add(motorhome);
         return "redirect:/motorhomes/list";
@@ -34,6 +42,14 @@ public class MotorhomeController {
     public String viewMotorhome(@PathVariable("id") int id, Model model) {
         model.addAttribute("motorhome", motorhomeService.findById(id));
         return "home/motorhomes/view-one";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editMotorhome(@PathVariable("id") int id, Model model) {
+        List<Type> types = typeService.fetchAll();
+        model.addAttribute("types", types);
+        model.addAttribute("motorhome", motorhomeService.findById(id));
+        return "home/motorhomes/edit";
     }
     @PostMapping("/update")
     public String updateMotorhome(@ModelAttribute Motorhome motorhome) {

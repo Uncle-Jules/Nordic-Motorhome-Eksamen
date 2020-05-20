@@ -8,16 +8,16 @@ public class Motorhome {
     @Id
     private int id;
     private String type;
-    private String brand;
+    private String brand_name;
     private String model;
     private int mileage;
     private double price_per_day;
     private String registration_number;
 
-    public Motorhome(int id, String type, String brand, String model, int mileage, double price_per_day, String registration_number) {
+    public Motorhome(int id, String type, String brand_name, String model, int mileage, double price_per_day, String registration_number) {
         this.id = id;
         this.type = type;
-        this.brand = brand;
+        this.brand_name = brand_name;
         this.model = model;
         this.mileage = mileage;
         this.price_per_day = price_per_day;
@@ -43,12 +43,12 @@ public class Motorhome {
         this.type = type;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getBrand_name() {
+        return brand_name;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setBrand_name(String brand) {
+        this.brand_name = brand;
     }
 
     public String getModel() {

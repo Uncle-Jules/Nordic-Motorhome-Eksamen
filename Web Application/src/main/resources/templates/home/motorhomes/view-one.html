@@ -17,7 +17,7 @@
     </tr>
     <tr>
         <th>Brand:</th>
-        <td th:text = "${motorhome.brand}" />
+        <td th:text = "${motorhome.brand_name}" />
     </tr>
     <tr>
         <th>Model:</th>
@@ -29,7 +29,7 @@
     </tr>
     <tr>
         <th>Registration number:</th>
-        <td th:text = "${motorhome.registraion_number}" />
+        <td th:text = "${motorhome.registration_number}" />
     </tr>
     <tr>
         <th>Price per day:</th>
@@ -37,6 +37,9 @@
     </tr>
     </thead>
 </table>
+<form action="/motorhomes/list">
+    <input type="submit" value="Back" />
+</form>
 
 </body>
 </html>

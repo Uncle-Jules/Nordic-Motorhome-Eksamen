@@ -33,14 +33,11 @@ public class TypeRepo {
     }
 
     public void update(String type, Type typeObject){
-        System.out.println("Reached update for type in repo");
-        System.out.println("Object type " + typeObject.getType());
-        System.out.println("String type: " + type);
         String sql = "UPDATE types SET beds = ? WHERE type = ?";
         template.update(sql, typeObject.getBeds(), type);
     }
     public boolean delete(String type){
-        String sql = "DELETE FROM motorhomes WHERE type = ?";
+        String sql = "DELETE FROM types WHERE type = ?";
         template.update(sql, type);
         return false;
     }

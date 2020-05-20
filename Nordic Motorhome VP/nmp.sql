@@ -8,8 +8,16 @@ DROP TABLE IF EXISTS models;
 CREATE TABLE models
 (
     model		VARCHAR(45)		NOT NULL	PRIMARY KEY,
-	brand_name 	VARCHAR(45)		NOT NULL	UNIQUE
+	brand_name 	VARCHAR(45)		NOT NULL
 );
+
+DROP TABLE IF EXISTS types;
+CREATE TABLE types
+(
+	type 		VARCHAR(45)		NOT NULL 	PRIMARY 	KEY UNIQUE,
+    beds		INT				NOT NULL
+);
+
 DROP TABLE IF EXISTS accessories;
 CREATE TABLE accessories
 (
@@ -21,13 +29,15 @@ DROP TABLE IF EXISTS motorhomes;
 CREATE TABLE motorhomes 
 (
 	id					INT									NOT NULL	PRIMARY KEY 	AUTO_INCREMENT,
-    type				VARCHAR(45)							NOT NULL,
     model				VARCHAR(45)							NOT NULL,
+    type				VARCHAR(45)							NOT NULL,
     mileage				INT									NOT NULL,
     price_per_day		INT									NOT NULL,
     registration_number	VARCHAR(10)							NOT NULL	UNIQUE,
 	FOREIGN KEY (model)
-		REFERENCES models (model)
+		REFERENCES models (model),
+	FOREIGN KEY (type)
+		REFERENCES types (type)
 );
 
 DROP TABLE IF EXISTS zip_codes;
@@ -111,5 +121,11 @@ INSERT INTO customers VALUES
 INSERT INTO models VALUES
 ("Cybertruck", "Tesla");
 
+INSERT INTO types VALUES
+("Big Chungus", 7),
+("Small Chungus", 4);
+("Medium Chungus", 6);
+
 INSERT INTO motorhomes VALUES
-(1, "Big chungus", "Cybertruck", 300, 548.95, "Mick-Dick");
+(1, "Cybertruck", "Big Chungus", 300, 548.95, "Mick-Dick");
+

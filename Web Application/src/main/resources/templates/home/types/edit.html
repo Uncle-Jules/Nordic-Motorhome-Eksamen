@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Type</title>
+</head>
+<body>
+<form action="/types/update" method="post">
+    <table>
+        <tr>
+            <td>Type</td>
+            <td>
+                <input name="type" th:value="${type.type}" type="hidden">
+            </td>
+        </tr>
+        <tr>
+            <td>Beds</td>
+            <td>
+                <input type="number" name="beds" th:value="${type.beds}">
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

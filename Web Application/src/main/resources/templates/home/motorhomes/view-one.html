@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>View Motorhome</title>
+</head>
+<body>
+<table id="myTable" class="table">
+    <thead class="thead-light">
+    <tr>
+        <th>ID:</th>
+        <td th:text = "${motorhome.id}" />
+    </tr>
+    <tr>
+        <th>Type:</th>
+        <td th:text = "${motorhome.type}" />
+    </tr>
+    <tr>
+        <th>Brand:</th>
+        <td th:text = "${motorhome.brand_name}" />
+    </tr>
+    <tr>
+        <th>Model:</th>
+        <td th:text = "${motorhome.model}" />
+    </tr>
+    <tr>
+        <th>Mileage:</th>
+        <td th:text = "${motorhome.mileage}" />
+    </tr>
+    <tr>
+        <th>Registration number:</th>
+        <td th:text = "${motorhome.registration_number}" />
+    </tr>
+    <tr>
+        <th>Price per day:</th>
+        <td th:text = "${motorhome.price_per_day}" />
+    </tr>
+    </thead>
+</table>
+<form action="/motorhomes/list">
+    <input type="submit" value="Back" />
+</form>
+
+</body>
+</html>

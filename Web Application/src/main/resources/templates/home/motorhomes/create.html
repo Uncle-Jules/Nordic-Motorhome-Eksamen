@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a new Motorhome</title>
+</head>
+<body>
+<form action="/motorhomes/create" method="post">
+    <table>
+        <tr>
+            <td><label>Type</label></td>
+            <td><select name="type">
+                <option th:each = "type: ${types}" th:text="${type.type}" th:value="${type.type}"></option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><label>Brand</label></td>
+            <td><input type="text" name="brand_name"></td>
+        </tr>
+        <tr>
+            <td><label>Model</label></td>
+            <td><input type="text" name="model"></td>
+        </tr>
+        <tr>
+            <td><label>Mileage</label></td>
+            <td><input type="number" name="mileage"></td>
+        </tr>
+        <tr>
+            <td><label>Price per day</label></td>
+            <td><input type="number" name="price_per_day"></td>
+        </tr>
+        <tr>
+            <td><label>Registration number</label></td>
+            <td><input type="text" name="registration_number"></td>
+        </tr>
+    </table>
+    <input type="submit" button style="padding: 10px" value="Add motorhome">
+</form>
+</body>
+</html>

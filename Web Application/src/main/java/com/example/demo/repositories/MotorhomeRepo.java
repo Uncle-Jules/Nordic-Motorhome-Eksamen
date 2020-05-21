@@ -27,12 +27,13 @@ public class MotorhomeRepo {
         String findModelSql = "SELECT * FROM models WHERE model = ? && brand_name = ?";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper(Motorhome.class);
         List<Motorhome> models = template.query(findModelSql, rowMapper, motorhome.getModel(), motorhome.getBrand_name());
-        if(models.size() == 0){ // If no model was found
+        // If model does not exist in database it is inserted
+        if(models.size() == 0){
             System.out.println("Inserting model " + motorhome.getModel());
             String insertModelSql = "INSERT INTO models VALUES (?, ?)";
             template.update(insertModelSql, motorhome.getModel(), motorhome.getBrand_name());
         }
-
+        // Motorhome is now added to database know that we have ensured its model exists
         String sql = "INSERT INTO motorhomes VALUES (0, ?, ?, ?, ?, ?)";
         template.update(sql, motorhome.getModel(), motorhome.getType(), motorhome.getMileage(),
                 motorhome.getPrice_per_day(), motorhome.getRegistration_number());

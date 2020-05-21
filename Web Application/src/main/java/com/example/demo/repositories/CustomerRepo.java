@@ -22,24 +22,28 @@ public class CustomerRepo {
         return template.query(sql, rowMapper);
     }
     public void add(Customer customer, Address address, ZipCode zipCode){
-        String checkZipSql = "SELECT * FROM zip_codes WHERE zip = ?"; //Checking if the zip code is already declared.
+        // Checking if the zip code already exists in database
+        String checkZipSql = "SELECT * FROM zip_codes WHERE zip = ?";
         RowMapper<ZipCode> rowMapper = new BeanPropertyRowMapper<>(ZipCode.class);
         List<ZipCode> listZip = template.query(checkZipSql, rowMapper, customer.getZip_code_id());
-        if(listZip.size() == 0) { // If zip code doesn't exist, add new zip code.
+        // If zip code doesn't exist the zip is added
+        if(listZip.size() == 0) {
             String insertZip = "INSERT INTO zip_codes VALUES (?, ?, ?)";
             template.update(insertZip, customer.getZip_code_id(), zipCode.getCity(), zipCode.getCountry());
         }
 
+        // Checking if exact address already exists in database
         String checkAddressSql = "SELECT id FROM addresses WHERE street_name = ? AND street_number = ? AND apartment_number = ?";
         RowMapper<Address> addressRowMapper = new BeanPropertyRowMapper<>(Address.class);
         List<Address> listAddress = template.query(checkAddressSql, addressRowMapper, address.getStreet_name(), address.getStreet_number(), address.getApartment_number());
+        // If address does not exist in database it is added
         if(listAddress.size() == 0) {
             String insertAddress = "INSERT INTO addresses VALUES (0, ?, ?, ?, ?)";
             template.update(insertAddress, address.getStreet_name(), address.getStreet_number(), address.getApartment_number(), customer.getZip_code_id());
         }
-        
+        // Getting ID of address (whether it already existed or not)
         int id = template.query(checkAddressSql, addressRowMapper, address.getStreet_name(), address.getStreet_number(), address.getApartment_number()).get(0).getId();
-        System.out.println(id);
+        // Inserting customer as we now know the address for it exists
         String insertCustomerSql = "INSERT INTO customers VALUES (0, ?, ?, ?, ?, ?, ?, ?)";
         template.update(insertCustomerSql, customer.getFirst_name(), customer.getLast_name(), customer.getPhone_number(), id, customer.getBirth_date(), customer.getPayment_details(), customer.getDrivers_license());
     }

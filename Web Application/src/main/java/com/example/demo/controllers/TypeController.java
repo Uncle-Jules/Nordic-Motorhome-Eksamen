@@ -26,15 +26,17 @@ public class TypeController {
     }
 
     @GetMapping("/create")
-    public String createType(Model model){
+    public String createType(){
         return "home/types/create";
     }
     @PostMapping("/create")
     public String addType(@ModelAttribute Type type, RedirectAttributes redirectAttributes){
+        // If type does not already exists it is created and user is returned to list of types
         if(typeService.findById(type.getType()) == null){
             typeService.add(type);
             return "redirect:/types/list";
         }
+        // If type already exists user is notified and remains on the page
         String failedMessage = String.format("Unable to add type - type with name '%s' already exists", type.getType());
         redirectAttributes.addFlashAttribute("message", failedMessage);
         redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
@@ -60,12 +62,14 @@ public class TypeController {
     }
     @GetMapping("/delete/{id}")
     public String deleteType(@PathVariable("id") String type, RedirectAttributes redirectAttributes) {
+        // If type is used in a motorhome the user is notified and unable to delete
         if (typeService.usedInMotorHome(type)) {
             String failedMessage = "Unable to delete - type is already used in one or more motorhomes";
             redirectAttributes.addFlashAttribute("message", failedMessage);
             redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
             return "redirect:/types/list";
         }
+        // If type is not used in a motorhome the type is simply deleted
         typeService.delete(type);
         return "redirect:/types/list";
     }

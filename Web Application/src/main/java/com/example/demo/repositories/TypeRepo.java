@@ -29,10 +29,10 @@ public class TypeRepo {
 
     public Type findById(String type){
         String sql = "SELECT * FROM types WHERE type = ?";
-        RowMapper<Type> rowMapper;
+        // If type does not exists in database return null
         try{
-             rowMapper = new BeanPropertyRowMapper(Type.class);
-             return template.queryForObject(sql, rowMapper, type);
+            RowMapper<Type> rowMapper = new BeanPropertyRowMapper(Type.class);
+            return template.queryForObject(sql, rowMapper, type);
         }
         catch (EmptyResultDataAccessException e){
             return null;
@@ -49,6 +49,7 @@ public class TypeRepo {
         return false;
     }
 
+    // Returns true if type is used in any motorhome
     public boolean usedInMotorHome(String type){
         String sql = "SELECT * FROM motorhomes WHERE type = ?";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper(Motorhome.class);

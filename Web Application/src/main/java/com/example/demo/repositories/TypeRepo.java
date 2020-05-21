@@ -3,6 +3,7 @@ package com.example.demo.repositories;
 import com.example.demo.models.Motorhome;
 import com.example.demo.models.Type;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -28,8 +29,14 @@ public class TypeRepo {
 
     public Type findById(String type){
         String sql = "SELECT * FROM types WHERE type = ?";
-        RowMapper<Type> rowMapper = new BeanPropertyRowMapper(Type.class);
-        return template.queryForObject(sql, rowMapper, type);
+        RowMapper<Type> rowMapper;
+        try{
+             rowMapper = new BeanPropertyRowMapper(Type.class);
+             return template.queryForObject(sql, rowMapper, type);
+        }
+        catch (EmptyResultDataAccessException e){
+            return null;
+        }
     }
 
     public void update(String type, Type typeObject){
@@ -40,6 +47,13 @@ public class TypeRepo {
         String sql = "DELETE FROM types WHERE type = ?";
         template.update(sql, type);
         return false;
+    }
+
+    public boolean usedInMotorHome(String type){
+        String sql = "SELECT * FROM motorhomes WHERE type = ?";
+        RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper(Motorhome.class);
+        List<Motorhome> motorhomes = template.query(sql, rowMapper, type);
+        return motorhomes.size() >= 1;
     }
 
 }

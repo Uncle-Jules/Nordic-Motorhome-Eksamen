@@ -28,4 +28,7 @@ public class TypeService {
     public void delete(String type){
         typeRepo.delete(type);
     }
+    public boolean usedInMotorHome(String type) {
+        return typeRepo.usedInMotorHome(type);
+    }
 }

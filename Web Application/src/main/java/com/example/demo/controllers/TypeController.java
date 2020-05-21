@@ -19,7 +19,7 @@ public class TypeController {
     TypeService typeService;
 
     @GetMapping("/list")
-    public String TypeList(Model model){
+    public String typeList(Model model){
         List<Type> types = typeService.fetchAll();
         model.addAttribute("types", types);
         return "home/types/list";

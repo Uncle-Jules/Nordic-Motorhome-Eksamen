@@ -51,7 +51,7 @@ public class CustomerController {
         return "home/customers/edit";
     }
     @PostMapping("/update")
-    public String updateCar(@ModelAttribute Customer customer) {
+    public String updateCustomer(@ModelAttribute Customer customer) {
         customerService.update(customer.getId(), customer);
         return "redirect:/customers/list";
     }

@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Type list</title>
+    <title>List of all types</title>
 </head>
 <body>
+<table id="typeTable" class="table">
+    <thead>
+    <tr>
+        <th>Type</th>
+        <th>Beds</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "type: ${types}">
+        <td th:text="${type.type}"/>
+        <td th:text="${type.beds}"/>
+        <td>
+            <a th:href="@{'/types/view-one/'+${type.type}}">
+                <button>View type</button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{'/types/edit/'+${type.type}}">
+                <button>Edit type</button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{'/types/delete/'+${type.type}}">
+                <button>Delete type</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
 
 </body>
 </html>

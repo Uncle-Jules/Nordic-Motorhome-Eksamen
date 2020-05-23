@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>View Motorhome</title>
+    <title>Oplysninger om autocamper</title>
 </head>
 <body>
 <table id="myTable" class="table">
@@ -16,7 +16,7 @@
         <td th:text = "${motorhome.type}" />
     </tr>
     <tr>
-        <th>Brand:</th>
+        <th>Mærke:</th>
         <td th:text = "${motorhome.brand_name}" />
     </tr>
     <tr>
@@ -24,21 +24,21 @@
         <td th:text = "${motorhome.model}" />
     </tr>
     <tr>
-        <th>Mileage:</th>
+        <th>Kilometertal:</th>
         <td th:text = "${motorhome.mileage}" />
     </tr>
     <tr>
-        <th>Registration number:</th>
+        <th>Registreringsnummer:</th>
         <td th:text = "${motorhome.registration_number}" />
     </tr>
     <tr>
-        <th>Price per day:</th>
+        <th>Pris per dag:</th>
         <td th:text = "${motorhome.price_per_day}" />
     </tr>
     </thead>
 </table>
 <form action="/motorhomes/list">
-    <input type="submit" value="Back" />
+    <input type="submit" value="Tilbage" />
 </form>
 
 </body>

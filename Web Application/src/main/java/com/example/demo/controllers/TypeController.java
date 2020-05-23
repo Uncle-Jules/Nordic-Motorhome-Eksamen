@@ -37,7 +37,7 @@ public class TypeController {
             return "redirect:/types/list";
         }
         // If type already exists user is notified and remains on the page
-        String failedMessage = String.format("Unable to add type - type with name '%s' already exists", type.getType());
+        String failedMessage = String.format("Type kan ikke tilføjes - type med navnet '%s' eksisterer allerede", type.getType());
         redirectAttributes.addFlashAttribute("message", failedMessage);
         redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
 
@@ -64,7 +64,7 @@ public class TypeController {
     public String deleteType(@PathVariable("id") String type, RedirectAttributes redirectAttributes) {
         // If type is used in a motorhome the user is notified and unable to delete
         if (typeService.usedInMotorHome(type)) {
-            String failedMessage = "Unable to delete - type is already used in one or more motorhomes";
+            String failedMessage = "Type kan ikke slettes - type bliver brugt i en eller flere autocampere";
             redirectAttributes.addFlashAttribute("message", failedMessage);
             redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
             return "redirect:/types/list";

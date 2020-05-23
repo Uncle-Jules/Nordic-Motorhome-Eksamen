@@ -2,14 +2,15 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>List of all types</title>
+    <title>Liste over alle typer</title>
+    <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 </head>
 <body>
 <table id="typeTable" class="table">
     <thead>
     <tr>
         <th>Type</th>
-        <th>Beds</th>
+        <th>Sengepladser</th>
     </tr>
     </thead>
     <tbody>
@@ -18,17 +19,17 @@
         <td th:text="${type.beds}"/>
         <td>
             <a th:href="@{'/types/view-one/'+${type.type}}">
-                <button>View type</button>
+                <button>Se type</button>
             </a>
         </td>
         <td>
             <a th:href="@{'/types/edit/'+${type.type}}">
-                <button>Edit type</button>
+                <button>Redigér type</button>
             </a>
         </td>
         <td>
             <a th:href="@{'/types/delete/'+${type.type}}">
-                <button>Delete type</button>
+                <button>Slet type</button>
             </a>
         </td>
     </tr>

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>View Customer</title>
+    <title>Oplysninger om kunde</title>
 </head>
     <body>
         <table id="myTable" class="table">
@@ -12,47 +12,43 @@
                 <td th:text = "${customer.id}" />
             </tr>
             <tr>
-                <th>First Name:</th>
+                <th>Fornavn:</th>
                 <td th:text = "${customer.first_name}" />
             </tr>
             <tr>
-                <th>Last Name:</th>
+                <th>Efternavn:</th>
                 <td th:text = "${customer.last_name}" />
             </tr>
             <tr>
-                <th>Address:</th>
-                <td th:text = "${customer.address_id}" />
-            </tr>
-            <tr>
-                <th>Phone Number:</th>
+                <th>Telefonnummer:</th>
                 <td th:text = "${customer.phone_number}" />
             </tr>
             <tr>
-                <th>Birth Date:</th>
+                <th>Fødselsdato:</th>
                 <td th:text = "${customer.birth_date}" />
             </tr>
             <tr>
-                <th>Payment Details:</th>
+                <th>Betalingsdetaljer:</th>
                 <td th:text = "${customer.payment_details}" />
             </tr>
             <tr>
-                <th>Drivers License:</th>
+                <th>Kørekortnummer:</th>
                 <td th:text = "${customer.drivers_license}" />
             </tr>
             <tr>
-                <th>Address:</th>
+                <th>Adresse:</th>
                 <td th:text = "${address.street_name} + ' ' + ${address.street_number} + ${address.apartment_number}"/>
             </tr>
             <tr>
-                <th>Zip:</th>
+                <th>Postnummer:</th>
                 <td th:text = "${zip_code.zip}" />
             </tr>
             <tr>
-                <th>City:</th>
+                <th>By:</th>
                 <td th:text = "${zip_code.city}" />
             </tr>
             <tr>
-                <th>Country:</th>
+                <th>Land:</th>
                 <td th:text = "${zip_code.country}" />
             </tr>
             </thead>

@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Customer</title>
+    <title>Redigér Kunde</title>
 </head>
 <body>
     <form action="/customers/update" method="post">
         <table>
             <tr>
-                <td>Payment Details</td>
+                <td>Betalingsdetaljer</td>
                 <td>
                     <input type="text" name="payment_details" th:value="${customer.payment_details}">
                 </td>
@@ -19,7 +19,7 @@
                 </td>
             </tr>
         </table>
-        <input type="submit" value="Save">
+        <input type="submit" value="Gem ændringer">
     </form>
 </body>
 </html>

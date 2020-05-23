@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Create a new Motorhome</title>
+    <title>Tilføj ny autocamper</title>
 </head>
 <body>
 <form action="/motorhomes/create" method="post">
@@ -14,7 +14,7 @@
             </select></td>
         </tr>
         <tr>
-            <td><label>Brand</label></td>
+            <td><label>Mærke</label></td>
             <td><input type="text" name="brand_name"></td>
         </tr>
         <tr>
@@ -22,19 +22,19 @@
             <td><input type="text" name="model"></td>
         </tr>
         <tr>
-            <td><label>Mileage</label></td>
+            <td><label>Kilometertal</label></td>
             <td><input type="number" name="mileage"></td>
         </tr>
         <tr>
-            <td><label>Price per day</label></td>
+            <td><label>Pris per dag</label></td>
             <td><input type="number" name="price_per_day"></td>
         </tr>
         <tr>
-            <td><label>Registration number</label></td>
+            <td><label>Registreringsnummer</label></td>
             <td><input type="text" name="registration_number"></td>
         </tr>
     </table>
-    <input type="submit" button style="padding: 10px" value="Add motorhome">
+    <input type="submit" style="padding: 10px" value="Tilføj autocamper">
 </form>
 </body>
 </html>

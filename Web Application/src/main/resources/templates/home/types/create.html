@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Create Type</title>
+    <title>Tilføj Type</title>
+    <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 </head>
 <body>
 <form action="/types/create" method="post">
@@ -11,11 +12,11 @@
             <td><label>Type</label></td>
             <td><input type="text" name="type"></td>
         </tr>
-            <td><label>Beds</label></td>
+            <td><label>Sovepladser</label></td>
             <td><input type="number" name="beds"></td>
         </tr>
     </table>
-    <input type="submit" button style="padding: 10px" value="Add type">
+    <input type="submit" style="padding: 10px" value="Tilføj type">
 </form>
 <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
 </body>

@@ -2,19 +2,19 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Motorhome</title>
+    <title>Redigér Motorhome</title>
 </head>
 <body>
 <form action="/motorhomes/update" method="post">
     <table>
         <tr>
-            <td>Mileage</td>
+            <td>Kilometertal</td>
             <td>
                 <input type="text" name="mileage" th:value="${motorhome.mileage}">
             </td>
         </tr>
         <tr>
-            <td>Price per day</td>
+            <td>Pris per dag</td>
             <td>
                 <input type="text" name="price_per_day" th:value="${motorhome.price_per_day}">
             </td>
@@ -31,7 +31,7 @@
             </select></td>
         </tr>
     </table>
-    <input type="submit" value="Save">
+    <input type="submit" value="Gem ændringer">
 </form>
 </body>
 </html>

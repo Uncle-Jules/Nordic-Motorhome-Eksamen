@@ -64,7 +64,7 @@ public class ReservationRepo {
         LocalDateTime formattedStartDate = LocalDateTime.parse(start_date, formatter);
         LocalDateTime formattedEndDate = LocalDateTime.parse(end_date, formatter);
         int numberOfDays = (int) ChronoUnit.DAYS.between(formattedStartDate, formattedEndDate);
-        double basePrice = price_per_day * numberOfDays + distance_to_pickup;
+        double basePrice = price_per_day * numberOfDays;
         double distancePrice = distance_to_pickup * 0.7;
         switch (season){
             case "vinter":

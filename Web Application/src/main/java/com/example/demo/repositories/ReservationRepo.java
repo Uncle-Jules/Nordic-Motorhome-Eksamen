@@ -31,9 +31,8 @@ public class ReservationRepo {
     }
 
     public void add(Reservation reservation) {
-        String sql = "INSERT INTO reservations VALUES (0 ,?, ?, ?, ?, ?, ?)";
-        RowMapper<Reservation> rowMapper = new BeanPropertyRowMapper<>(Reservation.class);
-        template.update(sql, rowMapper, reservation.getMotorhome_id(), reservation.getCustomer_id(),
+        String sql = "INSERT INTO reservations VALUES (0, ?, ?, ?, ?, ?, ?)";
+        template.update(sql, reservation.getMotorhome_id(), reservation.getCustomer_id(),
                 reservation.getStart_date(), reservation.getEnd_date(), reservation.getDistance_to_pickup(), reservation.getAccessory_id());
     }
 }

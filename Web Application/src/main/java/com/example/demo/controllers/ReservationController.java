@@ -60,19 +60,11 @@ public class ReservationController {
 
         @PostMapping("/create")
         public String addReservation(@ModelAttribute Reservation reservation) {
-            System.out.println("Has been reached printing startdate " + reservation.getStart_date());
-            System.out.println(reservation.getMotorhome_id());
-            System.out.println(reservation.getCustomer_id());
-            System.out.println(reservation.getEnd_date());
-            System.out.println(reservation.getDistance_to_pickup());
-            System.out.println(reservation.getAccessory_id());
-
             reservationService.add(reservation);
             return "redirect:/reservations/list";
         }
 
 
-/*
         @GetMapping("/edit/{id}")
         public String editReservation(@PathVariable("id") int id, Model model) {
             model.addAttribute("reservation", reservationService.findById(id));
@@ -83,10 +75,11 @@ public class ReservationController {
             reservationService.update(reservation.getId(), reservation);
             return "redirect:/reservations/list";
         }
+
         @GetMapping("/delete/{id}")
         public String deleteReservation(@PathVariable("id") int id) {
             reservationService.delete(id);
             return "redirect:/reservations/list";
-        }*/
+        }
     }
 

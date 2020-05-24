@@ -18,8 +18,7 @@ public class ReservationRepo {
 
     public List<Reservation> fetchAll(){
         String sql = "SELECT * FROM reservations JOIN motorhomes ON motorhomes.id = reservations.motorhome_id " +
-                "JOIN customers ON customer_id = customers.id JOIN accessories ON reservations.id = reservations.accessory_id " +
-                "JOIN models ON models.model = motorhomes.model";
+                "JOIN customers ON reservations.customer_id = customers.id JOIN models ON models.model = motorhomes.model";
         RowMapper<Reservation> rowMapper = new BeanPropertyRowMapper<>(Reservation.class);
         return template.query(sql, rowMapper);
     }
@@ -34,5 +33,17 @@ public class ReservationRepo {
         String sql = "INSERT INTO reservations VALUES (0, ?, ?, ?, ?, ?, ?)";
         template.update(sql, reservation.getMotorhome_id(), reservation.getCustomer_id(),
                 reservation.getStart_date(), reservation.getEnd_date(), reservation.getDistance_to_pickup(), reservation.getAccessory_id());
+    }
+
+    public void update(int id, Reservation reservation){
+        String sql = "UPDATE reservations SET start_date = ?, end_date = ?, distance_to_pickup = ? WHERE id = ?";
+        System.out.println("Reached update in repo");
+        template.update(sql, reservation.getStart_date(), reservation.getEnd_date(), reservation.getDistance_to_pickup(), id);
+    }
+
+    public boolean delete(int id){
+        String sql = "DELETE FROM reservations WHERE id = ?";
+        template.update(sql, id);
+        return false;
     }
 }

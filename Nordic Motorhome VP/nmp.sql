@@ -133,5 +133,5 @@ INSERT INTO accessories VALUES
 (1, 'Babyseat');
 
 INSERT INTO reservations VALUES
-(1, 1, 1, '2020-05-20 20:40:14', '2020-05-24 20:00:10', 300, 1);
+(0, 1, 1, '2020-05-20 20:40:14', '2020-05-24 20:00:10', 300, 1);
 

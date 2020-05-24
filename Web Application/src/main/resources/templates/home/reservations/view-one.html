@@ -77,7 +77,7 @@
     </tr>
     <tr>
         <th>Kilometertal</th>
-        <td th:text = "${motorhome.mileage}"/>
+        <td th:text = "${motorhome.mileage} + ' km'"/>
     </tr>
     <tr>
         <th>Registreringnummer</th>
@@ -85,7 +85,11 @@
     </tr>
     <tr>
         <th>Pris per dag</th>
-        <td th:text = "${motorhome.price_per_day}"/>
+        <td th:text = "${motorhome.price_per_day} + ' kr.'"/>
+    </tr>
+    <tr>
+        <th>Distance til afhentningssted</th>
+        <td th:text = "${reservation.distance_to_pickup} + ' km'"/>
     </tr>
     </thead>
 </table>

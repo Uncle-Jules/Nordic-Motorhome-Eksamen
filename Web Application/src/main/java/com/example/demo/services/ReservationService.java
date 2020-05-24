@@ -21,12 +21,11 @@ public class ReservationService {
     public void add(Reservation reservation) {
         reservationRepo.add(reservation);
     }
-/*
     public void update(int id, Reservation reservation){
         reservationRepo.update(id, reservation);
     }
     public void delete(int id){
         reservationRepo.delete(id);
-    }*/
+    }
 }
 

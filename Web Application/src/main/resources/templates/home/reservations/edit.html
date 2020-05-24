@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Redigér reservation</title>
+</head>
+<body>
+<form action="/reservations/update" method="post">
+    <table>
+        <tr>
+            <td>Startdato</td>
+            <td>
+                <input type="datetime-local" name="start_date" th:value="${reservation.start_date}">
+            </td>
+        </tr>
+        <tr>
+            <td>Slutdato</td>
+            <td>
+                <input type="datetime-local" name="end_date" th:value="${reservation.end_date}">
+            </td>
+        </tr>
+        <tr>
+            <td>Distance til afhentningssted</td>
+            <td>
+                <input type="number" name="distance_to_pickup" th:value="${reservation.distance_to_pickup}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="id" name="id" th:value="${reservation.id}" type="hidden"/>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Gem ændringer">
+</form>
+</body>
+</html>

@@ -84,7 +84,7 @@ CREATE TABLE reservations
     start_date			DATETIME	NOT NULL, 
     end_date			DATETIME	NOT NULL, 
     distance_to_pickup	INT			NOT NULL,
-	accessory_id 		INT			NOT NULL,
+	accessory_id 		INT			,
     FOREIGN KEY (motorhome_id)
 		REFERENCES motorhomes (id),
     FOREIGN KEY (customer_id)
@@ -123,9 +123,15 @@ INSERT INTO models VALUES
 
 INSERT INTO types VALUES
 ("Big Chungus", 7),
-("Small Chungus", 4);
+("Small Chungus", 4),
 ("Medium Chungus", 6);
 
 INSERT INTO motorhomes VALUES
 (1, "Cybertruck", "Big Chungus", 300, 548.95, "Mick-Dick");
+
+INSERT INTO accessories VALUES
+(1, 'Babyseat');
+
+INSERT INTO reservations VALUES
+(1, 1, 1, '2020-05-20 20:40:14', '2020-05-24 20:00:10', 300, 1);
 

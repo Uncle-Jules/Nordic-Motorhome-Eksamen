@@ -84,12 +84,20 @@
         <td th:text = "${motorhome.registration_number}"/>
     </tr>
     <tr>
+        <th>Distance til afhentningssted</th>
+        <td th:text = "${reservation.distance_to_pickup} + ' km'"/>
+    </tr>
+    <tr>
+        <th>Sæson</th>
+        <td th:text = "${reservation.season}"/>
+    </tr>
+    <tr>
         <th>Pris per dag</th>
         <td th:text = "${motorhome.price_per_day} + ' kr.'"/>
     </tr>
     <tr>
-        <th>Distance til afhentningssted</th>
-        <td th:text = "${reservation.distance_to_pickup} + ' km'"/>
+        <th>Totalpris</th>
+        <td th:text = "${reservation.total_price} + ' kr. '"/>
     </tr>
     </thead>
 </table>

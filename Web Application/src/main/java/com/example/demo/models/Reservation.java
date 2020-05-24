@@ -12,6 +12,8 @@ public class Reservation {
     private String end_date;
     private int distance_to_pickup;
     private int accessory_id;
+    private String season;
+    private int total_price;
 
 
     //Field for customer to be shown in reservation.
@@ -31,12 +33,14 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(int id, String start_date, String end_date, int distance_to_pickup, int accessory_id, String first_name, String last_name, String model, String brand_name, String type, int motorhome_id, int customer_id) {
+    public Reservation(int id, String start_date, String end_date, int distance_to_pickup, int accessory_id, String season, int total_price, String first_name, String last_name, String model, String brand_name, String type, int motorhome_id, int customer_id) {
         this.id = id;
         this.start_date = start_date;
         this.end_date = end_date;
         this.distance_to_pickup = distance_to_pickup;
         this.accessory_id = accessory_id;
+        this.season = season;
+        this.total_price = total_price;
         this.first_name = first_name;
         this.last_name = last_name;
         this.model = model;
@@ -142,5 +146,21 @@ public class Reservation {
 
     public void setAccessory_id(int accessory_id) {
         this.accessory_id = accessory_id;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
+    }
+
+    public int getTotal_price() {
+        return total_price;
+    }
+
+    public void setTotal_price(int total_price) {
+        this.total_price = total_price;
     }
 }

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Oplysninger om reservation</title>
+</head>
+<body>
+<table id="myTable" class="table">
+    <thead class="thead-light">
+    <tr>
+        <th>ID:</th>
+        <td th:text = "${customer.id}" />
+    </tr>
+    <tr>
+        <th>Fornavn:</th>
+        <td th:text = "${customer.first_name}" />
+    </tr>
+    <tr>
+        <th>Efternavn:</th>
+        <td th:text = "${customer.last_name}" />
+    </tr>
+    <tr>
+        <th>Telefonnummer:</th>
+        <td th:text = "${customer.phone_number}" />
+    </tr>
+    <tr>
+        <th>Fødselsdato:</th>
+        <td th:text = "${customer.birth_date}" />
+    </tr>
+    <tr>
+        <th>Betalingsdetaljer:</th>
+        <td th:text = "${customer.payment_details}" />
+    </tr>
+    <tr>
+        <th>Kørekortnummer:</th>
+        <td th:text = "${customer.drivers_license}" />
+    </tr>
+    <tr>
+        <th>Adresse:</th>
+        <td th:text = "${address.street_name} + ' ' + ${address.street_number} + ${address.apartment_number}"/>
+    </tr>
+    <tr>
+        <th>Postnummer:</th>
+        <td th:text = "${zipCode.zip}" />
+    </tr>
+    <tr>
+        <th>By:</th>
+        <td th:text = "${zipCode.city}" />
+    </tr>
+    <tr>
+        <th>Land:</th>
+        <td th:text = "${zipCode.country}" />
+    </tr>
+    <tr>
+        <th>Startdato</th>
+        <td th:text = "${reservation.start_date}"/>
+    </tr>
+    <tr>
+        <th>Slutdato</th>
+        <td th:text = "${reservation.end_date}"/>
+    </tr>
+    <tr>
+        <th>Tilbehør</th>
+        <td th:text = "${reservation.accessory_id}"/>
+    </tr>
+    <tr>
+        <th>Mærke</th>
+        <td th:text = "${motorhome.brand_name}"/>
+    </tr>
+    <tr>
+        <th>Model</th>
+        <td th:text = "${motorhome.model}"/>
+    </tr>
+    <tr>
+        <th>Type</th>
+        <td th:text = "${motorhome.type}"/>
+    </tr>
+    <tr>
+        <th>Kilometertal</th>
+        <td th:text = "${motorhome.mileage}"/>
+    </tr>
+    <tr>
+        <th>Registreringnummer</th>
+        <td th:text = "${motorhome.registration_number}"/>
+    </tr>
+    <tr>
+        <th>Pris per dag</th>
+        <td th:text = "${motorhome.price_per_day}"/>
+    </tr>
+    </thead>
+</table>
+</body>
+</html>

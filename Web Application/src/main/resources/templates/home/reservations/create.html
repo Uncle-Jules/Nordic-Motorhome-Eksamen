@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret en reservation</title>
+</head>
+<body>
+<form action="/reservations/create" method="post">
+    <table>
+        <tr>
+            <td><label>Autocamper</label></td>
+            <td><select name="motorhome_id">
+                <option th:each = "motorhome: ${motorhomes}" th:text="${motorhome.brand_name} + ' ' + ${motorhome.model} " th:value="${motorhome.id}"></option>
+            </select></td>
+        </tr>
+            <td><label>Kunde</label></td>
+            <td><select name="customer_id">
+                <option th:each = "customer: ${customers}" th:text="${customer.first_name} + ' ' + ${customer.last_name} " th:value="${customer.id}"></option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><label>Startdato</label></td>
+            <td><input type="datetime-local" name="start_date"></td>
+        </tr>
+        <tr>
+            <td><label>Slutdato</label></td>
+            <td><input type="datetime-local" name="end_date"></td>
+        </tr>
+        <tr>
+            <td><label>Distance til afhentning</label></td>
+            <td><input type="number" name="distance_to_pickup"></td>
+        </tr>
+        <tr>
+            <td><label>Tilbehør</label></td>
+            <td><input type="number" name="accessory_id"></td>
+        </tr>
+    </table>
+    <input type="submit" style="padding: 10px" value="Tilføj Reservation">
+</form>
+</body>
+</html>

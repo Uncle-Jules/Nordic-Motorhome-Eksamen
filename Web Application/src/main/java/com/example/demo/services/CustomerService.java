@@ -29,8 +29,8 @@ public class CustomerService {
     public ZipCode getZipCode(Address address) {
         return customerRepo.getZipCode(address);
     }
-    public void update(int id, Customer c){
-        customerRepo.update(id, c);
+    public void update(int id, Customer customer){
+        customerRepo.update(id, customer);
     }
     public void delete(int id){
         customerRepo.delete(id);

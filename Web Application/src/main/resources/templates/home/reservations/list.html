@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List over alle kunder</title>
+</head>
+<body>
+<table id="reservationsTable" class="table">
+    <thead class="thead-light">
+    <tr>
+        <th>ID</th>
+        <th>Fornavn</th>
+        <th>Efternavn</th>
+        <th>Mærke</th>
+        <th>Model</th>
+        <th>Type</th>
+        <th>Startdato</th>
+        <th>Slutdato</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "reservation: ${reservations}">
+        <td th:text = "${reservation.id}" />
+        <td th:text = "${reservation.first_name}" />
+        <td th:text = "${reservation.last_name}" />
+        <td th:text = "${reservation.brand_name}" />
+        <td th:text = "${reservation.model}" />
+        <td th:text = "${reservation.type}" />
+        <td th:text = "${reservation.start_date}" />
+        <td th:text = "${reservation.end_date}" />
+        <td>
+            <a th:href="@{'/reservations/view-one/'+${reservation.id}}">
+                <button>Se reservation</button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{'/reservations/edit/'+${reservation.id}}">
+                <button>Redigér reservation</button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{'/reservations/delete/'+${reservation.id}}">
+                <button>Slet reservation</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html></html>

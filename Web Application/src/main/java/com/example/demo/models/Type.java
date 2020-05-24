@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Type {
+public class    Type {
     @Id
     private String type;
     private int beds;

@@ -118,7 +118,8 @@ INSERT INTO addresses VALUES
 
 INSERT INTO customers VALUES 
 (1, 'Rasmus', 'Falk','+45 22 22 22 22', 1, '2020-05-28', "credit card", 'XMP-232'),
-(2, 'Rasmus', 'Falk-Jensen','+45 22 22 22 22', 1, '2020-05-28', "credit card", 'XMP-232');
+(2, 'Rasmus', 'Falk-Jensen','+45 22 22 22 22', 1, '2020-06-28', "credit card", 'XMSP-232'),
+(3, 'Ammad', 'Azhar','+45 22 22 22 22', 1, '2020-07-28', "credit card", 'HJL-2232332');
 
 INSERT INTO models VALUES
 ("Cybertruck", "Tesla");

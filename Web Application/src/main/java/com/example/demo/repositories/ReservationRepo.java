@@ -23,8 +23,8 @@ public class ReservationRepo {
     MotorhomeService motorhomeService;
 
     public List<Reservation> fetchAll() {
-        String sql = "SELECT * FROM reservations JOIN motorhomes ON motorhomes.id = reservations.motorhome_id " +
-                "JOIN customers ON reservations.customer_id = customers.id JOIN models ON models.model = motorhomes.model";
+        String sql = "SELECT *, reservations.id as id FROM reservations JOIN motorhomes ON motorhomes.id = reservations.motorhome_id " +
+                "JOIN customers ON customer_id = customers.id JOIN models ON models.model = motorhomes.model";
         RowMapper<Reservation> rowMapper = new BeanPropertyRowMapper<>(Reservation.class);
         return template.query(sql, rowMapper);
     }

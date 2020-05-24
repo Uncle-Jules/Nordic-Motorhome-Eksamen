@@ -15,18 +15,16 @@ public class Reservation {
     private String season;
     private int total_price;
 
-
-    //Field for customer to be shown in reservation.
+    // Fields for customer to be shown in reservation.
     private String first_name;
     private String last_name;
 
-    //Fields for motorhomes to be shown in reservation.
+    // Fields for motorhome to be shown in reservation.
     private String model;
     private String brand_name;
     private String type;
 
-
-    //Foreignkeys for customer and motorhome.
+    // Foreign keys for customer and motorhome.
     private int motorhome_id;
     private int customer_id;
 

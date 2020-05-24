@@ -33,21 +33,21 @@ public class ReservationController {
             return "home/reservations/list";
         }
 
-    @GetMapping("/view-one/{id}")
-    public String viewReservation(@PathVariable("id") int id, Model model) {
-        Reservation reservation = reservationService.findById(id);
-        Customer customer = customerService.findById(reservation.getCustomer_id());
-        Motorhome motorhome = motorhomeService.findById(reservation.getMotorhome_id());
-        Address address = customerService.getAddress(customer);
-        ZipCode zipCode = customerService.getZipCode(address);
+        @GetMapping("/view-one/{id}")
+        public String viewReservation(@PathVariable("id") int id, Model model) {
+            Reservation reservation = reservationService.findById(id);
+            Customer customer = customerService.findById(reservation.getCustomer_id());
+            Motorhome motorhome = motorhomeService.findById(reservation.getMotorhome_id());
+            Address address = customerService.getAddress(customer);
+            ZipCode zipCode = customerService.getZipCode(address);
 
-        model.addAttribute("reservation", reservation);
-        model.addAttribute("customer", customer);
-        model.addAttribute("motorhome", motorhome);
-        model.addAttribute("address", address);
-        model.addAttribute("zipCode", zipCode);
-        return "home/reservations/view-one";
-    }
+            model.addAttribute("reservation", reservation);
+            model.addAttribute("customer", customer);
+            model.addAttribute("motorhome", motorhome);
+            model.addAttribute("address", address);
+            model.addAttribute("zipCode", zipCode);
+            return "home/reservations/view-one";
+        }
 
         @GetMapping("/create")
         public String createReservation(Model model) {

@@ -68,12 +68,12 @@ public class ReservationRepo {
         double distancePrice = distance_to_pickup * 0.7;
         switch (season){
             case "vinter":
-                return basePrice;
+                return basePrice + distancePrice;
             case "forår":
             case "efterår":
-                return basePrice * 1.3;
+                return basePrice * 1.3 + distancePrice;
             case "sommer":
-                return basePrice * 1.6;
+                return basePrice * 1.6 + distancePrice;
         }
         return -1;
     }

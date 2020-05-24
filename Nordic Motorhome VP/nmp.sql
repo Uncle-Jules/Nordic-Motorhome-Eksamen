@@ -32,7 +32,7 @@ CREATE TABLE motorhomes
     model				VARCHAR(45)							NOT NULL,
     type				VARCHAR(45)							NOT NULL,
     mileage				INT									NOT NULL,
-    price_per_day		INT									NOT NULL,
+    price_per_day		FLOAT								NOT NULL,
     registration_number	VARCHAR(10)							NOT NULL	UNIQUE,
 	FOREIGN KEY (model)
 		REFERENCES models (model),
@@ -135,5 +135,5 @@ INSERT INTO accessories VALUES
 (1, 'Babyseat');
 
 INSERT INTO reservations VALUES
-(0, 1, 1, '2020-05-20 20:40:14', '2020-05-24 20:00:10', 200, 1, "autumn", 885);
+(0, 1, 1, '2020-05-20 20:40:14', '2020-05-24 20:00:10', 200, 1, 'sommer', 5000);
 

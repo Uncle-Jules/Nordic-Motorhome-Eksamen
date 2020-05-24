@@ -86,7 +86,7 @@ CREATE TABLE reservations
     distance_to_pickup	INT			NOT NULL,
 	accessory_id 		INT,
     season				VARCHAR(45) NOT NULL,
-    total_price 		INT			NOT NULL,
+    total_price 		FLOAT		NOT NULL,
     FOREIGN KEY (motorhome_id)
 		REFERENCES motorhomes (id),
     FOREIGN KEY (customer_id)
@@ -135,5 +135,5 @@ INSERT INTO accessories VALUES
 (1, 'Babyseat');
 
 INSERT INTO reservations VALUES
-(0, 1, 1, '2020-05-20 20:40:14', '2020-05-24 20:00:10', 200, 1, null);
+(0, 1, 1, '2020-05-20 20:40:14', '2020-05-24 20:00:10', 200, 1, "autumn", 885);
 

@@ -1,9 +1,6 @@
 package com.example.demo.repositories;
 
-import com.example.demo.models.Customer;
 import com.example.demo.models.Motorhome;
-import com.example.demo.models.Type;
-import com.example.demo.models.ZipCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Redigér Kunde</title>
+    <link rel="stylesheet" href="../stylesheet.css" type="text/css">
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
     <form action="/customers/update" method="post">
         <table>
             <tr>

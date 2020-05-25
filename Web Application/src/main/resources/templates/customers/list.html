@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>List over alle kunder</title>
+        <link rel="stylesheet" href="../stylesheet.css" type="text/css">
+    </head>
+    <body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+        <table id="customerTable" class="w3-table w3-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
+                <th>Addresse</th>
+                <th>Telefonnummer</th>
+                <th>Fødselsdato</th>
+                <th>Betalingsdetaljer</th>
+                <th>Kørekortnummer</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each = "customer: ${customers}">
+                <td th:text = "${customer.id}" />
+                <td th:text = "${customer.first_name}" />
+                <td th:text = "${customer.last_name}" />
+                <td th:text = "${customer.address_id}" />
+                <td th:text = "${customer.phone_number}" />
+                <td th:text = "${customer.birth_date}" />
+                <td th:text = "${customer.payment_details}" />
+                <td th:text = "${customer.drivers_license}" />
+                <td>
+                    <a th:href="@{'/customers/view-one/'+${customer.id}}">
+                        <button>Se kunde</button>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/customers/edit/'+${customer.id}}">
+                        <button>Redigér kunde</button>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/customers/delete/'+${customer.id}}">
+                        <button>Slet kunde</button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

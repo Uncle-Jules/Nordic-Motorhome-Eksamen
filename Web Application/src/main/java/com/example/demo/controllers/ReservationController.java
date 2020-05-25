@@ -30,7 +30,7 @@ public class ReservationController {
             model.addAttribute("reservations", reservations);
             model.addAttribute("customers", customers);
             model.addAttribute("motorhomes", motorhomes);
-            return "home/reservations/list";
+            return "/reservations/list";
         }
 
         @GetMapping("/view-one/{id}")
@@ -46,7 +46,7 @@ public class ReservationController {
             model.addAttribute("motorhome", motorhome);
             model.addAttribute("address", address);
             model.addAttribute("zipCode", zipCode);
-            return "home/reservations/view-one";
+            return "/reservations/view-one";
         }
 
         @GetMapping("/create")
@@ -55,7 +55,7 @@ public class ReservationController {
             List<Customer> customers = customerService.fetchAll();
             model.addAttribute("motorhomes", motorhomes);
             model.addAttribute("customers", customers);
-            return "home/reservations/create";
+            return "/reservations/create";
         }
 
         @PostMapping("/create")
@@ -68,7 +68,7 @@ public class ReservationController {
         @GetMapping("/edit/{id}")
         public String editReservation(@PathVariable("id") int id, Model model) {
             model.addAttribute("reservation", reservationService.findById(id));
-            return "home/reservations/edit";
+            return "/reservations/edit";
         }
         @PostMapping("/update")
         public String updateReservation(@ModelAttribute Reservation reservation) {

@@ -24,13 +24,13 @@ public class MotorhomeController {
     public String motorhomeList(Model model){
         List<Motorhome> motorhomes = motorhomeService.fetchAll();
         model.addAttribute("motorhomes", motorhomes);
-        return "home/motorhomes/list";
+        return "/motorhomes/list";
     }
     @GetMapping("/create")
     public String createMotorhome(Model model){
         List<Type> types = typeService.fetchAll();
         model.addAttribute("types", types);
-        return "home/motorhomes/create";
+        return "/motorhomes/create";
     }
 
     @PostMapping("/create")
@@ -41,7 +41,7 @@ public class MotorhomeController {
     @GetMapping("/view-one/{id}")
     public String viewMotorhome(@PathVariable("id") int id, Model model) {
         model.addAttribute("motorhome", motorhomeService.findById(id));
-        return "home/motorhomes/view-one";
+        return "/motorhomes/view-one";
     }
 
     @GetMapping("/edit/{id}")
@@ -49,7 +49,7 @@ public class MotorhomeController {
         List<Type> types = typeService.fetchAll();
         model.addAttribute("types", types);
         model.addAttribute("motorhome", motorhomeService.findById(id));
-        return "home/motorhomes/edit";
+        return "/motorhomes/edit";
     }
     @PostMapping("/update")
     public String updateMotorhome(@ModelAttribute Motorhome motorhome) {

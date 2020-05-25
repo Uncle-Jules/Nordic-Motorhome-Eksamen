@@ -22,12 +22,12 @@ public class TypeController {
     public String typeList(Model model){
         List<Type> types = typeService.fetchAll();
         model.addAttribute("types", types);
-        return "home/types/list";
+        return "/types/list";
     }
 
     @GetMapping("/create")
     public String createType(){
-        return "home/types/create";
+        return "/types/create";
     }
     @PostMapping("/create")
     public String addType(@ModelAttribute Type type, RedirectAttributes redirectAttributes){
@@ -47,13 +47,13 @@ public class TypeController {
     @GetMapping("/view-one/{id}")
     public String viewType(@PathVariable("id") String type, Model model) {
         model.addAttribute("type", typeService.findById(type));
-        return "home/types/view-one";
+        return "/types/view-one";
     }
 
     @GetMapping("/edit/{id}")
     public String editType(@PathVariable("id") String type, Model model) {
         model.addAttribute("type", typeService.findById(type));
-        return "home/types/edit";
+        return "/types/edit";
     }
     @PostMapping("/update")
     public String updateType(@ModelAttribute Type type) {

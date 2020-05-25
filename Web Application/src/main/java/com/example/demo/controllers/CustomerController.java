@@ -21,12 +21,12 @@ public class CustomerController {
     public String customerList(Model model) {
         List<Customer> customers = customerService.fetchAll();
         model.addAttribute("customers", customers);
-        return "home/customers/list";
+        return "/customers/list";
     }
 
     @GetMapping("/create")
     public String createCustomer() {
-        return "home/customers/create";
+        return "/customers/create";
     }
 
     @PostMapping("/create")
@@ -42,13 +42,13 @@ public class CustomerController {
         model.addAttribute("customer", customer);
         model.addAttribute("address", address);
         model.addAttribute("zip_code", customerService.getZipCode(address));
-        return "home/customers/view-one";
+        return "/customers/view-one";
     }
 
     @GetMapping("/edit/{id}")
     public String editCustomer(@PathVariable("id") int id, Model model) {
         model.addAttribute("customer", customerService.findById(id));
-        return "home/customers/edit";
+        return "/customers/edit";
     }
     @PostMapping("/update")
     public String updateCustomer(@ModelAttribute Customer customer) {

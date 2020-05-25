@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Tilføj Kunde</title>
+    <link rel="stylesheet" href="../stylesheet.css" type="text/css">
 </head>
     <body>
+    <div th:replace="fragments/navbar :: navbar"></div>
         <form action="/customers/create" method="post">
             <table>
                 <tr>

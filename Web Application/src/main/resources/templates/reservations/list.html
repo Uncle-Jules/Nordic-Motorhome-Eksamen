@@ -2,11 +2,13 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>List over alle reservationer</title>
+    <title>Liste over alle reservationer</title>
+    <link rel="stylesheet" href="../stylesheet.css" type="text/css">
 </head>
 <body>
-<table id="reservationsTable" class="table">
-    <thead class="thead-light">
+<div th:replace="fragments/navbar :: navbar"></div>
+<table id="reservationsTable" class="w3-table w3-striped">
+    <thead>
     <tr>
         <th>ID</th>
         <th>Fornavn</th>

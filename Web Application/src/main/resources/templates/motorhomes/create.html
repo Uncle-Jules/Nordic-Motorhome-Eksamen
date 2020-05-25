@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Tilføj ny autocamper</title>
+    <link rel="stylesheet" href="../stylesheet.css" type="text/css">
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
 <form action="/motorhomes/create" method="post">
     <table>
         <tr>

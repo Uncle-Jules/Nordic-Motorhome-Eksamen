@@ -9,13 +9,26 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @ComponentScan(basePackages = {"com.example.*"})
 @EnableAutoConfiguration
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:config.properties")
 public class AppConfig {
 
     @Value("${middleSeason}")
-    private static double middleSeasonPercent;
+    private double middleSeasonPercent;
 
-    public static double getMiddleSeasonPercent() {
+    @Value("${highSeason}")
+    private double highSeasonPercent;
+    @Value("${pickupDropoffTax}")
+    private double pickupDropoffTax;
+
+    public double getMiddleSeasonPercent() {
         return middleSeasonPercent;
+    }
+
+    public double getHighSeasonPercent() {
+        return highSeasonPercent;
+    }
+
+    public double getPickupDropoffTax() {
+        return pickupDropoffTax;
     }
 }

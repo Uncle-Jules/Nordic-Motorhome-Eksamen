@@ -20,6 +20,8 @@ public class ReservationRepo {
     JdbcTemplate template;
     @Autowired
     MotorhomeService motorhomeService;
+    @Autowired
+    AppConfig appConfig;
 
     public List<Reservation> fetchAll() {
         String sql = "SELECT *, reservations.id as id FROM reservations JOIN motorhomes ON motorhomes.id = reservations.motorhome_id " +
@@ -68,15 +70,14 @@ public class ReservationRepo {
             case 3:
             case 4:
             case 5:
+            case 9:
+            case 10:
+            case 11:
                 return "Mellemsæson";
             case 6:
             case 7:
             case 8:
                 return "Højsæson";
-            case 9:
-            case 10:
-            case 11:
-                return "efterår";
             default:
                 break;
         }
@@ -89,15 +90,17 @@ public class ReservationRepo {
         LocalDateTime formattedEndDate = LocalDateTime.parse(end_date, formatter);
         int numberOfDays = (int) ChronoUnit.DAYS.between(formattedStartDate, formattedEndDate);
         double basePrice = price_per_day * numberOfDays;
-        double distancePrice = distance_to_pickup * 0.7;
+        double pickupDropoffTax = appConfig.getPickupDropoffTax();
+        double middleSeasonPercent = appConfig.getMiddleSeasonPercent();
+        double highSeasonPercent = appConfig.getHighSeasonPercent();
+        double distancePrice = distance_to_pickup * pickupDropoffTax;
         switch (season){
             case "Lavsæson":
                 return basePrice + distancePrice;
             case "Mellemsæson":
-                System.out.println(AppConfig.getMiddleSeasonPercent());
-                return basePrice * AppConfig.getMiddleSeasonPercent() + distancePrice;
+                return basePrice * middleSeasonPercent + distancePrice;
             case "Højsæson":
-                return basePrice * 1.6 + distancePrice;
+                return basePrice * highSeasonPercent + distancePrice;
         }
         return -1;
     }

@@ -3,12 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>Oplysninger om kunde</title>
-        <link rel="stylesheet" href="../stylesheet.css" type="text/css">
+        <link rel="stylesheet" href="/../stylesheet.css" type="text/css"/>
     </head>
     <body>
         <div th:replace="fragments/navbar :: navbar"></div>
         <table id="myTable" class="w3-table w3-striped">
-            <thead>
+
                 <tr>
                     <th>ID:</th>
                     <td th:text = "${customer.id}" />
@@ -53,7 +53,7 @@
                     <th>Land:</th>
                     <td th:text = "${zip_code.country}" />
                 </tr>
-            </thead>
+            
         </table>
     </body>
 </html>

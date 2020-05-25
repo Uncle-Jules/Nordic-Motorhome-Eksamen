@@ -1,5 +1,6 @@
 package com.example.demo.repositories;
 
+import com.example.demo.AppConfig;
 import com.example.demo.models.Reservation;
 import com.example.demo.services.MotorhomeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,7 +94,8 @@ public class ReservationRepo {
             case "Lavsæson":
                 return basePrice + distancePrice;
             case "Mellemsæson":
-                return basePrice * 1.3 + distancePrice;
+                System.out.println(AppConfig.getMiddleSeasonPercent());
+                return basePrice * AppConfig.getMiddleSeasonPercent() + distancePrice;
             case "Højsæson":
                 return basePrice * 1.6 + distancePrice;
         }

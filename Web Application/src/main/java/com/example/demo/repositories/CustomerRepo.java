@@ -67,7 +67,7 @@ public class CustomerRepo {
 
     public void update(int id, Customer customer){
         String sql = "UPDATE customers SET phone_number = ? WHERE id = ?";
-            template.update(sql, customer.getPhone_number(), id);
+        template.update(sql, customer.getPhone_number(), id);
     }
     public boolean delete(int id){
         String sql = "DELETE FROM customers WHERE id = ?";

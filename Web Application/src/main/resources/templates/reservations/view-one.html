@@ -8,7 +8,6 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 <table id="myTable" class="w3-table w3-striped w3-bordered w3-border" style="width: 33.33%">
-    <thead class="thead-light">
     <tr>
         <th>ID:</th>
         <td th:text = "${reservation.id}" />
@@ -63,7 +62,13 @@
     </tr>
     <tr>
         <th>Tilbehør</th>
-        <td th:text = "${reservation.accessory_id}"/>
+        <td>
+            <table>
+                <tr th:each="accessory : ${accessories}">
+                    <td th:text = "${accessory.accessory}"></td>
+                </tr>
+            </table>
+        </td>
     </tr>
     <tr>
         <th>Mærke</th>
@@ -101,7 +106,6 @@
         <th>Totalpris</th>
         <td th:text = "${reservation.total_price} + ' kr. '"/>
     </tr>
-    </thead>
 </table>
 </body>
 </html>

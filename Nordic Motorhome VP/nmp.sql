@@ -18,13 +18,6 @@ CREATE TABLE types
     beds		INT				NOT NULL
 );
 
-DROP TABLE IF EXISTS accessories;
-CREATE TABLE accessories
-(
-	id			INT				NOT NULL	PRIMARY KEY		AUTO_INCREMENT,
-    accessory	VARCHAR(45)		NOT NULL
-);
-
 DROP TABLE IF EXISTS motorhomes;
 CREATE TABLE motorhomes 
 (
@@ -38,17 +31,6 @@ CREATE TABLE motorhomes
 		REFERENCES models (model),
 	FOREIGN KEY (type)
 		REFERENCES types (type)
-);
-
-DROP TABLE IF EXISTS motorhome_accessories;
-CREATE TABLE motorhome_accessories 
-(
-	motorhome_id	INT		NOT NULL,
-    accessory_id	INT		NOT NULL,
-    FOREIGN KEY (motorhome_id)
-		REFERENCES motorhomes (id),
-    FOREIGN KEY (accessory_id)
-		REFERENCES accessories (id)
 );
 
 DROP TABLE IF EXISTS zip_codes;
@@ -95,14 +77,30 @@ CREATE TABLE reservations
     start_date			DATETIME	NOT NULL, 
     end_date			DATETIME	NOT NULL, 
     distance_to_pickup	INT			NOT NULL,
-	accessory_id 		INT,
     season				VARCHAR(45) NOT NULL,
     total_price 		FLOAT		NOT NULL,
     FOREIGN KEY (motorhome_id)
 		REFERENCES motorhomes (id),
     FOREIGN KEY (customer_id)
-		REFERENCES customers (id),
-	FOREIGN KEY (accessory_id)
+		REFERENCES customers (id)
+);
+
+DROP TABLE IF EXISTS accessories;
+CREATE TABLE accessories
+(
+	id			INT				NOT NULL	PRIMARY KEY		AUTO_INCREMENT,
+    accessory	VARCHAR(45)		NOT NULL,
+    stock		INT				NOT NULL
+);
+
+DROP TABLE IF EXISTS reserved_accessories;
+CREATE TABLE reserved_accessories 
+(
+	reservation_id	INT		NOT NULL,
+    accessory_id	INT		NOT NULL,
+    FOREIGN KEY (reservation_id)
+		REFERENCES reservations (id),
+    FOREIGN KEY (accessory_id)
 		REFERENCES accessories (id)
 );
 
@@ -144,8 +142,15 @@ INSERT INTO motorhomes VALUES
 (1, "Cybertruck", "Big Chungus", 30000, 548.95, "Mick-Dick");
 
 INSERT INTO accessories VALUES
-(1, 'Babyseat');
+(1, 'Babyseat', 3),
+(2, 'Bike rack', 2),
+(3, 'Bed linen', 45);
 
 INSERT INTO reservations VALUES
-(0, 1, 1, 'credit card', '2020-05-20 20:40:14', '2020-05-24 20:00:10', 200, 1, 'Højsæson', 5000);
+(0, 1, 1, 'credit card', '2020-05-20 20:40:14', '2020-05-24 20:00:10', 200, 'Højsæson', 5000);
+
+INSERT INTO reserved_accessories VALUES
+(1, 1),
+(1, 2),
+(1, 3);
 

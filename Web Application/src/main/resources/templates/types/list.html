@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Liste over alle typer</title>
-    <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="/../stylesheet.css">
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
@@ -14,18 +14,12 @@
         <th class="w3-border-right">Sengepladser</th>
         <th></th>
         <th></th>
-        <th></th>
     </tr>
     </thead>
     <tbody>
     <tr th:each = "type: ${types}">
         <td th:text="${type.type}"/>
         <td th:text="${type.beds}"/>
-        <td>
-            <a th:href="@{'/types/view-one/'+${type.type}}">
-                <button class="w3-btn green-button">Se type</button>
-            </a>
-        </td>
         <td>
             <a th:href="@{'/types/edit/'+${type.type}}">
                 <button class="w3-btn blue-button">Redigér type</button>

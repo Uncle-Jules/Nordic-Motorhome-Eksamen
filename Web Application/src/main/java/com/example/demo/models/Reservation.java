@@ -11,7 +11,6 @@ public class Reservation {
     private String start_date;
     private String end_date;
     private int distance_to_pickup;
-    private int accessory_id;
     private String season;
     private String payment_details;
     private int total_price;
@@ -32,12 +31,11 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(int id, String start_date, String end_date, int distance_to_pickup, int accessory_id, String season, String payment_details, int total_price, String first_name, String last_name, String model, String brand_name, String type, int motorhome_id, int customer_id) {
+    public Reservation(int id, String start_date, String end_date, int distance_to_pickup, String season, String payment_details, int total_price, String first_name, String last_name, String model, String brand_name, String type, int motorhome_id, int customer_id) {
         this.id = id;
         this.start_date = start_date;
         this.end_date = end_date;
         this.distance_to_pickup = distance_to_pickup;
-        this.accessory_id = accessory_id;
         this.season = season;
         this.payment_details = payment_details;
         this.total_price = total_price;
@@ -115,6 +113,7 @@ public class Reservation {
     }
 
     public String getStart_date() {
+        //return start_date.replace(" ", " ").substring(0, start_date.length() - 3);
         return start_date;
     }
 
@@ -124,6 +123,7 @@ public class Reservation {
     }
 
     public String getEnd_date() {
+        //return end_date = end_date.replace(" ", " ").substring(0, end_date.length() - 3);
         return end_date;
     }
 
@@ -138,14 +138,6 @@ public class Reservation {
 
     public void setDistance_to_pickup(int distance_to_pickup) {
         this.distance_to_pickup = distance_to_pickup;
-    }
-
-    public int getAccessory_id() {
-        return accessory_id;
-    }
-
-    public void setAccessory_id(int accessory_id) {
-        this.accessory_id = accessory_id;
     }
 
     public String getSeason() {

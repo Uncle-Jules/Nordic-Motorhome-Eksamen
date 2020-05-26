@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Opret en reservation</title>
-    <link rel="stylesheet" href="../stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
@@ -35,10 +35,6 @@
         <tr>
             <td><label>Distance til afhentningssted</label></td>
             <td><input type="number" name="distance_to_pickup"></td>
-        </tr>
-        <tr>
-            <td><label>Tilbehør</label></td>
-            <td><input type="number" name="accessory_id"></td>
         </tr>
     </table>
     <input type="submit" style="padding: 10px" value="Tilføj Reservation">

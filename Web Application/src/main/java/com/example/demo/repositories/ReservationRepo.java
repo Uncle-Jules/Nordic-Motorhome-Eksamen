@@ -37,16 +37,16 @@ public class ReservationRepo {
     }
 
     public void add(Reservation reservation) {
-        String sql = "INSERT INTO reservations VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO reservations VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?)";
         String start_date = reservation.getStart_date();
         String end_date = reservation.getEnd_date();
         String season = calculateSeason(reservation.getStart_date());
         int distance_to_pickup = reservation.getDistance_to_pickup();
         double price_per_day = motorhomeService.findById(reservation.getMotorhome_id()).getPrice_per_day();
         double totalPrice = calculateTotalPrice(price_per_day,distance_to_pickup, season, start_date, end_date);
+
         template.update(sql, reservation.getMotorhome_id(), reservation.getCustomer_id(),
-                start_date, end_date, distance_to_pickup,
-                reservation.getAccessory_id(), season, reservation.getPayment_details(), totalPrice);
+                reservation.getPayment_details(), start_date, end_date, distance_to_pickup, season, totalPrice);
     }
 
     public void update(int id, Reservation reservation) {
@@ -104,7 +104,6 @@ public class ReservationRepo {
         }
         return -1;
     }
-
 }
 
 

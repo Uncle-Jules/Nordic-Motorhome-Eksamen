@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Oplysninger om type</title>
-    <link rel="stylesheet" href="../stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<table id="myTable" class="table">
-    <thead class="thead-light">
+<table id="myTable" class="w3-table w3-striped w3-bordered w3-border" style="width: 33.33%">
     <tr>
         <th>Type:</th>
         <td th:text = "${type.type}" />
@@ -17,7 +16,6 @@
         <th>Sengepladser:</th>
         <td th:text = "${type.beds}" />
     </tr>
-    </thead>
 </table>
 <form action="/types/list">
     <input type="submit" value="Tilbage" />

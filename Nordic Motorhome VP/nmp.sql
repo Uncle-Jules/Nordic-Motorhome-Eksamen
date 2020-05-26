@@ -40,6 +40,17 @@ CREATE TABLE motorhomes
 		REFERENCES types (type)
 );
 
+DROP TABLE IF EXISTS motorhome_accessories;
+CREATE TABLE motorhome_accessories 
+(
+	motorhome_id	INT		NOT NULL,
+    accessory_id	INT		NOT NULL,
+    FOREIGN KEY (motorhome_id)
+		REFERENCES motorhomes (id),
+    FOREIGN KEY (accessory_id)
+		REFERENCES accessories (id)
+);
+
 DROP TABLE IF EXISTS zip_codes;
 CREATE TABLE zip_codes
 (
@@ -69,7 +80,6 @@ CREATE TABLE customers
     phone_number		VARCHAR(45)		NOT NULL,
     address_id			INT				NOT NULL,
 	birth_date			DATE			NOT NULL,
-    payment_details		VARCHAR(45)		NOT NULL,
     drivers_license		VARCHAR(20)		NOT NULL,
     FOREIGN KEY (address_id)
 		REFERENCES addresses (id)
@@ -81,6 +91,7 @@ CREATE TABLE reservations
 	id					INT			NOT NULL		PRIMARY KEY		AUTO_INCREMENT,
 	motorhome_id		INT			NOT NULL, 
     customer_id			INT			NOT NULL, 
+	payment_details		VARCHAR(45)	NOT NULL,
     start_date			DATETIME	NOT NULL, 
     end_date			DATETIME	NOT NULL, 
     distance_to_pickup	INT			NOT NULL,
@@ -117,9 +128,9 @@ INSERT INTO addresses VALUES
 (8, 'Farum Gydevej', '120', NULL, '3520');
 
 INSERT INTO customers VALUES 
-(1, 'Rasmus', 'Falk','+45 22 22 22 22', 1, '2020-05-28', "credit card", 'XMP-232'),
-(2, 'Rasmus', 'Falk-Jensen','+45 22 22 22 22', 1, '2020-06-28', "credit card", 'XMSP-232'),
-(3, 'Ammad', 'Azhar','+45 22 22 22 22', 1, '2020-07-28', "credit card", 'HJL-2232332');
+(1, 'Rasmus', 'Falk','+45 22 22 22 22', 1, '2020-05-28', 'XMP-232'),
+(2, 'Rasmus', 'Falk-Jensen','+45 22 22 22 22', 1, '2020-06-28', 'XMSP-232'),
+(3, 'Ammad', 'Azhar','+45 22 22 22 22', 1, '2020-07-28', 'HJL-2232332');
 
 INSERT INTO models VALUES
 ("Cybertruck", "Tesla");
@@ -136,5 +147,5 @@ INSERT INTO accessories VALUES
 (1, 'Babyseat');
 
 INSERT INTO reservations VALUES
-(0, 1, 1, '2020-05-20 20:40:14', '2020-05-24 20:00:10', 200, 1, 'sommer', 5000);
+(0, 1, 1, 'credit card', '2020-05-20 20:40:14', '2020-05-24 20:00:10', 200, 1, 'Højsæson', 5000);
 

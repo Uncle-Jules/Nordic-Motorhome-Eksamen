@@ -7,16 +7,19 @@
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<table id="motorhomeTable" class="w3-table w3-striped">
+<table id="motorhomeTable" class="w3-table w3-striped w3-bordered w3-centered">
     <thead>
-    <tr>
-        <th>ID</th>
-        <th>Type</th>
-        <th>Mærke model</th>
-        <th>Model</th>
-        <th>Kilometertal</th>
-        <th>Pris per dag (Basispris)</th>
-        <th>Registreringsnummer</th>
+    <tr class="w3-blue">
+        <th class="w3-border-right">ID</th>
+        <th class="w3-border-right">Type</th>
+        <th class="w3-border-right">Mærke</th>
+        <th class="w3-border-right">Model</th>
+        <th class="w3-border-right">Kilometertal</th>
+        <th class="w3-border-right">Pris per dag (Basispris)</th>
+        <th class="w3-border-right">Registreringsnummer</th>
+        <th></th>
+        <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -30,17 +33,17 @@
         <td th:text="${motorhome.registration_number}"/>
         <td>
             <a th:href="@{'/motorhomes/view-one/'+${motorhome.id}}">
-                <button>View motorhome</button>
+                <button class="w3-btn green-button">Se autocamper</button>
             </a>
         </td>
         <td>
             <a th:href="@{'/motorhomes/edit/'+${motorhome.id}}">
-                <button>Edit motorhome</button>
+                <button class="w3-btn blue-button">Se autocamper</button>
             </a>
         </td>
         <td>
             <a th:href="@{'/motorhomes/delete/'+${motorhome.id}}">
-                <button>Delete motorhome</button>
+                <button class="w3-btn red-button">Slet autocamper</button>
             </a>
         </td>
     </tr>

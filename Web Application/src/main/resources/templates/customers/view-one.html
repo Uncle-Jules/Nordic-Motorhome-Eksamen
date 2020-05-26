@@ -7,7 +7,7 @@
     </head>
     <body>
         <div th:replace="fragments/navbar :: navbar"></div>
-        <table id="myTable" class="w3-table w3-striped">
+        <table id="myTable" class="w3-table w3-striped w3-bordered w3-border" style="width: 33.33%">
 
                 <tr>
                     <th>ID:</th>
@@ -28,10 +28,6 @@
                 <tr>
                     <th>Fødselsdato:</th>
                     <td th:text = "${customer.birth_date}" />
-                </tr>
-                <tr>
-                    <th>Betalingsdetaljer:</th>
-                    <td th:text = "${customer.payment_details}" />
                 </tr>
                 <tr>
                     <th>Kørekortnummer:</th>

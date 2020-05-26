@@ -1442,7 +1442,7 @@ a {
 
 .w3-blue, .w3-hover-blue:hover {
     color: #fff !important;
-    background-color: #2196F3 !important
+    background-color: dodgerblue !important
 }
 
 .w3-light-blue, .w3-hover-light-blue:hover {
@@ -1802,4 +1802,16 @@ a {
 
 .w3-border-pale-blue, .w3-hover-border-pale-blue:hover {
     border-color: #e7ffff !important
+}
+
+.green-button {
+    background-color: palegreen;
+}
+
+.blue-button {
+    background-color: lightskyblue;
+}
+
+.red-button {
+    background-color:lightcoral;
 }

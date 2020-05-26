@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Oplysninger om reservation</title>
-    <link rel="stylesheet" href="../stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<table id="myTable" class="table">
+<table id="myTable" class="w3-table w3-striped w3-bordered w3-border" style="width: 33.33%">
     <thead class="thead-light">
     <tr>
         <th>ID:</th>
@@ -31,7 +31,7 @@
     </tr>
     <tr>
         <th>Betalingsdetaljer:</th>
-        <td th:text = "${customer.payment_details}" />
+        <td th:text = "${reservation.payment_details}" />
     </tr>
     <tr>
         <th>Kørekortnummer:</th>

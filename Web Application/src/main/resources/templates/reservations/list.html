@@ -7,17 +7,18 @@
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<table id="reservationsTable" class="w3-table w3-striped">
+<table id="reservationsTable" class="w3-table w3-striped w3-bordered w3-centered">
     <thead>
-    <tr>
-        <th>ID</th>
-        <th>Fornavn</th>
-        <th>Efternavn</th>
-        <th>Mærke</th>
-        <th>Model</th>
-        <th>Type</th>
-        <th>Startdato</th>
-        <th>Slutdato</th>
+    <tr class="w3-blue">
+        <th class="w3-border-right">ID</th>
+        <th class="w3-border-right">Fornavn</th>
+        <th class="w3-border-right">Efternavn</th>
+        <th class="w3-border-right">Mærke</th>
+        <th class="w3-border-right">Model</th>
+        <th class="w3-border-right">Type</th>
+        <th class="w3-border-right">Startdato</th>
+        <th class="w3-border-right">Slutdato</th>
+        <th></th>
         <th></th>
         <th></th>
     </tr>
@@ -34,17 +35,17 @@
         <td th:text = "${reservation.end_date}" />
         <td>
             <a th:href="@{'/reservations/view-one/'+${reservation.id}}">
-                <button>Se reservation</button>
+                <button class="w3-btn green-button">Se reservation</button>
             </a>
         </td>
         <td>
             <a th:href="@{'/reservations/edit/'+${reservation.id}}">
-                <button>Redigér reservation</button>
+                <button class="w3-btn blue-button">Redigér reservation</button>
             </a>
         </td>
         <td>
             <a th:href="@{'/reservations/delete/'+${reservation.id}}">
-                <button>Slet reservation</button>
+                <button class="w3-btn red-button">Slet reservation</button>
             </a>
         </td>
     </tr>

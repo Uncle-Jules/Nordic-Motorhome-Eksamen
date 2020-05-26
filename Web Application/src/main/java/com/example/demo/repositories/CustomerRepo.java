@@ -44,8 +44,8 @@ public class CustomerRepo {
         // Getting ID of address (whether it already existed or not)
         int id = template.query(checkAddressSql, addressRowMapper, address.getStreet_name(), address.getStreet_number(), address.getApartment_number()).get(0).getId();
         // Inserting customer as we now know the address for it exists
-        String insertCustomerSql = "INSERT INTO customers VALUES (0, ?, ?, ?, ?, ?, ?, ?)";
-        template.update(insertCustomerSql, customer.getFirst_name(), customer.getLast_name(), customer.getPhone_number(), id, customer.getBirth_date(), customer.getPayment_details(), customer.getDrivers_license());
+        String insertCustomerSql = "INSERT INTO customers VALUES (0, ?, ?, ?, ?, ?, ?)";
+        template.update(insertCustomerSql, customer.getFirst_name(), customer.getLast_name(), customer.getPhone_number(), id, customer.getBirth_date(), customer.getDrivers_license());
     }
     public Customer findById(int id){
         String sql = "SELECT * FROM customers WHERE id = ?";
@@ -66,8 +66,8 @@ public class CustomerRepo {
     }
 
     public void update(int id, Customer customer){
-        String sql = "UPDATE customers SET payment_details = ? WHERE id = ?";
-            template.update(sql, customer.getPayment_details(), id);
+        String sql = "UPDATE customers SET phone_number = ? WHERE id = ?";
+            template.update(sql, customer.getPhone_number(), id);
     }
     public boolean delete(int id){
         String sql = "DELETE FROM customers WHERE id = ?";

@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Oplysninger om autocamper</title>
-    <link rel="stylesheet" href="../stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<table id="myTable" class="table">
-    <thead class="thead-light">
+<table id="myTable" class="w3-table w3-striped w3-bordered w3-border" style="width: 33.33%">
     <tr>
         <th>ID:</th>
         <td th:text = "${motorhome.id}" />
@@ -37,7 +36,6 @@
         <th>Pris per dag:</th>
         <td th:text = "${motorhome.price_per_day}" />
     </tr>
-    </thead>
 </table>
 <form action="/motorhomes/list">
     <input type="submit" value="Tilbage" />

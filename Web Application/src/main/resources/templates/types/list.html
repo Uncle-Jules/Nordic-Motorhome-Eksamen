@@ -7,11 +7,14 @@
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<table id="typeTable" class="w3-table w3-striped">
+<table id="typeTable" class="w3-table w3-striped w3-bordered w3-centered">
     <thead>
-    <tr>
-        <th>Type</th>
-        <th>Sengepladser</th>
+    <tr class="w3-blue">
+        <th class="w3-border-right">Type</th>
+        <th class="w3-border-right">Sengepladser</th>
+        <th></th>
+        <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -20,17 +23,17 @@
         <td th:text="${type.beds}"/>
         <td>
             <a th:href="@{'/types/view-one/'+${type.type}}">
-                <button>Se type</button>
+                <button class="w3-btn green-button">Se type</button>
             </a>
         </td>
         <td>
             <a th:href="@{'/types/edit/'+${type.type}}">
-                <button>Redigér type</button>
+                <button class="w3-btn blue-button">Redigér type</button>
             </a>
         </td>
         <td>
             <a th:href="@{'/types/delete/'+${type.type}}">
-                <button>Slet type</button>
+                <button class="w3-btn red-button">Slet type</button>
             </a>
         </td>
     </tr>

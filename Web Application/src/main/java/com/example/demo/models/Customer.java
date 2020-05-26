@@ -11,7 +11,6 @@ public class Customer {
     private String last_name;
     private String phone_number;
     private String birth_date;
-    private String payment_details;
     private String drivers_license;
 
     //Joins the addresses and customer tables
@@ -22,13 +21,12 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, String first_name, String last_name, String phone_number, String birth_date, String payment_details, String drivers_license, int address_id, String zip_code_id) {
+    public Customer(int id, String first_name, String last_name, String phone_number, String birth_date, String drivers_license, int address_id, String zip_code_id) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.phone_number = phone_number;
         this.birth_date = birth_date;
-        this.payment_details = payment_details;
         this.drivers_license = drivers_license;
         this.address_id = address_id;
         this.zip_code_id = zip_code_id;
@@ -72,14 +70,6 @@ public class Customer {
 
     public void setBirth_date(String birth_date) {
         this.birth_date = birth_date;
-    }
-
-    public String getPayment_details() {
-        return payment_details;
-    }
-
-    public void setPayment_details(String payment_details) {
-        this.payment_details = payment_details;
     }
 
     public String getDrivers_license() {

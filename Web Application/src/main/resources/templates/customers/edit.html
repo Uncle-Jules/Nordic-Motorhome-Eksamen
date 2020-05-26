@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Redigér Kunde</title>
-    <link rel="stylesheet" href="../stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
     <form action="/customers/update" method="post">
         <table>
             <tr>
-                <td>Betalingsdetaljer</td>
+                <td>Telefonnummer</td>
                 <td>
-                    <input type="text" name="payment_details" th:value="${customer.payment_details}">
+                    <input type="text" name="phone_number" th:value="${customer.phone_number}">
                 </td>
             </tr>
             <tr>

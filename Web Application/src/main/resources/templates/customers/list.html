@@ -7,22 +7,21 @@
     </head>
     <body>
         <div th:replace="fragments/navbar :: navbar"></div>
-        <table id="customerTable" class="w3-table w3-striped">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Fornavn</th>
-                <th>Efternavn</th>
-                <th>Addresse</th>
-                <th>Telefonnummer</th>
-                <th>Fødselsdato</th>
-                <th>Betalingsdetaljer</th>
-                <th>Kørekortnummer</th>
+        <table id="customerTable" class="w3-table w3-striped w3-bordered w3-centered">
+
+            <tr class="w3-blue">
+                <th class="w3-border-right">ID</th>
+                <th class="w3-border-right">Fornavn</th>
+                <th class="w3-border-right">Efternavn</th>
+                <th class="w3-border-right">Addresse</th>
+                <th class="w3-border-right">Telefonnummer</th>
+                <th class="w3-border-right">Fødselsdato</th>
+                <th class="w3-border-right">Kørekortnummer</th>
                 <th></th>
                 <th></th>
                 <th></th>
             </tr>
-            </thead>
+
             <tbody>
             <tr th:each = "customer: ${customers}">
                 <td th:text = "${customer.id}" />
@@ -31,21 +30,20 @@
                 <td th:text = "${customer.address_id}" />
                 <td th:text = "${customer.phone_number}" />
                 <td th:text = "${customer.birth_date}" />
-                <td th:text = "${customer.payment_details}" />
                 <td th:text = "${customer.drivers_license}" />
                 <td>
                     <a th:href="@{'/customers/view-one/'+${customer.id}}">
-                        <button>Se kunde</button>
+                        <button class="w3-btn green-button">Se kunde</button>
                     </a>
                 </td>
                 <td>
                     <a th:href="@{'/customers/edit/'+${customer.id}}">
-                        <button>Redigér kunde</button>
+                        <button class="w3-btn blue-button">Redigér kunde</button>
                     </a>
                 </td>
                 <td>
                     <a th:href="@{'/customers/delete/'+${customer.id}}">
-                        <button>Slet kunde</button>
+                        <button class="w3-btn red-button">Slet kunde</button>
                     </a>
                 </td>
             </tr>

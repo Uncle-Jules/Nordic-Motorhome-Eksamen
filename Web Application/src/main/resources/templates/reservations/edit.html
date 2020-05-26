@@ -35,22 +35,27 @@
     </table>
     <input type="submit" value="Gem ændringer">
 </form>
-<table>
-    <tr>
-        <form action="/reservations/add-accessory" method="post">
+<form th:action="@{/reservations/add-accessory}" method="post">
+    <table>
+        <tr>
             <td>
                 <label>Tilbehør</label></td>
             <td>
-                <select name="id">
-                    <option th:each = "accessory: ${accessories}" th:text="${accessory.accessory}" th:value="${accessory.id}"></option>
+                <select name="stock">
+                    <option th:each = "accessory: ${accessories}"
+                            th:text="${accessory.accessory} + ' ' + ${accessory.id}"
+                            th:value="${accessory.id}">
+                    </option>
                 </select>
+            </td>
+            <td>
+                <input type="hidden" name="reservation" th:field="*{reservation.id}" th:value="${reservation.id}"/>
             </td>
             <td>
                 <input type="submit" value="Tilføj tilbehør">
             </td>
-            <input name="id" th:value="${reservation.id}" type="hidden"/>
-        </form>
-    </tr>
-</table>
+        </tr>
+    </table>
+</form>
 </body>
 </html>

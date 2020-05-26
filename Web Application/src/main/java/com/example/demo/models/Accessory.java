@@ -5,7 +5,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Accessory {
-   @Id
+    @Id
     private int id;
     private String accessory;
     private int stock;

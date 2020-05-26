@@ -7,6 +7,7 @@ import com.example.demo.services.MotorhomeService;
 import com.example.demo.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -88,7 +89,8 @@ public class ReservationController {
     }
     @PostMapping("/add-accessory")
     public String addAccessory(@ModelAttribute Reservation reservation, @ModelAttribute Accessory accessory){
-        reservationService.addAccessory(reservation.getId(), accessory.getId());
+        // Binding accessory ID to it's stock field as reservations ID would otherwise bind to it
+        reservationService.addAccessory(reservation.getId(), accessory.getStock());
         return "redirect:/reservations/edit/" + reservation.getId();
     }
 

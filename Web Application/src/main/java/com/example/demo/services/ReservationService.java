@@ -27,5 +27,8 @@ public class ReservationService {
     public void delete(int id){
         reservationRepo.delete(id);
     }
+    public void addAccessory(int reservationId, int accessoryId){
+        reservationRepo.addAccessory(reservationId, accessoryId);
+    }
 }
 

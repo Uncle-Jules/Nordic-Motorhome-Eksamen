@@ -38,8 +38,8 @@ public class ReservationRepo {
 
     public void add(Reservation reservation) {
         String sql = "INSERT INTO reservations VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?)";
-        String start_date = reservation.getStart_date();
-        String end_date = reservation.getEnd_date();
+        String start_date = Reservation.fixDateFormatting(reservation.getStart_date());
+        String end_date = Reservation.fixDateFormatting(reservation.getEnd_date());
         String season = calculateSeason(reservation.getStart_date());
         int distance_to_pickup = reservation.getDistance_to_pickup();
         double price_per_day = motorhomeService.findById(reservation.getMotorhome_id()).getPrice_per_day();
@@ -51,7 +51,18 @@ public class ReservationRepo {
 
     public void update(int id, Reservation reservation) {
         String sql = "UPDATE reservations SET start_date = ?, end_date = ?, distance_to_pickup = ? WHERE id = ?";
-        template.update(sql, reservation.getStart_date(), reservation.getEnd_date(), reservation.getDistance_to_pickup(), id);
+        String start_date = Reservation.fixDateFormatting(reservation.getStart_date());
+        String end_date = Reservation.fixDateFormatting(reservation.getEnd_date());
+        template.update(sql, start_date, end_date, reservation.getDistance_to_pickup(), id);
+    }
+
+    public void addAccessory(int reservationId, int accessoryId){
+        String updateAccessoryStockSql = "UPDATE accessories SET stock = stock-1 WHERE id = ?";
+        System.out.println("Accessory ID: " + accessoryId);
+        template.update(updateAccessoryStockSql, accessoryId);
+        String addAccessoryIDSql = "INSERT INTO reserved_accessories VALUES (?, ?)";
+        System.out.println("Reservation ID: " + reservationId);
+        template.update(addAccessoryIDSql, reservationId, accessoryId);
     }
 
     public boolean delete(int id) {

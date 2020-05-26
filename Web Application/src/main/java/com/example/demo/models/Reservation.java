@@ -113,22 +113,22 @@ public class Reservation {
     }
 
     public String getStart_date() {
-        //return start_date.replace(" ", " ").substring(0, start_date.length() - 3);
-        return start_date;
+        return start_date.replace(" ", " ");
+        //return start_date;
     }
 
     public void setStart_date(String start_date) {
-        start_date = start_date.replace("T", " ") + ":00";
+        //start_date = start_date.replace("T", " ") + ":00";
         this.start_date = start_date;
     }
 
     public String getEnd_date() {
-        //return end_date = end_date.replace(" ", " ").substring(0, end_date.length() - 3);
-        return end_date;
+        return end_date = end_date.replace(" ", " ");
+        //return end_date;
     }
 
     public void setEnd_date(String end_date) {
-        end_date = end_date.replace("T", " ") + ":00";
+        //end_date = end_date.replace("T", " ") + ":00";
         this.end_date = end_date;
     }
 
@@ -162,5 +162,9 @@ public class Reservation {
 
     public void setPayment_details(String payment_details) {
         this.payment_details = payment_details;
+    }
+
+    public static String fixDateFormatting(String date){
+        return date = date.replace("T", " ");
     }
 }

@@ -12,13 +12,13 @@
         <tr>
             <td>Startdato</td>
             <td>
-                <input type="datetime-local" name="start_date" th:value="${reservation.start_date}">
+                <input type="datetime-local" step="1" name="start_date" th:value="${reservation.start_date}">
             </td>
         </tr>
         <tr>
             <td>Slutdato</td>
             <td>
-                <input type="datetime-local" name="end_date" th:value="${reservation.end_date}">
+                <input type="datetime-local" step="1" name="end_date" th:value="${reservation.end_date}">
             </td>
         </tr>
         <tr>
@@ -35,5 +35,22 @@
     </table>
     <input type="submit" value="Gem ændringer">
 </form>
+<table>
+    <tr>
+        <form action="/reservations/add-accessory" method="post">
+            <td>
+                <label>Tilbehør</label></td>
+            <td>
+                <select name="id">
+                    <option th:each = "accessory: ${accessories}" th:text="${accessory.accessory}" th:value="${accessory.id}"></option>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Tilføj tilbehør">
+            </td>
+            <input name="id" th:value="${reservation.id}" type="hidden"/>
+        </form>
+    </tr>
+</table>
 </body>
 </html>

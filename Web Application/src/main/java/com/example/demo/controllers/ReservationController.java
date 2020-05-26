@@ -69,16 +69,27 @@ public class ReservationController {
         return "redirect:/reservations/list";
     }
 
-
     @GetMapping("/edit/{id}")
     public String editReservation(@PathVariable("id") int id, Model model) {
-        model.addAttribute("reservation", reservationService.findById(id));
+        Reservation reservation = reservationService.findById(id);
+        List<Accessory> accessories = accessoryService.fetchAll();
+
+        reservation.setStart_date(reservation.getStart_date().replace(" ", "T"));
+        reservation.setEnd_date(reservation.getEnd_date().replace(" ", "T"));
+
+        model.addAttribute("reservation", reservation);
+        model.addAttribute("accessories", accessories);
         return "/reservations/edit";
     }
     @PostMapping("/update")
     public String updateReservation(@ModelAttribute Reservation reservation) {
         reservationService.update(reservation.getId(), reservation);
         return "redirect:/reservations/list";
+    }
+    @PostMapping("/add-accessory")
+    public String addAccessory(@ModelAttribute Reservation reservation, @ModelAttribute Accessory accessory){
+        reservationService.addAccessory(reservation.getId(), accessory.getId());
+        return "redirect:/reservations/edit/" + reservation.getId();
     }
 
     @GetMapping("/delete/{id}")

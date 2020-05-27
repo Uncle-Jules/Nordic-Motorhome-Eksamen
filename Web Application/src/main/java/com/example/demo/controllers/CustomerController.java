@@ -43,6 +43,7 @@ public class CustomerController {
             System.out.println("Customer error: " + errors1.hasErrors());
             System.out.println("Address error: " + errors2.hasErrors());
             System.out.println("Zipcode error: " + errors3.hasErrors());
+            System.out.println(address.getStreet_name() + address.getStreet_number() + address.getApartment_number() + address.getZip_code() + address.getId());
             return "/customers/create";
         }
         customerService.add(customer, address, zipCode);

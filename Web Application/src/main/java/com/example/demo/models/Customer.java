@@ -1,9 +1,12 @@
 package com.example.demo.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -11,22 +14,28 @@ public class Customer {
     @Id
     private int id;
     @NotNull
-    @Size(min=3, max=45, message = "Navnet skal være mellem 3 og 45 bogstaver")
+    @Size(min=2, max=45, message = "Navnet skal være mellem 2 og 45 bogstaver")
+    @Pattern(regexp = "[a-zA-Z]*", message = "Må kun indeholde bogstaver")
     private String first_name;
     @NotNull
+    @Size(min=2, max=45, message = "Navnet skal være mellem 2 og 45 bogstaver")
+    @Pattern(regexp = "[a-zA-Z]*", message = "Må kun indeholde bogstaver")
     private String last_name;
-    @NotNull()
+    @NotNull
     @Size(min=1, max=15, message = "Indtast venligst et gyldigt telefonnummer")
+    @Pattern(regexp = "[0-9]*", message = "Må kun indeholde bogstaver")
     private String phone_number;
     @NotNull
     private String birth_date;
     @NotNull
+    @Size(min=1, max=15, message = "Indtast venligst et gyldigt kørekortnummer")
     private String drivers_license;
 
     //Joins the addresses and customer tables
     private int address_id;
     @NotNull
     @Size(min=1, max=10, message="Indtast venligst et gyldigt postnummer")
+    @Pattern(regexp = "^[0-9a-zA-Z]*", message = "Indtast venligst et gyldigt postnummer")
     private String zip_code_id;
 
 

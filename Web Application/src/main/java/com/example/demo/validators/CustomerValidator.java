@@ -15,7 +15,7 @@ public class CustomerValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-       // ValidationUtils.rejectIfEmptyOrWhitespace(errors, "first_name", "field.required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "first_name", "Må ikke være Tom (det kan han ikke lide)");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "last_name", "field.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone_number", "field.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "birth_date", "field.required");

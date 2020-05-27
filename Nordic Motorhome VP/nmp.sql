@@ -59,7 +59,7 @@ CREATE TABLE customers
 	id					INT				NOT NULL		PRIMARY KEY		AUTO_INCREMENT,
     first_name			VARCHAR(45)		NOT NULL,
     last_name			VARCHAR(45)		NOT NULL,
-    phone_number		VARCHAR(45)		NOT NULL,
+    phone_number		VARCHAR(15)		NOT NULL,
     address_id			INT				NOT NULL,
 	birth_date			DATE			NOT NULL,
     drivers_license		VARCHAR(20)		NOT NULL,

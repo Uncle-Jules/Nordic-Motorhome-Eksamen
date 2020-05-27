@@ -2,12 +2,16 @@ package com.example.demo.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class ZipCode {
     @Id
     private String zip;
+    @NotNull
     private String city;
+    @NotNull
     private String country;
 
     public ZipCode() {

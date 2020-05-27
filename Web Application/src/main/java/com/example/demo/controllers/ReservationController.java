@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -92,10 +93,6 @@ public class ReservationController {
     public String addAccessory(@ModelAttribute Reservation reservation, @ModelAttribute Accessory accessory,
                                RedirectAttributes redirectAttributes){
         // Binding reservation ID to it's customer ID as accessory ID would otherwise bind to it
-
-        System.out.println("Reservation ID: " + reservation.getCustomer_id());
-        System.out.println("Accessory ID: " + accessory.getId());
-
         reservationService.addAccessory(reservation.getCustomer_id(), accessory.getId());
 
         String accessoryName = accessoryService.findById(accessory.getId()).getAccessory();

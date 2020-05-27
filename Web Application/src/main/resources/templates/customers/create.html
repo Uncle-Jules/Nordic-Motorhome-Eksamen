@@ -11,47 +11,58 @@
             <table>
                 <tr>
                     <td><label>Fornavn:</label></td>
-                    <td><input type="text" name="first_name"></td>
+                    <td><input type="text" th:field="*{customer.first_name}"></td>
+                    <td th:errors="*{customer.first_name}" class="error"></td>
                 </tr>
                 <tr>
                     <td><label>Efternavn:</label></td>
-                    <td><input type="text" name="last_name"></td>
+                    <td><input type="text" th:field="*{customer.last_name}"></td>
+                    <td th:errors="*{customer.last_name}" class="error"></td>
                 </tr>
                 <tr>
                     <td><label>Telefonnummer</label></td>
-                    <td><input type="text" name="phone_number"></td>
+                    <td><input type="text" th:field="*{customer.phone_number}"></td>
+                    <td th:errors="*{customer.phone_number}" class="error"></td>
                 </tr>
                 <tr>
                     <td><label>Gadenavn</label></td>
-                    <td><input type="text" name="street_name"></td>
+                    <td><input type="text" th:field="*{address.street_name}"></td>
+                    <td th:errors="*{address.street_name}" class="error"></td>
                 </tr>
                 <tr>
                     <td><label>Gadenummer</label></td>
-                    <td><input type="text" name="street_number"></td>
+                    <td><input type="text" th:field="*{address.street_number}"></td>
+                    <td th:errors="*{address.street_number}" class="error"></td>
                 </tr>
                 <tr>
                     <td><label>Lejlighedsnummer</label></td>
-                    <td><input type="text" name="apartment_number"></td>
+                    <td><input type="text" th:field="*{address.apartment_number}"></td>
+                    <td th:errors="*{address.apartment_number}" class="error"></td>
                 </tr>
                 <tr>
                     <td><label>Postnummer</label></td>
-                    <td><input type="text" name="zip_code_id"></td>
+                    <td><input type="text" th:field="*{customer.zip_code_id}"></td>
+                    <td th:errors="*{customer.zip_code_id}" class="error"></td>
                 </tr>
                 <tr>
                     <td><label>By</label></td>
-                    <td><input type="text" name="city"></td>
+                    <td><input type="text" th:field="*{zipCode.city}"></td>
+                    <td th:errors="*{zipCode.city}" class="error"></td>
                 </tr>
                 <tr>
                     <td><label>Land</label></td>
-                    <td><input type="text" name="country"></td>
+                    <td><input type="text" th:field="*{zipCode.country}"></td>
+                    <td th:errors="*{zipCode.country}" class="error"></td>
                 </tr>
                 <tr>
                     <td><label>Fødselsdato</label></td>
-                    <td><input type="date" name="birth_date"></td>
+                    <td><input type="date" th:field="*{customer.birth_date}"></td>
+                    <td th:errors="*{customer.birth_date}" class="error"></td>
                 </tr>
                 <tr>
                     <td><label>Kørekortnummer</label></td>
-                    <td><input type="text" name="drivers_license"></td>
+                    <td><input type="text" th:field="*{customer.drivers_license}"></td>
+                    <td th:errors="*{customer.drivers_license}" class="error"></td>
                 </tr>
             </table>
             <input type="submit" button style="padding: 10px" value="Tilføj kunde">

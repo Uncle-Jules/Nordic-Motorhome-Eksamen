@@ -2,14 +2,21 @@ package com.example.demo.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Address {
     @Id
     private int id;
+    @NotNull
+    @Size(min=1, max=5, message = "Gadenummer skal være mellem 1 og 5 karaktere lang")
     private String street_number;
+    @NotNull
     private String street_name;
     private String apartment_number;
+    @NotNull
+    @Size(min=3, max=10, message="Postnummer skal være mellem 3 og 10 lang")
     private String zip_code;
 
     public Address() {
@@ -48,7 +55,7 @@ public class Address {
     }
 
     public String getApartment_number() {
-        return apartment_number == null || apartment_number.equals("") ? "" : ", " + apartment_number;
+        return apartment_number;
     }
 
     public void setApartment_number(String apartment_number) {

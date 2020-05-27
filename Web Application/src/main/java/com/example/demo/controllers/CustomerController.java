@@ -4,11 +4,15 @@ import com.example.demo.models.Address;
 import com.example.demo.models.Customer;
 import com.example.demo.models.ZipCode;
 import com.example.demo.services.CustomerService;
+import com.example.demo.validators.CustomerValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -25,13 +29,22 @@ public class CustomerController {
     }
 
     @GetMapping("/create")
-    public String createCustomer() {
+    public String createCustomer(Model model) {
+        model.addAttribute("customer", new Customer());
+        model.addAttribute("address", new Address());
+        model.addAttribute("zipCode", new ZipCode());
         return "/customers/create";
     }
 
     @PostMapping("/create")
-    public String addCustomer(@ModelAttribute Customer customer, @ModelAttribute Address address, @ModelAttribute ZipCode zipCode) {
-
+    public String addCustomer(@ModelAttribute @Valid Customer customer, Errors errors1, @ModelAttribute @Valid Address address,
+                              Errors errors2, @ModelAttribute @Valid ZipCode zipCode, Errors errors3) {
+        if(errors1.hasErrors() || errors2.hasErrors() || errors3.hasErrors()){
+            System.out.println("Customer error: " + errors1.hasErrors());
+            System.out.println("Address error: " + errors2.hasErrors());
+            System.out.println("Zipcode error: " + errors3.hasErrors());
+            return "/customers/create";
+        }
         customerService.add(customer, address, zipCode);
         return "redirect:/customers/list";
     }

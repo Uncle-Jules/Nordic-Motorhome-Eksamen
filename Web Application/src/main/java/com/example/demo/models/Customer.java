@@ -2,19 +2,31 @@ package com.example.demo.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Customer {
-   @Id
+    @Id
     private int id;
+    @NotNull
+    @Size(min=3, max=45, message = "Navnet skal være mellem 3 og 45 bogstaver")
     private String first_name;
+    @NotNull
     private String last_name;
+    @NotNull()
+    @Size(min=1, max=15, message = "Indtast venligst et gyldigt telefonnummer")
     private String phone_number;
+    @NotNull
     private String birth_date;
+    @NotNull
     private String drivers_license;
 
     //Joins the addresses and customer tables
     private int address_id;
+    @NotNull
+    @Size(min=1, max=10, message="Indtast venligst et gyldigt postnummer")
     private String zip_code_id;
 
 

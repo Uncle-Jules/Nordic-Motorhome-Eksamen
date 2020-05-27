@@ -10,8 +10,10 @@ public class ZipCode {
     @Id
     private String zip;
     @NotNull
+    @Size(min=1, max=45, message = "Indtast venligst en gyldig by")
     private String city;
     @NotNull
+    @Size(min=1, max=45, message = "Indtast venligst et gyldigt land")
     private String country;
 
     public ZipCode() {

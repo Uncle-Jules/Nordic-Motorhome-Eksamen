@@ -2,7 +2,9 @@ package com.example.demo.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -13,10 +15,10 @@ public class Address {
     @Size(min=1, max=5, message = "Gadenummer skal være mellem 1 og 5 karaktere lang")
     private String street_number;
     @NotNull
+    @Size(min=1, max=45, message = "Indtast venligst et gyldigt gadenavn")
+    @Pattern(regexp = "[a-zA-Z]*", message = "Må kun indholde bogstaver")
     private String street_name;
     private String apartment_number;
-    @NotNull
-    @Size(min=3, max=10, message="Postnummer skal være mellem 3 og 10 lang")
     private String zip_code;
 
     public Address() {

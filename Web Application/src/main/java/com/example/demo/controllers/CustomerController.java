@@ -31,6 +31,7 @@ public class CustomerController {
 
     @PostMapping("/create")
     public String addCustomer(@ModelAttribute Customer customer, @ModelAttribute Address address, @ModelAttribute ZipCode zipCode) {
+
         customerService.add(customer, address, zipCode);
         return "redirect:/customers/list";
     }

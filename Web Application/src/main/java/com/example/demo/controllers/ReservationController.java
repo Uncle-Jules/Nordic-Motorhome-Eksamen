@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.SQLOutput;
 import java.util.List;
@@ -88,10 +89,21 @@ public class ReservationController {
         return "redirect:/reservations/list";
     }
     @PostMapping("/add-accessory")
-    public String addAccessory(@ModelAttribute Reservation reservation, @ModelAttribute Accessory accessory){
-        // Binding accessory ID to it's stock field as reservations ID would otherwise bind to it
-        reservationService.addAccessory(reservation.getId(), accessory.getStock());
-        return "redirect:/reservations/edit/" + reservation.getId();
+    public String addAccessory(@ModelAttribute Reservation reservation, @ModelAttribute Accessory accessory,
+                               RedirectAttributes redirectAttributes){
+        // Binding reservation ID to it's customer ID as accessory ID would otherwise bind to it
+
+        System.out.println("Reservation ID: " + reservation.getCustomer_id());
+        System.out.println("Accessory ID: " + accessory.getId());
+
+        reservationService.addAccessory(reservation.getCustomer_id(), accessory.getId());
+
+        String accessoryName = accessoryService.findById(accessory.getId()).getAccessory();
+        String successMessage = String.format("Tilbehør '%s' er blevet tilføjet til reservationen", accessoryName);
+        redirectAttributes.addFlashAttribute("message", successMessage);
+        redirectAttributes.addFlashAttribute("alertClass", "alert-success");
+
+        return "redirect:/reservations/edit/" + reservation.getCustomer_id();
     }
 
     @GetMapping("/delete/{id}")

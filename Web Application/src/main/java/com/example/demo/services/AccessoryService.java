@@ -25,9 +25,6 @@ public class AccessoryService {
     public Accessory findById(int id){
         return accessoryRepo.findById(id);
     }
-    public void update(int id, Accessory accessory){
-        accessoryRepo.update(id, accessory);
-    }
     public void delete(int id){
         accessoryRepo.delete(id);
     }

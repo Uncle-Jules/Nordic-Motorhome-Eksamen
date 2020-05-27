@@ -41,15 +41,15 @@
             <td>
                 <label>Tilbehør</label></td>
             <td>
-                <select name="stock">
+                <select name="id">
                     <option th:each = "accessory: ${accessories}"
-                            th:text="${accessory.accessory} + ' ' + ${accessory.id}"
-                            th:value="${accessory.id}">
+                            th:text = "${accessory.accessory}"
+                            th:value = "${accessory.id}">
                     </option>
                 </select>
             </td>
             <td>
-                <input type="hidden" name="reservation" th:field="*{reservation.id}" th:value="${reservation.id}"/>
+                <input type="hidden" name="customer_id" th:value="${reservation.id}"/>
             </td>
             <td>
                 <input type="submit" value="Tilføj tilbehør">
@@ -57,5 +57,6 @@
         </tr>
     </table>
 </form>
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
 </body>
 </html>

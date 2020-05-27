@@ -23,8 +23,8 @@ public class AccessoryRepo {
 
     public void add(Accessory accessory){
         RowMapper<Accessory> rowMapper = new BeanPropertyRowMapper(Accessory.class);
-        String sql = "INSERT INTO accessories VALUES (0, ?, ?)";
-        template.update(sql, accessory.getAccessory(), accessory.getStock());
+        String sql = "INSERT INTO accessories VALUES (0, ?)";
+        template.update(sql, accessory.getAccessory());
     }
 
     public Accessory findById(int id){
@@ -33,10 +33,6 @@ public class AccessoryRepo {
         return template.queryForObject(sql, rowMapper, id);
     }
 
-    public void update(int id, Accessory accessory){
-        String sql = "UPDATE accessories SET stock = ? WHERE id = ?";
-        template.update(sql, accessory.getStock(), id);
-    }
     public boolean delete(int id){
         String sql = "DELETE FROM accessories WHERE id = ?";
         template.update(sql, id);

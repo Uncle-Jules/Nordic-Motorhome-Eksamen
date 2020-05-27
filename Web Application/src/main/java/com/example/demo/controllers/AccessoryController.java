@@ -40,16 +40,6 @@ public class AccessoryController {
         return "/accessories/view-one";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editAccessory(@PathVariable("id") int id, Model model) {
-        model.addAttribute("accessory", accessoryService.findById(id));
-        return "/accessories/edit";
-    }
-    @PostMapping("/update")
-    public String updateAccessory(@ModelAttribute Accessory accessory) {
-        accessoryService.update(accessory.getId(), accessory);
-        return "redirect:/accessories/list";
-    }
     @GetMapping("/delete/{id}")
     public String deleteAccessory(@PathVariable("id") int id) {
         accessoryService.delete(id);

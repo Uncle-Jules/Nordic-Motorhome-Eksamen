@@ -57,8 +57,8 @@ public class ReservationRepo {
     }
 
     public void addAccessory(int reservationId, int accessoryId){
-        String updateAccessoryStockSql = "UPDATE accessories SET stock = stock-1 WHERE id = ?";
-        template.update(updateAccessoryStockSql, accessoryId);
+        System.out.println("Repo reservation ID: " + reservationId);
+        System.out.println("Repo accessory ID: " + accessoryId);
         String addAccessoryIDSql = "INSERT INTO reserved_accessories VALUES (?, ?)";
         template.update(addAccessoryIDSql, reservationId, accessoryId);
     }

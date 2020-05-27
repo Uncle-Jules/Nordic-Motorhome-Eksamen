@@ -1,5 +1,9 @@
-.alert{
+.alert-danger{
     color: red;
+}
+
+.alert-success{
+    color: green;
 }
 
 /* Navbar container */

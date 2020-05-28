@@ -39,9 +39,6 @@ public class TypeController {
             typeService.add(type);
             return "redirect:/types/list";
         }
-        if(errors.hasErrors()){
-            return "types/create";
-        }
         // If type already exists user is notified and remains on the page
         String failedMessage = String.format("Type kan ikke tilføjes - type med navnet '%s' eksisterer allerede", type.getType());
         redirectAttributes.addFlashAttribute("message", failedMessage);

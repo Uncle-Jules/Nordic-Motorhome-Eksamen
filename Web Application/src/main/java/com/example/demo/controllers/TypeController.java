@@ -33,7 +33,12 @@ public class TypeController {
         return "/types/create";
     }
     @PostMapping("/create")
-    public String addType(@ModelAttribute @Valid Type type, Errors errors, RedirectAttributes redirectAttributes){
+    public String addType(@ModelAttribute @Valid Type type, Errors errors, RedirectAttributes redirectAttributes, Model model){
+        if(errors.hasErrors()){
+            System.out.println("Error caught: " + errors);
+            model.addAttribute("type", type);
+            return "/types/create";
+        }
         // If type does not already exists it is created and user is returned to list of types
         if(typeService.findById(type.getType()) == null){
             typeService.add(type);
@@ -59,7 +64,13 @@ public class TypeController {
         return "/types/edit";
     }
     @PostMapping("/update")
-    public String updateType(@ModelAttribute Type type) {
+    public String updateType(@ModelAttribute Type type, RedirectAttributes redirectAttributes) {
+        if(type.getBeds() > 10){
+            String failedMessage = "Der kan ikke være mere end 10 senge i en autocamper";
+            redirectAttributes.addFlashAttribute("message", failedMessage);
+            redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
+            return "redirect:/types/edit/" + type.getType();
+        }
         typeService.update(type.getType(), type);
         return "redirect:/types/list";
     }

@@ -11,10 +11,12 @@
     <table>
         <tr>
             <td><label>Type</label></td>
-            <td><input type="text" name="type"></td>
+            <td><input type="text" th:field="*{type.type}"></td>
+            <td th:errors="*{type.type}" class="error"></td>
         </tr>
             <td><label>Sovepladser</label></td>
-            <td><input type="number" name="beds"></td>
+            <td><input type="number" th:field="*{type.beds}"></td>
+            <td th:errors="*{type.type}" class="error"></td>
         </tr>
     </table>
     <input type="submit" style="padding: 10px" value="Tilføj type">

@@ -17,23 +17,29 @@
         </tr>
         <tr>
             <td><label>Mærke</label></td>
-            <td><input type="text" name="brand_name"></td>
+            <td><input type="text" th:field="*{motorhome.brand_name}"></td>
+            <td th:errors="*{motorhome.brand_name}" class="error"></td>
+
         </tr>
         <tr>
             <td><label>Model</label></td>
-            <td><input type="text" name="model"></td>
+            <td><input type="text" th:field="*{motorhome.model}"></td>
+            <td th:errors="*{motorhome.model}" class="error"></td>
         </tr>
         <tr>
             <td><label>Kilometertal</label></td>
-            <td><input type="number" name="mileage"></td>
+            <td><input type="number" th:field="*{motorhome.mileage}"></td>
+            <td th:errors="*{motorhome.mileage}" class="error"></td>
         </tr>
         <tr>
             <td><label>Pris per dag</label></td>
-            <td><input type="number" name="price_per_day"></td>
+            <td><input type="number" step=".01" th:field="*{motorhome.price_per_day}"></td>
+            <td th:errors="*{motorhome.price_per_day}" class="error"></td>
         </tr>
         <tr>
             <td><label>Registreringsnummer</label></td>
-            <td><input type="text" name="registration_number"></td>
+            <td><input type="text" th:field="*{motorhome.registration_number}"></td>
+            <td th:errors="*{motorhome.registration_number}" class="error"></td>
         </tr>
     </table>
     <input type="submit" style="padding: 10px" value="Tilføj autocamper">

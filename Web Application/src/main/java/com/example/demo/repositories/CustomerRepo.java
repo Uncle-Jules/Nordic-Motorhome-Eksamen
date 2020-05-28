@@ -3,13 +3,11 @@ package com.example.demo.repositories;
 import com.example.demo.models.Address;
 import com.example.demo.models.Customer;
 import com.example.demo.models.ZipCode;
-import com.example.demo.validators.CustomerValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.validation.Errors;
 
 import java.util.List;
 
@@ -27,11 +25,11 @@ public class CustomerRepo {
         // Checking if the zip code already exists in database
         String checkZipSql = "SELECT * FROM zip_codes WHERE zip = ?";
         RowMapper<ZipCode> rowMapper = new BeanPropertyRowMapper<>(ZipCode.class);
-        List<ZipCode> listZip = template.query(checkZipSql, rowMapper, customer.getZip_code_id());
+        List<ZipCode> listZip = template.query(checkZipSql, rowMapper, zipCode.getZip());
         // If zip code doesn't exist the zip is added
         if(listZip.size() == 0) {
             String insertZip = "INSERT INTO zip_codes VALUES (?, ?, ?)";
-            template.update(insertZip, customer.getZip_code_id(), zipCode.getCity(), zipCode.getCountry());
+            template.update(insertZip, zipCode.getZip(), zipCode.getCity(), zipCode.getCountry());
         }
 
         // Checking if exact address already exists in database
@@ -41,7 +39,7 @@ public class CustomerRepo {
         // If address does not exist in database it is added
         if(listAddress.size() == 0) {
             String insertAddress = "INSERT INTO addresses VALUES (0, ?, ?, ?, ?)";
-            template.update(insertAddress, address.getStreet_name(), address.getStreet_number(), address.getApartment_number(), customer.getZip_code_id());
+            template.update(insertAddress, address.getStreet_name(), address.getStreet_number(), address.getApartment_number(), zipCode.getZip());
         }
         // Getting ID of address (whether it already existed or not)
         int id = template.query(checkAddressSql, addressRowMapper, address.getStreet_name(), address.getStreet_number(), address.getApartment_number()).get(0).getId();

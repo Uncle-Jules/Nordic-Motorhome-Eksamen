@@ -3,17 +3,21 @@ package com.example.demo.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
 public class ZipCode {
     @Id
+    @NotNull
+    @Size(min=2, max =10, message = "Indtast venligst et gyldigt postnummer.")
+    @Pattern( regexp = "[a-zA-Z0-9-]*")
     private String zip;
     @NotNull
-    @Size(min=1, max=45, message = "Indtast venligst en gyldig by")
+    @Size(min=1, max=45, message = "By skal indeholde mellem 1-45 karakterer.")
     private String city;
     @NotNull
-    @Size(min=1, max=45, message = "Indtast venligst et gyldigt land")
+    @Size(min=1, max=45, message = "Land skal indeholde mellem 1-45 karakterer.")
     private String country;
 
     public ZipCode() {

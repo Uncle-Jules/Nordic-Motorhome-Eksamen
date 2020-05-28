@@ -40,10 +40,6 @@ public class CustomerController {
     public String addCustomer(@ModelAttribute @Valid Customer customer, Errors errors1, @ModelAttribute @Valid Address address,
                               Errors errors2, @ModelAttribute @Valid ZipCode zipCode, Errors errors3) {
         if(errors1.hasErrors() || errors2.hasErrors() || errors3.hasErrors()){
-            System.out.println("Customer error: " + errors1.hasErrors());
-            System.out.println("Address error: " + errors2.hasErrors());
-            System.out.println("Zipcode error: " + errors3.hasErrors());
-            System.out.println(address.getStreet_name() + address.getStreet_number() + address.getApartment_number() + address.getZip_code() + address.getId());
             return "/customers/create";
         }
         customerService.add(customer, address, zipCode);
@@ -56,7 +52,7 @@ public class CustomerController {
         Address address = customerService.getAddress(customer);
         model.addAttribute("customer", customer);
         model.addAttribute("address", address);
-        model.addAttribute("zip_code", customerService.getZipCode(address));
+        model.addAttribute("zipCode", customerService.getZipCode(address));
         return "/customers/view-one";
     }
 

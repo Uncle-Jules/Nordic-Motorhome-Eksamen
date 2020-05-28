@@ -2,10 +2,15 @@ package com.example.demo.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public class    Type {
     @Id
+    @Size(min=1, max=45, message="Indtast venligst en type på mellem 1 og 45 karakterer.")
+    @Pattern(regexp = "[a-zA-ZæøåÆØÅ0-9:,.'\\s-]*", message="Type må kun indeholde tegnene (a-Å 0-9 : , . ' -).")
     private String type;
     private int beds;
 

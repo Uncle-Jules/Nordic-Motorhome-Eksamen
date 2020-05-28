@@ -8,8 +8,10 @@ import com.example.demo.services.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -30,11 +32,17 @@ public class MotorhomeController {
     public String createMotorhome(Model model){
         List<Type> types = typeService.fetchAll();
         model.addAttribute("types", types);
+        model.addAttribute("motorhome", new Motorhome());
         return "/motorhomes/create";
     }
 
     @PostMapping("/create")
-    public String addMotorhome(@ModelAttribute Motorhome motorhome){
+    public String addMotorhome(@ModelAttribute @Valid Motorhome motorhome, Errors errors, Model model){
+        if(errors.hasErrors()) {
+            List<Type> types = typeService.fetchAll();
+            model.addAttribute("types", types);
+            return "/motorhomes/create";
+        }
         motorhomeService.add(motorhome);
         return "redirect:/motorhomes/list";
     }

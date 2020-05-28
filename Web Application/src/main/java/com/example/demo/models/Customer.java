@@ -1,48 +1,35 @@
 package com.example.demo.models;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 public class Customer {
     @Id
     private int id;
-    @NotNull
-    @Size(min=2, max=45, message = "Navnet skal være mellem 2 og 45 bogstaver")
-    @Pattern(regexp = "[a-zA-Z]*", message = "Må kun indeholde bogstaver")
+    @Size(min=2, max=45, message = "Navnet skal være mellem 2 og 45 bogstaver.")
+    @Pattern(regexp = "[a-zA-ZæøåÆØÅ,.'-]*", message = "Fornavn må kun indeholde tegnene (a-Å 0-9 , . ' -).")
     private String first_name;
-    @NotNull
-    @Size(min=2, max=45, message = "Navnet skal være mellem 2 og 45 bogstaver")
-    @Pattern(regexp = "[a-zA-Z]*", message = "Må kun indeholde bogstaver")
+    @Size(min=2, max=45, message = "Navnet skal være mellem 2 og 45 bogstaver.")
+    @Pattern(regexp = "[a-zA-ZæøåÆØÅ,.'-]*", message = "Efternavn må kun indeholde bogstaver.")
     private String last_name;
-    @NotNull
-    @Size(min=1, max=15, message = "Indtast venligst et gyldigt telefonnummer")
-    @Pattern(regexp = "[0-9]*", message = "Må kun indeholde bogstaver")
+    @Size(min=1, max=15, message = "Indtast venligst et gyldigt telefonnummer.")
+    @Pattern(regexp = "[0-9+-]*", message = "Telefonnummer må kun indeholde bogstaver.")
     private String phone_number;
-    @NotNull
+    @NotEmpty(message="Indtast venligst en fødselsdato.")
     private String birth_date;
-    @NotNull
-    @Size(min=1, max=15, message = "Indtast venligst et gyldigt kørekortnummer")
+    @Size(min=1, max=15, message = "Indtast venligst et gyldigt kørekortnummer.")
     private String drivers_license;
 
     //Joins the addresses and customer tables
     private int address_id;
-    @NotNull
-    @Size(min=1, max=10, message="Indtast venligst et gyldigt postnummer")
-    @Pattern(regexp = "^[0-9a-zA-Z]*", message = "Indtast venligst et gyldigt postnummer")
-    private String zip_code_id;
 
 
     public Customer() {
     }
 
-    public Customer(int id, String first_name, String last_name, String phone_number, String birth_date, String drivers_license, int address_id, String zip_code_id) {
+    public Customer(int id, String first_name, String last_name, String phone_number, String birth_date, String drivers_license, int address_id) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -50,7 +37,6 @@ public class Customer {
         this.birth_date = birth_date;
         this.drivers_license = drivers_license;
         this.address_id = address_id;
-        this.zip_code_id = zip_code_id;
     }
 
     public int getId() {
@@ -109,11 +95,4 @@ public class Customer {
         this.address_id = address_id;
     }
 
-    public String getZip_code_id() {
-        return zip_code_id;
-    }
-
-    public void setZip_code_id(String zip_code) {
-        this.zip_code_id = zip_code;
-    }
 }

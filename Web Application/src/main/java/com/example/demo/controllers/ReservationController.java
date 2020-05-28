@@ -97,9 +97,10 @@ public class ReservationController {
         Reservation reservation = reservationService.findById(id);
         List<Accessory> accessories = accessoryService.fetchAll();
 
+
+        // Formatting date strings so they are parsed correctly by the browser
         reservation.setStart_date(reservation.getStart_date().replace(" ", "T"));
         reservation.setEnd_date(reservation.getEnd_date().replace(" ", "T"));
-
         model.addAttribute("reservation", reservation);
         model.addAttribute("accessories", accessories);
         return "/reservations/edit";

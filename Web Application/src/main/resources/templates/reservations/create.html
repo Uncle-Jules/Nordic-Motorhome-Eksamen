@@ -22,19 +22,25 @@
         </tr>
         <tr>
             <td><label>Betalingsform</label></td>
-            <td><input type="text" name="payment_details"></td>
+            <td><input type="text" th:field="*{reservation.payment_details}"></td>
+            <td th:errors="*{reservation.payment_details}"></td>
         </tr>
         <tr>
             <td><label>Startdato</label></td>
-            <td><input type="datetime-local" step="1" name="start_date"></td>
+            <td><input type="datetime-local" step="1" th:field="*{reservation.start_date}"></td>
+            <td th:errors="*{reservation.start_date}"></td>
+            <td><div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/></td>
         </tr>
         <tr>
             <td><label>Slutdato</label></td>
-            <td><input type="datetime-local" step="1" name="end_date"></td>
+            <td><input type="datetime-local" step="1" th:field="*{reservation.end_date}"></td>
+            <td th:errors="*{reservation.end_date}"></td>
+            <td><div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/></td>
         </tr>
         <tr>
             <td><label>Distance til afhentningssted</label></td>
-            <td><input type="number" name="distance_to_pickup"></td>
+            <td><input type="number" th:field="*{reservation.distance_to_pickup}"></td>
+            <td th:errors="*{reservation.distance_to_pickup}"></td>
         </tr>
     </table>
     <input type="submit" style="padding: 10px" value="Tilføj Reservation">

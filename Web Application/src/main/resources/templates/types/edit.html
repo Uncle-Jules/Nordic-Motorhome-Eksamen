@@ -6,19 +6,24 @@
     <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
 <form action="/types/update" method="post">
+
     <table>
         <tr>
             <td>Type</td>
             <td>
-                <input name="type" th:value="${type.type}" type="hidden">
+                <input name="type" th:field="*{type.type}" type="hidden">
             </td>
+            <td th:errors="*{type.type}" class="error"></td>
         </tr>
         <tr>
             <td>Sengepladser</td>
             <td>
-                <input type="number" name="beds" th:value="${type.beds}">
+                <input type="number" name="beds" th:field="*{type.beds}">
             </td>
+            <td th:errors="*{type.beds}" class="error"></td>
+            <td><div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/></td>
         </tr>
     </table>
     <input type="submit" value="Gem ændringer">

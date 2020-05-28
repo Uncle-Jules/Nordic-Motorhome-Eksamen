@@ -2,16 +2,25 @@ package com.example.demo.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 
 @Entity
 public class Reservation {
     @Id
     private int id;
+    @NotEmpty(message = "Indtast venligst en dato")
     private String start_date;
+    @NotEmpty(message = "Indtast venligst en dato")
     private String end_date;
+    @Min(value = 0, message = "Indtast venligst en værdi mellem 0-1000")
+    @Max(value = 1000, message = "Indtast venligst en værdi mellem 0-1000")
     private int distance_to_pickup;
     private String season;
+    @Size(min = 1, max = 45, message = "Indtast venligst betalingsdetaljer. Må fylde 1-45 karakterer")
     private String payment_details;
     private int total_price;
 
@@ -113,8 +122,7 @@ public class Reservation {
     }
 
     public String getStart_date() {
-        return start_date.replace(" ", " ");
-        //return start_date;
+        return start_date;
     }
 
     public void setStart_date(String start_date) {
@@ -123,8 +131,7 @@ public class Reservation {
     }
 
     public String getEnd_date() {
-        return end_date = end_date.replace(" ", " ");
-        //return end_date;
+        return end_date;
     }
 
     public void setEnd_date(String end_date) {

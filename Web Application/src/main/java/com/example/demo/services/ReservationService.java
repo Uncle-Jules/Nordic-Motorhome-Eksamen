@@ -30,5 +30,8 @@ public class ReservationService {
     public void addAccessory(int reservationId, int accessoryId){
         reservationRepo.addAccessory(reservationId, accessoryId);
     }
+    public boolean checkIfReserved(Reservation reservation){
+        return reservationRepo.checkIfReserved(reservation);
+    }
 }
 

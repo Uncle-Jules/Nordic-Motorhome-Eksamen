@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.sql.SQLOutput;
 import java.util.List;
 
@@ -63,11 +65,29 @@ public class ReservationController {
         List<Customer> customers = customerService.fetchAll();
         model.addAttribute("motorhomes", motorhomes);
         model.addAttribute("customers", customers);
+        model.addAttribute("reservation", new Reservation());
         return "/reservations/create";
     }
 
     @PostMapping("/create")
-    public String addReservation(@ModelAttribute Reservation reservation) {
+    public String addReservation(@ModelAttribute @Valid Reservation reservation, Errors errors, Model model,
+                                 RedirectAttributes redirectAttributes) {
+        if(errors.hasErrors()){
+            List<Motorhome> motorhomes = motorhomeService.fetchAll();
+            List<Customer> customers = customerService.fetchAll();
+            model.addAttribute("motorhomes", motorhomes);
+            model.addAttribute("customers", customers);
+            model.addAttribute("reservation", reservation);
+            return "/reservations/create";
+        }
+        // Checking if dates are valid
+        if(reservationService.checkIfReserved(reservation)){
+            String failMessage = "Denne autocamper er allerede udlejet i den valgte periode";
+            redirectAttributes.addFlashAttribute("message", failMessage);
+            redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
+            return "redirect:/reservations/create";
+        }
+
         reservationService.add(reservation);
         return "redirect:/reservations/list";
     }
@@ -77,15 +97,16 @@ public class ReservationController {
         Reservation reservation = reservationService.findById(id);
         List<Accessory> accessories = accessoryService.fetchAll();
 
+
+        // Formatting date strings so they are parsed correctly by the browser
         reservation.setStart_date(reservation.getStart_date().replace(" ", "T"));
         reservation.setEnd_date(reservation.getEnd_date().replace(" ", "T"));
-
         model.addAttribute("reservation", reservation);
         model.addAttribute("accessories", accessories);
         return "/reservations/edit";
     }
     @PostMapping("/update")
-    public String updateReservation(@ModelAttribute Reservation reservation) {
+    public String updateReservation(@ModelAttribute Reservation reservation, RedirectAttributes redirectAttributes) {
         reservationService.update(reservation.getId(), reservation);
         return "redirect:/reservations/list";
     }

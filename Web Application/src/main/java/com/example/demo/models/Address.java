@@ -16,7 +16,7 @@ public class Address {
     private String street_number;
     @NotNull
     @Size(min=1, max=45, message = "Indtast venligst et gyldigt gadenavn")
-    @Pattern(regexp = "[a-zA-Z]*", message = "Må kun indholde bogstaver")
+    @Pattern(regexp = "[a-zA-Z\\s'-]*", message = "Må kun indeholde bogstaver")
     private String street_name;
     private String apartment_number;
     private String zip_code;
@@ -57,7 +57,8 @@ public class Address {
     }
 
     public String getApartment_number() {
-        return apartment_number;
+
+        return apartment_number == null ? "" : apartment_number;
     }
 
     public void setApartment_number(String apartment_number) {

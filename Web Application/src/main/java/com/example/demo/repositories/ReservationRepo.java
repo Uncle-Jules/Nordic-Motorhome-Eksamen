@@ -1,8 +1,10 @@
 package com.example.demo.repositories;
 
 import com.example.demo.AppConfig;
+import com.example.demo.models.Motorhome;
 import com.example.demo.models.Reservation;
 import com.example.demo.services.MotorhomeService;
+import com.example.demo.utils.DateHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -112,6 +114,27 @@ public class ReservationRepo {
                 return basePrice * highSeasonPercent + distancePrice;
         }
         return -1;
+    }
+
+    public boolean checkIfReserved(Reservation reservation){
+        int motorhomeId = reservation.getMotorhome_id();
+        String sql = "SELECT * FROM reservations WHERE motorhome_id = ?";
+        RowMapper rowMapper = new BeanPropertyRowMapper(Reservation.class);
+        List<Reservation> reservations = template.query(sql, rowMapper, motorhomeId);
+        // If motorhome is not present in any other reservation,
+        // there is no possibility of a double reservation of the same motorhome
+        if (reservations.size() == 0){
+            return false;
+        }
+        boolean isReserved = false;
+        for(Reservation res : reservations){
+            isReserved = DateHelper.checkDateCollission(reservation.getStart_date(), reservation.getEnd_date(),
+                         res.getStart_date(), res.getEnd_date());
+            if(isReserved){
+                return true;
+            }
+        }
+        return isReserved;
     }
 }
 

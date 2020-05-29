@@ -3,7 +3,7 @@ package com.example.demo.models;
 import javax.validation.constraints.*;
 
 public class Customer extends Person {
-    @Size(min=1, max=15, message = "Indtast venligst et gyldigt kørekortnummer.")
+    @Size(min=1, max=15, message = "Indtast venligst et gyldigt kørekortnummer på max 45 karakterer.")
     private String drivers_license;
 
     public Customer() {

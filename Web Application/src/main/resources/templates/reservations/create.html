@@ -7,7 +7,7 @@
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<form action="/reservations/create" method="post">
+<form action="/reservations/create" id="form" method="post">
     <table>
         <tr>
             <td><label>Autocamper</label></td>
@@ -43,7 +43,7 @@
             <td th:errors="*{reservation.distance_to_pickup}"></td>
         </tr>
     </table>
-    <input type="submit" style="padding: 10px" value="Tilføj Reservation">
 </form>
+<button type="submit" class="w3-btn green-button" form="form" value="Submit">Tilføj reservation</button>
 </body>
 </html>

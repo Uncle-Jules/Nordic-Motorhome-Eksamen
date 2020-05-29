@@ -7,7 +7,7 @@
 </head>
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
-<form action="/motorhomes/create" method="post">
+<form action="/motorhomes/create" id="form" method="post">
     <table>
         <tr>
             <td><label>Type</label></td>
@@ -42,7 +42,7 @@
             <td th:errors="*{motorhome.registration_number}" class="error"></td>
         </tr>
     </table>
-    <input type="submit" style="padding: 10px" value="Tilføj autocamper">
 </form>
+<button type="submit" class="w3-btn green-button" form="form" value="Submit">Tilføj autocamper</button>
 </body>
 </html>

@@ -23,7 +23,8 @@ public class AccessoryController {
     }
 
     @GetMapping("/create")
-    public String createAccessory() {
+    public String createAccessory(Model model) {
+        model.addAttribute("accessory", new Accessory());
         return "/accessories/create";
     }
 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Tilføj tilbehør</title>
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<h1>Opret tilbehør</h1>
+<form action="/accessories/create" id="form" method="post">
+    <table>
+        <tr>
+            <td><label>Tilbehør:</label></td>
+            <td><input type="text" th:field="*{accessory.accessory}"></td>
+            <td th:errors="*{accessory.accessory}" class="error"></td>
+        </tr>
+    </table>
+</form>
+<button type="submit" class="w3-btn green-button" form="form" value="Submit">Tilføj tilbehør</button>
+</body>
+</html>

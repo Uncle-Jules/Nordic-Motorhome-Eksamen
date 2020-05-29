@@ -15,7 +15,7 @@ public class Address {
     @Size(min=1, max=5, message = "Gadenummer skal være mellem 1 og 5 karaktere lang")
     private String street_number;
     @NotNull
-    @Size(min=1, max=45, message = "Indtast venligst et gyldigt gadenavn")
+    @Size(min=1, max=45, message = "Indtast venligst et gyldigt gadenavn på max 45 karakterer")
     @Pattern(regexp = "[a-zA-Z\\s'-]*", message = "Må kun indeholde bogstaver")
     private String street_name;
     private String apartment_number;

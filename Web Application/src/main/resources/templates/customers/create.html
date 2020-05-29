@@ -7,7 +7,8 @@
 </head>
     <body>
     <div th:replace="fragments/navbar :: navbar"></div>
-        <form action="/customers/create" method="post">
+    <h1>Opret kunde</h1>
+        <form action="/customers/create" id="form" method="post">
             <table>
                 <tr>
                     <td><label>Fornavn:</label></td>
@@ -65,7 +66,7 @@
                     <td th:errors="*{customer.drivers_license}" class="error"></td>
                 </tr>
             </table>
-            <input type="submit" button style="padding: 10px" value="Tilføj kunde">
         </form>
+    <button type="submit" class="w3-btn green-button" form="form" value="Submit">Tilføj kunde</button>
     </body>
 </html>

@@ -2,11 +2,15 @@ package com.example.demo.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Accessory {
     @Id
     private int id;
+    @NotNull
+    @Size(min=1, max=45, message = "Indtast venligst tilbehør på max 45 karakterer")
     private String accessory;
 
     public Accessory() {

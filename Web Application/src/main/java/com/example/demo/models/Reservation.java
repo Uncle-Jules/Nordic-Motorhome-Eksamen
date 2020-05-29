@@ -22,7 +22,7 @@ public class Reservation {
     private String season;
     @Size(min = 1, max = 45, message = "Indtast venligst betalingsdetaljer. Må fylde 1-45 karakterer")
     private String payment_details;
-    private int total_price;
+    private double total_price;
 
     // Fields for customer to be shown in reservation.
     private String first_name;
@@ -155,11 +155,11 @@ public class Reservation {
         this.season = season;
     }
 
-    public int getTotal_price() {
+    public double getTotal_price() {
         return total_price;
     }
 
-    public void setTotal_price(int total_price) {
+    public void setTotal_price(double total_price) {
         this.total_price = total_price;
     }
 

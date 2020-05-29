@@ -52,15 +52,17 @@ public class ReservationRepo {
     }
 
     public void update(int id, Reservation reservation) {
-        String sql = "UPDATE reservations SET start_date = ?, end_date = ?, distance_to_pickup = ? WHERE id = ?";
+        String sql = "UPDATE reservations SET start_date = ?, end_date = ?, distance_to_pickup = ?, season = ?, total_price = ? WHERE id = ?";
         String start_date = Reservation.fixDateFormatting(reservation.getStart_date());
         String end_date = Reservation.fixDateFormatting(reservation.getEnd_date());
-        template.update(sql, start_date, end_date, reservation.getDistance_to_pickup(), id);
+        String season = calculateSeason(reservation.getStart_date());
+        int distance_to_pickup = reservation.getDistance_to_pickup();
+        double price_per_day = motorhomeService.findById(reservation.getMotorhome_id()).getPrice_per_day();
+        double totalPrice = calculateTotalPrice(price_per_day,distance_to_pickup, season, start_date, end_date);
+        template.update(sql, start_date, end_date, reservation.getDistance_to_pickup(), season, totalPrice, id);
     }
 
     public void addAccessory(int reservationId, int accessoryId){
-        System.out.println("Repo reservation ID: " + reservationId);
-        System.out.println("Repo accessory ID: " + accessoryId);
         String addAccessoryIDSql = "INSERT INTO reserved_accessories VALUES (?, ?)";
         template.update(addAccessoryIDSql, reservationId, accessoryId);
     }
@@ -97,6 +99,7 @@ public class ReservationRepo {
 
     public double calculateTotalPrice(double price_per_day, int distance_to_pickup, String season, String start_date, String end_date) {
         int numberOfDays = (int) Math.ceil(DateHelper.hoursBetween(start_date, end_date) / 24.0);
+        System.out.println("Days calculated: " + numberOfDays);
         double basePrice = price_per_day * numberOfDays;
         double pickupDropoffTax = appConfig.getPickupDropoffTax();
         double middleSeasonPercent = appConfig.getMiddleSeasonPercent();

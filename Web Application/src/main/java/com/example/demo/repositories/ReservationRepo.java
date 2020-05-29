@@ -71,7 +71,7 @@ public class ReservationRepo {
         return false;
     }
 
-    private String calculateSeason(String date) {
+    public String calculateSeason(String date) {
         int month = Integer.parseInt(date.substring(5, 7));
         switch(month) {
             case 12:
@@ -95,7 +95,7 @@ public class ReservationRepo {
         return "undefined";
     }
 
-    private double calculateTotalPrice(double price_per_day, int distance_to_pickup, String season, String start_date, String end_date) {
+    public double calculateTotalPrice(double price_per_day, int distance_to_pickup, String season, String start_date, String end_date) {
         int numberOfDays = (int) Math.ceil(DateHelper.hoursBetween(start_date, end_date) / 24.0);
         double basePrice = price_per_day * numberOfDays;
         double pickupDropoffTax = appConfig.getPickupDropoffTax();

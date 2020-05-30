@@ -7,20 +7,16 @@
 </head>
 <body>
 <div class="navbar" th:fragment="navbar">
-    <a href="/">Hjem</a>
+    <a class="dropdown-item" href="/">Hjem</a>
     <div class="dropdown">
-        <button class="dropbtn">
-            <a href="/customers/list">Kunder</a>
-        </button>
+        <a class="dropbtn" href="/customers/list" >Kunder</a>
         <div class="dropdown-content">
             <a href="/customers/list">Se alle kunder</a>
             <a href="/customers/create">Opret kunde</a>
         </div>
     </div>
     <div class="dropdown">
-        <button class="dropbtn" href="/motorhomes/list">
-            <a href="/motorhomes/list">Autocampere</a>
-        </button>
+        <a class="dropbtn" href="/motorhomes/list">Autocampere</a>
         <div class="dropdown-content">
             <a href="/motorhomes/list">Se alle autocampere</a>
             <a href="/motorhomes/create">Opret autocamper</a>
@@ -31,9 +27,7 @@
         </div>
     </div>
     <div class="dropdown">
-        <button class="dropbtn" href="/reservations/list">
-            <a href="/reservations/list">Reservationer</a>
-        </button>
+        <a class="dropbtn" href="/reservations/list">Reservationer</a>
         <div class="dropdown-content">
             <a href="/reservations/list">Se alle reservationer</a>
             <a href="/reservations/create">Opret reservation</a>

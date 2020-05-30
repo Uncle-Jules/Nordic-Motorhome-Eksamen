@@ -4,50 +4,71 @@
         <meta charset="UTF-8">
         <title>List over alle kunder</title>
         <link rel="stylesheet" href="/../stylesheet.css" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
         <div th:replace="fragments/navbar :: navbar"></div>
-        <table id="customerTable" class="w3-table w3-striped w3-bordered w3-centered">
-
-            <tr class="w3-blue">
-                <th class="w3-border-right">ID</th>
-                <th class="w3-border-right">Fornavn</th>
-                <th class="w3-border-right">Efternavn</th>
-                <th class="w3-border-right">Addresse</th>
-                <th class="w3-border-right">Telefonnummer</th>
-                <th class="w3-border-right">Fødselsdato</th>
-                <th class="w3-border-right">Kørekortnummer</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
+        <div class="header">
+            <h1>Kundeliste</h1>
+        </div>
+        <div class="search-bar">
+            <h2>Søg</h2>
+            <p>Skriv noget i søgefeltet for, at søge efter kunder baseret på id, fornavn, efternavn, addresse, tlf, eller kørekortnummer:</p>
+            <input id="myInput" type="text" placeholder="Søg..">
+            <br>
+        </div>
+        <a href="/customers/create" class="w3-btn green-button" style="display: inline-block; position: absolute; margin-top: 143px">Opret kunde</a>
+        <table id="main-table" class="w3-table w3-border w3-bordered w3-centered table-header-sticky">
+            <thead>
+                <tr class="w3-blue-gray">
+                    <th class="w3-border-right">ID</th>
+                    <th class="w3-border-right">Fornavn</th>
+                    <th class="w3-border-right">Efternavn</th>
+                    <th class="w3-border-right">Addresse</th>
+                    <th class="w3-border-right">Telefonnummer</th>
+                    <th class="w3-border-right">Fødselsdato</th>
+                    <th class="w3-border-right">Kørekortnummer</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
 
             <tbody>
-            <tr th:each = "customer: ${customers}">
-                <td th:text = "${customer.id}" />
-                <td th:text = "${customer.first_name}" />
-                <td th:text = "${customer.last_name}" />
-                <td th:text = "${customer.address_id}" />
-                <td th:text = "${customer.phone_number}" />
-                <td th:text = "${customer.birth_date}" />
-                <td th:text = "${customer.drivers_license}" />
-                <td>
-                    <a th:href="@{'/customers/view-one/'+${customer.id}}">
-                        <button class="w3-btn green-button">Se kunde</button>
-                    </a>
-                </td>
-                <td>
-                    <a th:href="@{'/customers/edit/'+${customer.id}}">
-                        <button class="w3-btn blue-button">Redigér kunde</button>
-                    </a>
-                </td>
-                <td>
-                    <a th:href="@{'/customers/delete/'+${customer.id}}">
-                        <button class="w3-btn red-button">Slet kunde</button>
-                    </a>
-                </td>
-            </tr>
+                <tr th:each = "customer: ${customers}">
+                    <td th:text = "${customer.id}" />
+                    <td th:text = "${customer.first_name}" />
+                    <td th:text = "${customer.last_name}" />
+                    <td th:text = "${customer.address_id}" />
+                    <td th:text = "${customer.phone_number}" />
+                    <td th:text = "${customer.birth_date}" />
+                    <td th:text = "${customer.drivers_license}" />
+                    <td>
+                        <a th:href="@{'/customers/view-one/'+${customer.id}}">
+                            <button class="w3-btn green-button">Se kunde</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/customers/edit/'+${customer.id}}">
+                            <button class="w3-btn blue-button">Redigér kunde</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/customers/delete/'+${customer.id}}">
+                            <button class="w3-btn red-button">Slet kunde</button>
+                        </a>
+                    </td>
+                </tr>
             </tbody>
         </table>
+        <script>
+            $("#myInput").on("keyup", function() {
+                const value = $(this).val().toLowerCase();
+                console.log("value:", value)
+                $("#main-table tbody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        </script>
     </body>
 </html>

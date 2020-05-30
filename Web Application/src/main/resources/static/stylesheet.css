@@ -57,6 +57,7 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    margin-top: 52px;
 }
 
 /* Links inside the dropdown */
@@ -350,7 +351,7 @@ a {
 }
 
 .w3-striped tbody tr:nth-child(even) {
-    background-color: silver;
+    background-color: #e2e2e2;
 }
 
 .w3-table-all tr:nth-child(odd) {
@@ -1096,6 +1097,50 @@ a {
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
+.container {
+    position: relative;
+    width: 400px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+}
+
+.container:hover > img {
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+}
+
+.container:hover .btn {
+    -webkit-filter: none;
+    filter: none;
+}
+
+/* Make the image responsive */
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.container .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+}
+
+.container .btn:hover {
+    background-color: darkgray;
+}
+
 .w3-spin {
     animation: w3-spin 2s infinite linear
 }
@@ -1820,3 +1865,49 @@ a {
 .red-button {
     background-color:lightcoral;
 }
+
+.header {
+    height: 200px;
+    background-color: #e2e2e2;
+    vertical-align: middle;
+}
+
+.header h1 {
+    display: inline-block;
+    line-height: 170px;
+    vertical-align: middle;
+    margin-left: 50px;
+    font-size: 55px;
+    font-family: Cambria;
+    color: #333333;
+}
+
+.search-bar {
+    height: 180px;
+    width: 75%;
+    padding-left: 100px;
+    display: inline-block;
+}
+
+.search-bar input {
+    width: 400px;
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.search-bar input:focus {
+    box-shadow: 0 0 3pt 2pt gray;
+}
+
+.table-header-sticky thead tr:nth-child(1) th{
+    position: sticky;
+    top: -1px;
+    z-index: 10;
+    color: #fff;
+    background-color: #607d8b;
+}
+
+
+
+

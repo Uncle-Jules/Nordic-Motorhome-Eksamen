@@ -1,39 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Liste over alle typer</title>
-    <link rel="stylesheet" type="text/css" href="/../stylesheet.css">
-</head>
-<body>
-<div th:replace="fragments/navbar :: navbar"></div>
-<table id="typeTable" class="w3-table w3-striped w3-bordered w3-centered">
-    <thead>
-    <tr class="w3-blue">
-        <th class="w3-border-right">Type</th>
-        <th class="w3-border-right">Sengepladser</th>
-        <th></th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each = "type: ${types}">
-        <td th:text="${type.type}"/>
-        <td th:text="${type.beds}"/>
-        <td>
-            <a th:href="@{'/types/edit/'+${type.type}}">
-                <button class="w3-btn blue-button">Redigér type</button>
-            </a>
-        </td>
-        <td>
-            <a th:href="@{'/types/delete/'+${type.type}}">
-                <button class="w3-btn red-button">Slet type</button>
-            </a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
-
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Liste over alle typer</title>
+        <link rel="stylesheet" type="text/css" href="/../stylesheet.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="fragments/navbar :: navbar"></div>
+        <div class="header">
+            <h1>Typeliste</h1>
+        </div>
+        <div class="search-bar">
+            <h2>Søg</h2>
+            <p>Skriv noget i søgefeltet for, at søge efter typer baseret på typenavn eller antal senge:</p>
+            <input id="myInput" type="text" placeholder="Søg..">
+            <br>
+        </div>
+        <a href="/types/create" class="w3-btn green-button" style="display: inline-block; position: absolute; margin-top: 143px">Opret type</a>
+        <table id="main-table" class="w3-table w3-border w3-bordered w3-centered table-header-sticky">
+            <thead>
+            <tr class="w3-blue-gray">
+                <th class="w3-border-right">Type</th>
+                <th class="w3-border-right">Sengepladser</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each = "type: ${types}">
+                <td th:text="${type.type}"/>
+                <td th:text="${type.beds}"/>
+                <td>
+                    <a th:href="@{'/types/edit/'+${type.type}}">
+                        <button class="w3-btn blue-button">Redigér type</button>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/types/delete/'+${type.type}}">
+                        <button class="w3-btn red-button">Slet type</button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
+        <script>
+            $("#myInput").on("keyup", function() {
+                const value = $(this).val().toLowerCase();
+                console.log("value:", value)
+                $("#main-table tbody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        </script>
+    </body>
 </html>

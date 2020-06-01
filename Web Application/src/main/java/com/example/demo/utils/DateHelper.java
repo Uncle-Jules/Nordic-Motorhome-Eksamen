@@ -24,6 +24,6 @@ public class DateHelper {
     }
 
     public static String fixDateFormatting(String date){
-        return date.replace("T", " ");
+        return date = date.replace("T", " ");
     }
 }

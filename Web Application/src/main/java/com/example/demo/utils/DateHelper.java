@@ -15,15 +15,13 @@ public class DateHelper {
 
     public static boolean checkDateCollission(String startDate1, String endDate1, String startDate2, String endDate2){
         startDate1 = fixDateFormatting(startDate1);
-        startDate2 = fixDateFormatting(startDate2);
         endDate1 = fixDateFormatting(endDate1);
-        endDate2 = fixDateFormatting(endDate2);
         int daysBetweenStart1End2 = hoursBetween(startDate1, endDate2);
         int daysBetweenStart2End1 = hoursBetween(startDate2, endDate1);
         return (daysBetweenStart1End2 >= 0 && daysBetweenStart2End1 >= 0);
     }
 
     public static String fixDateFormatting(String date){
-        return date = date.replace("T", " ");
+        return date.replace("T", " ");
     }
 }

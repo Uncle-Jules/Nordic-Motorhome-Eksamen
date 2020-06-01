@@ -171,7 +171,4 @@ public class Reservation {
         this.payment_details = payment_details;
     }
 
-    public static String fixDateFormatting(String date){
-        return date = date.replace("T", " ");
-    }
 }

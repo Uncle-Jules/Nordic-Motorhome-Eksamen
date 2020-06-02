@@ -17,19 +17,19 @@
             <input id="myInput" type="text" placeholder="Søg..">
             <br>
         </div>
-        <a href="/motorhomes/create" class="w3-btn green-button" style="display: inline-block; position: absolute; margin-top: 143px">Opret autocamper</a>
-        <a href="/accessories/create" class="w3-btn green-button" style="display: inline-block; position: absolute; margin-top: 143px; margin-left: 180px">Opret tilbehør</a>
-        <a href="/types/create" class="w3-btn green-button" style="display: inline-block; position: absolute; margin-top: 143px; margin-left: 327px">Opret type</a>
-        <table id="main-table" class="w3-table w3-border w3-bordered w3-centered table-header-sticky">
+        <a href="/motorhomes/create" class="btn green-button" style="display: inline-block; position: absolute; margin-top: 143px">Opret autocamper</a>
+        <a href="/accessories/create" class="btn green-button" style="display: inline-block; position: absolute; margin-top: 143px; margin-left: 180px">Opret tilbehør</a>
+        <a href="/types/create" class="btn green-button" style="display: inline-block; position: absolute; margin-top: 143px; margin-left: 327px">Opret type</a>
+        <table id="main-table" class="table table-many border table-header-sticky">
             <thead>
-            <tr class="w3-blue-gray table-header-sticky">
-                <th class="w3-border-right">ID</th>
-                <th class="w3-border-right">Type</th>
-                <th class="w3-border-right">Mærke</th>
-                <th class="w3-border-right">Model</th>
-                <th class="w3-border-right">Kilometertal</th>
-                <th class="w3-border-right">Pris per dag (Basispris)</th>
-                <th class="w3-border-right">Registreringsnummer</th>
+            <tr>
+                <th class="border-right">ID</th>
+                <th class="border-right">Type</th>
+                <th class="border-right">Mærke</th>
+                <th class="border-right">Model</th>
+                <th class="border-right">Kilometertal</th>
+                <th class="border-right">Pris per dag (Basispris)</th>
+                <th class="border-right">Registreringsnummer</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -47,17 +47,17 @@
                     <td th:text="${motorhome.registration_number}"/>
                     <td>
                         <a th:href="@{'/motorhomes/view-one/'+${motorhome.id}}">
-                            <button class="w3-btn green-button">Se autocamper</button>
+                            <button class="btn green-button">Se autocamper</button>
                         </a>
                     </td>
                     <td>
                         <a th:href="@{'/motorhomes/edit/'+${motorhome.id}}">
-                            <button class="w3-btn blue-button">Redigér autocamper</button>
+                            <button class="btn blue-button">Redigér autocamper</button>
                         </a>
                     </td>
                     <td>
                         <a th:href="@{'/motorhomes/delete/'+${motorhome.id}}">
-                            <button class="w3-btn red-button">Slet autocamper</button>
+                            <button class="btn red-button">Slet autocamper</button>
                         </a>
                     </td>
                 </tr>

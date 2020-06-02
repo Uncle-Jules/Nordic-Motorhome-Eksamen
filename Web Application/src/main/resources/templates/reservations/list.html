@@ -17,18 +17,18 @@
             <input id="myInput" type="text" placeholder="Søg..">
             <br>
         </div>
-        <a href="/reservations/create" class="w3-btn green-button" style="display: inline-block; position: absolute; margin-top: 143px">Opret reservation</a>
-        <table id="main-table" class="w3-table w3-border w3-bordered w3-centered table-header-sticky">
+        <a href="/reservations/create" class="btn green-button" style="display: inline-block; position: absolute; margin-top: 143px">Opret reservation</a>
+        <table id="main-table" class="table table-many border table-header-sticky">
             <thead>
-            <tr class="w3-blue-gray">
-                <th class="w3-border-right">ID</th>
-                <th class="w3-border-right">Fornavn</th>
-                <th class="w3-border-right">Efternavn</th>
-                <th class="w3-border-right">Mærke</th>
-                <th class="w3-border-right">Model</th>
-                <th class="w3-border-right">Type</th>
-                <th class="w3-border-right">Startdato</th>
-                <th class="w3-border-right">Slutdato</th>
+            <tr>
+                <th class="border-right">ID</th>
+                <th class="border-right">Fornavn</th>
+                <th class="border-right">Efternavn</th>
+                <th class="border-right">Mærke</th>
+                <th class="border-right">Model</th>
+                <th class="border-right">Type</th>
+                <th class="border-right">Startdato</th>
+                <th class="border-right">Slutdato</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -46,17 +46,17 @@
                 <td th:text = "${reservation.end_date}" />
                 <td>
                     <a th:href="@{'/reservations/view-one/'+${reservation.id}}">
-                        <button class="w3-btn green-button">Se reservation</button>
+                        <button class="btn green-button">Se reservation</button>
                     </a>
                 </td>
                 <td>
                     <a th:href="@{'/reservations/edit/'+${reservation.id}}">
-                        <button class="w3-btn blue-button">Redigér reservation</button>
+                        <button class="btn blue-button">Redigér reservation</button>
                     </a>
                 </td>
                 <td>
                     <a th:href="@{'/reservations/delete/'+${reservation.id}}">
-                        <button class="w3-btn red-button">Slet reservation</button>
+                        <button class="btn red-button">Slet reservation</button>
                     </a>
                 </td>
             </tr>

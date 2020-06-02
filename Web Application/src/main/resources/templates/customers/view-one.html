@@ -8,7 +8,7 @@
     <body>
         <div th:replace="fragments/navbar :: navbar"></div>
         <h1>Kundeinformation</h1>
-        <table id="myTable" class="w3-table w3-striped w3-bordered w3-border" style="width: 33.33%">
+        <table id="myTable" class="table table-one border" style="width: 33.33%">
                 <tr>
                     <th>ID:</th>
                     <td th:text = "${customer.id}" />
@@ -49,7 +49,9 @@
                     <th>Land:</th>
                     <td th:text = "${zipCode.country}" />
                 </tr>
-            
         </table>
+        <form action="/customers/list">
+            <input type="submit" value="Tilbage" />
+        </form>
     </body>
 </html>

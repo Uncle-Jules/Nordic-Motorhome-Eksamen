@@ -1,7 +1,6 @@
 package com.example.demo.repositories;
 
 import com.example.demo.AppConfig;
-import com.example.demo.models.Motorhome;
 import com.example.demo.models.Reservation;
 import com.example.demo.services.MotorhomeService;
 import com.example.demo.utils.DateHelper;
@@ -11,9 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Repository
@@ -40,8 +36,8 @@ public class ReservationRepo {
 
     public void add(Reservation reservation) {
         String sql = "INSERT INTO reservations VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?)";
-        String start_date = Reservation.fixDateFormatting(reservation.getStart_date());
-        String end_date = Reservation.fixDateFormatting(reservation.getEnd_date());
+        String start_date = DateHelper.fixDateFormatting(reservation.getStart_date());
+        String end_date = DateHelper.fixDateFormatting(reservation.getEnd_date());
         String season = calculateSeason(reservation.getStart_date());
         int distance_to_pickup = reservation.getDistance_to_pickup();
         double price_per_day = motorhomeService.findById(reservation.getMotorhome_id()).getPrice_per_day();
@@ -53,8 +49,8 @@ public class ReservationRepo {
 
     public void update(int id, Reservation reservation) {
         String sql = "UPDATE reservations SET start_date = ?, end_date = ?, distance_to_pickup = ?, season = ?, total_price = ? WHERE id = ?";
-        String start_date = Reservation.fixDateFormatting(reservation.getStart_date());
-        String end_date = Reservation.fixDateFormatting(reservation.getEnd_date());
+        String start_date = DateHelper.fixDateFormatting(reservation.getStart_date());
+        String end_date = DateHelper.fixDateFormatting(reservation.getEnd_date());
         String season = calculateSeason(reservation.getStart_date());
         int distance_to_pickup = reservation.getDistance_to_pickup();
         double price_per_day = motorhomeService.findById(reservation.getMotorhome_id()).getPrice_per_day();

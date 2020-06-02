@@ -1,7 +1,5 @@
 package com.example.demo.utils;
 
-import com.example.demo.models.Reservation;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -16,15 +14,14 @@ public class DateHelper {
     }
 
     public static boolean checkDateCollission(String startDate1, String endDate1, String startDate2, String endDate2){
-        startDate1 = Reservation.fixDateFormatting(startDate1);
-        startDate2 = Reservation.fixDateFormatting(startDate2);
-        endDate1 = Reservation.fixDateFormatting(endDate1);
-        endDate2 = Reservation.fixDateFormatting(endDate2);
-        int daysBetweenStart1End2 = hoursBetween(startDate1, endDate2);
-        System.out.println("Days between start 1 and end 2: " + daysBetweenStart1End2);
-        int daysBetweenStart2End1 = hoursBetween(startDate2, endDate1);
-        System.out.println("Days between start 2 end 1: " + daysBetweenStart2End1);
-        return (daysBetweenStart1End2 >= 0 && daysBetweenStart2End1 >= 0);
-        //( start1 <= end2 and start2 <= end1 )
+        startDate1 = fixDateFormatting(startDate1);
+        endDate1 = fixDateFormatting(endDate1);
+        int hoursBetweenStart1End2 = hoursBetween(startDate1, endDate2);
+        int hoursBetweenStart2End1 = hoursBetween(startDate2, endDate1);
+        return (hoursBetweenStart1End2 >= 0 && hoursBetweenStart2End1 >= 0);
+    }
+
+    public static String fixDateFormatting(String date){
+        return date.replace("T", " ");
     }
 }

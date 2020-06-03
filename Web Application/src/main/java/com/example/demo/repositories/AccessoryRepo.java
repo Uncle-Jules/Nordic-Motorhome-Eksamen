@@ -22,7 +22,6 @@ public class AccessoryRepo {
     }
 
     public void add(Accessory accessory){
-        RowMapper<Accessory> rowMapper = new BeanPropertyRowMapper(Accessory.class);
         String sql = "INSERT INTO accessories VALUES (0, ?)";
         template.update(sql, accessory.getAccessory());
     }

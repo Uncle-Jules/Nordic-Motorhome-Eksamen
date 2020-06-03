@@ -26,7 +26,6 @@ public class MotorhomeRepo {
         List<Motorhome> models = template.query(findModelSql, rowMapper, motorhome.getModel(), motorhome.getBrand_name());
         // If model does not exist in database it is inserted
         if(models.size() == 0){
-            System.out.println("Inserting model " + motorhome.getModel());
             String insertModelSql = "INSERT INTO models VALUES (?, ?)";
             template.update(insertModelSql, motorhome.getModel(), motorhome.getBrand_name());
         }

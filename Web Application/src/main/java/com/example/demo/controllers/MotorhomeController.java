@@ -2,7 +2,6 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Motorhome;
 import com.example.demo.models.Type;
-import com.example.demo.repositories.TypeRepo;
 import com.example.demo.services.MotorhomeService;
 import com.example.demo.services.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;

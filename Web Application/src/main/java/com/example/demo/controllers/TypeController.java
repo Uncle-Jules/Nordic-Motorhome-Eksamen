@@ -35,7 +35,6 @@ public class TypeController {
     @PostMapping("/create")
     public String addType(@ModelAttribute @Valid Type type, Errors errors, RedirectAttributes redirectAttributes, Model model){
         if(errors.hasErrors()){
-            System.out.println("Error caught: " + errors);
             model.addAttribute("type", type);
             return "/types/create";
         }

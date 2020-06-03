@@ -16,7 +16,7 @@ public class Accessory {
     public Accessory() {
     }
 
-    public Accessory(int id, String accessory, int stock) {
+    public Accessory(int id, String accessory) {
         this.id = id;
         this.accessory = accessory;
     }

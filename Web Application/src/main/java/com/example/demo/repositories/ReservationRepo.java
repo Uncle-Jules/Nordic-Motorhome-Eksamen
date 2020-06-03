@@ -95,7 +95,6 @@ public class ReservationRepo {
 
     public double calculateTotalPrice(double price_per_day, int distance_to_pickup, String season, String start_date, String end_date) {
         int numberOfDays = (int) Math.ceil(DateHelper.hoursBetween(start_date, end_date) / 24.0);
-        System.out.println("Days calculated: " + numberOfDays);
         double basePrice = price_per_day * numberOfDays;
         double pickupDropoffTax = appConfig.getPickupDropoffTax();
         double middleSeasonPercent = appConfig.getMiddleSeasonPercent();

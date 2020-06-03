@@ -49,7 +49,8 @@ public class TypeRepo {
         return false;
     }
 
-    // Returns true if type is used in any motorhome
+    // Returns true if type is used in any motorhome.
+    // This becomes relevant if the user is trying to delete the type - this is not allowed if it is used in a motorhome
     public boolean usedInMotorHome(String type){
         String sql = "SELECT * FROM motorhomes WHERE type = ?";
         RowMapper<Motorhome> rowMapper = new BeanPropertyRowMapper(Motorhome.class);

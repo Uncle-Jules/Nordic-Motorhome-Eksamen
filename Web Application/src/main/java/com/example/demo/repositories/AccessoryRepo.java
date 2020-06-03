@@ -38,6 +38,7 @@ public class AccessoryRepo {
         return false;
     }
 
+    // Returns a list a accessories added to a given reservation
     public List<Accessory> getReservedAccessories(Reservation reservation) {
         int id = reservation.getId();
         String sql = "SELECT * FROM reserved_accessories JOIN accessories ON " +

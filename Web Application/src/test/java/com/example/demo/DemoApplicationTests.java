@@ -12,6 +12,7 @@ class DemoApplicationTests {
 	@Autowired
 	ReservationRepo reservationRepo;
 
+	// Tests that the total price for a reservation is calculated correct
 	@Test
 	void calculateTotalPriceTest(){
 		Address address = new Address(1, "2", "østerbrogade", "2", "2100" );
@@ -23,6 +24,8 @@ class DemoApplicationTests {
 		double totalPrice = reservationRepo.calculateTotalPrice(motorhome.getPrice_per_day(), 100, "Lavsæson", reservation.getStart_date(), reservation.getEnd_date());
 		assertThat(totalPrice).isEqualTo(1070);
 	}
+
+	// Checks that the correct season for a given date is found
 	@Test
 	void calculateSeasonTest(){
 		String season = reservationRepo.calculateSeason("2020-05-31 23:59:59");

@@ -93,6 +93,7 @@ public class ReservationRepo {
         return "undefined";
     }
 
+    // Calculates the total price of a reservation based on the duration, season, and distance to pickup
     public double calculateTotalPrice(double price_per_day, int distance_to_pickup, String season, String start_date, String end_date) {
         int numberOfDays = (int) Math.ceil(DateHelper.hoursBetween(start_date, end_date) / 24.0);
         double basePrice = price_per_day * numberOfDays;
@@ -111,6 +112,7 @@ public class ReservationRepo {
         return -1;
     }
 
+    // Returns true if the motorhome in the reservation is already booked in the period of the reservation
     public boolean checkIfReserved(Reservation reservation){
         int motorhomeId = reservation.getMotorhome_id();
         String sql = "SELECT * FROM reservations WHERE motorhome_id = ?";
@@ -122,8 +124,9 @@ public class ReservationRepo {
             return false;
         }
         boolean isReserved = false;
+        // If just ONE of the dates collide this method will return true
         for(Reservation res : reservations){
-            isReserved = DateHelper.checkDateCollission(reservation.getStart_date(), reservation.getEnd_date(),
+            isReserved = DateHelper.checkDateCollision(reservation.getStart_date(), reservation.getEnd_date(),
                          res.getStart_date(), res.getEnd_date());
             if(isReserved){
                 return true;

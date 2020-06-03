@@ -38,6 +38,7 @@ public class ReservationController {
         return "/reservations/list";
     }
 
+    // Let's the user view a reservation with all the relevant information
     @GetMapping("/view-one/{id}")
     public String viewReservation(@PathVariable("id") int id, Model model) {
         Reservation reservation = reservationService.findById(id);
@@ -47,6 +48,8 @@ public class ReservationController {
         Address address = customerService.getAddress(customer);
         ZipCode zipCode = customerService.getZipCode(address);
 
+        // A reservation has both accessories, a customer, motorhome, address and zip code.
+        // These are added here
         model.addAttribute("reservation", reservation);
         model.addAttribute("accessories", accessories);
         model.addAttribute("customer", customer);

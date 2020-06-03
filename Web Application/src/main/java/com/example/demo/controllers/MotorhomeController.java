@@ -37,6 +37,7 @@ public class MotorhomeController {
 
     @PostMapping("/create")
     public String addMotorhome(@ModelAttribute @Valid Motorhome motorhome, Errors errors, Model model){
+        // If there are errors in the validation
         if(errors.hasErrors()) {
             List<Type> types = typeService.fetchAll();
             model.addAttribute("types", types);

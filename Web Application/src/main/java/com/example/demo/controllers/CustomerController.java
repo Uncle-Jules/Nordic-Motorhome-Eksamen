@@ -37,6 +37,7 @@ public class CustomerController {
     @PostMapping("/create")
     public String addCustomer(@ModelAttribute @Valid Customer customer, Errors errors1, @ModelAttribute @Valid Address address,
                               Errors errors2, @ModelAttribute @Valid ZipCode zipCode, Errors errors3) {
+        // Each model-attribute has its own error object, so we must check all here
         if(errors1.hasErrors() || errors2.hasErrors() || errors3.hasErrors()){
             return "/customers/create";
         }

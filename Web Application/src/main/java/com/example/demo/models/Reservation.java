@@ -126,7 +126,6 @@ public class Reservation {
     }
 
     public void setStart_date(String start_date) {
-        //start_date = start_date.replace("T", " ") + ":00";
         this.start_date = start_date;
     }
 
@@ -135,7 +134,6 @@ public class Reservation {
     }
 
     public void setEnd_date(String end_date) {
-        //end_date = end_date.replace("T", " ") + ":00";
         this.end_date = end_date;
     }
 

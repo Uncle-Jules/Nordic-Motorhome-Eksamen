@@ -11,6 +11,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/*
+ * Coded by Rasmus, Julius
+ */
+
 @Repository
 public class CustomerRepo {
     @Autowired

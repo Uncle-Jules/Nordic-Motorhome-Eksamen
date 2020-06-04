@@ -6,6 +6,9 @@ import java.time.temporal.ChronoUnit;
 
 public class DateHelper {
 
+    /*
+     * Coded by Ammad
+     */
     // Calculates how many hours there is between the two dates
     public static int hoursBetween(String startDate, String endDate){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -14,6 +17,9 @@ public class DateHelper {
         return (int) ChronoUnit.HOURS.between(formattedStartDate, formattedEndDate);
     }
 
+    /*
+     * Coded by Julius
+     */
     // Checks if there is a collision between the two periods. Returns true if there is
     public static boolean checkDateCollision(String startDate1, String endDate1, String startDate2, String endDate2){
         startDate1 = fixDateFormatting(startDate1);
@@ -23,6 +29,9 @@ public class DateHelper {
         return (hoursBetweenStart1End2 >= 0 && hoursBetweenStart2End1 >= 0);
     }
 
+    /*
+     * Coded by Rasmus
+     */
     // Corrects the dateformat from the browser so that it can be saved in the database
     public static String fixDateFormatting(String date){
         return date.replace("T", " ");

@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/*
+ * Coded by Michael
+ */
+
 @Service
 public class TypeService {
     @Autowired

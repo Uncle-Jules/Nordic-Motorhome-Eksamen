@@ -10,6 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/*
+ * Coded by Julius
+ */
+
 @Repository
 public class AccessoryRepo {
     @Autowired

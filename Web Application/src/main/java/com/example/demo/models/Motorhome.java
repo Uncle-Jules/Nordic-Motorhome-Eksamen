@@ -5,6 +5,10 @@ import javax.persistence.Id;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+/*
+ * Coded by Ammad
+ */
+
 @Entity
 public class Motorhome {
     @Id

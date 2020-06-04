@@ -1,8 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.models.Motorhome;
 import com.example.demo.models.Type;
-import com.example.demo.services.CustomerService;
 import com.example.demo.services.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +11,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
+
+/*
+ * Coded by Michael
+ */
 
 @Controller
 @RequestMapping(value = {"/types"})

@@ -7,6 +7,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+/*
+ * Coded by All
+ */
 
 @Entity
 public class Reservation {

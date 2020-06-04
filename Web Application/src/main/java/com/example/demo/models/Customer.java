@@ -2,6 +2,10 @@ package com.example.demo.models;
 
 import javax.validation.constraints.*;
 
+/*
+ * Coded by Rasmus
+ */
+
 public class Customer extends Person {
     @Size(min=1, max=15, message = "Indtast venligst et gyldigt kørekortnummer på max 45 karakterer.")
     private String drivers_license;

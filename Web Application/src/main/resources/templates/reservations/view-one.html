@@ -1,3 +1,4 @@
+<!--Coded by All-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -54,15 +55,15 @@
         <td th:text = "${zipCode.country}" />
     </tr>
     <tr>
-        <th>Startdato</th>
+        <th>Startdato:</th>
         <td th:text = "${reservation.start_date}"/>
     </tr>
     <tr>
-        <th>Slutdato</th>
+        <th>Slutdato:</th>
         <td th:text = "${reservation.end_date}"/>
     </tr>
     <tr>
-        <th>Tilbehør</th>
+        <th>Tilbehør:</th>
         <td>
             <table>
                 <tr th:each="accessory : ${accessories}">
@@ -72,39 +73,39 @@
         </td>
     </tr>
     <tr>
-        <th>Mærke</th>
+        <th>Mærke:</th>
         <td th:text = "${motorhome.brand_name}"/>
     </tr>
     <tr>
-        <th>Model</th>
+        <th>Model:</th>
         <td th:text = "${motorhome.model}"/>
     </tr>
     <tr>
-        <th>Type</th>
+        <th>Type:</th>
         <td th:text = "${motorhome.type}"/>
     </tr>
     <tr>
-        <th>Kilometertal</th>
+        <th>Kilometertal:</th>
         <td th:text = "${motorhome.mileage} + ' km'"/>
     </tr>
     <tr>
-        <th>Registreringnummer</th>
+        <th>Registreringnummer:</th>
         <td th:text = "${motorhome.registration_number}"/>
     </tr>
     <tr>
-        <th>Distance til afhentningssted</th>
+        <th>Distance til afhentningssted:</th>
         <td th:text = "${reservation.distance_to_pickup} + ' km'"/>
     </tr>
     <tr>
-        <th>Sæson</th>
+        <th>Sæson:</th>
         <td th:text = "${reservation.season}"/>
     </tr>
     <tr>
-        <th>Pris per dag</th>
+        <th>Pris per dag:</th>
         <td th:text = "${motorhome.price_per_day} + ' kr.'"/>
     </tr>
     <tr>
-        <th>Totalpris</th>
+        <th>Totalpris:</th>
         <td th:text = "${reservation.total_price} + ' kr. '"/>
     </tr>
 </table>

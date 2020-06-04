@@ -15,6 +15,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.util.List;
 
+/*
+ * Coded by All
+ */
+
 @Controller
 @RequestMapping(value = {"/reservations"})
 public class ReservationController {
@@ -49,7 +53,7 @@ public class ReservationController {
         ZipCode zipCode = customerService.getZipCode(address);
 
         // A reservation has both accessories, a customer, motorhome, address and zip code.
-        // These are added here
+        // These are added to the model here
         model.addAttribute("reservation", reservation);
         model.addAttribute("accessories", accessories);
         model.addAttribute("customer", customer);

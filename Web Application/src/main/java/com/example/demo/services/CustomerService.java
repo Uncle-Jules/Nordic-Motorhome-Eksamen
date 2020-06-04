@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/*
+ * Coded by Rasmus, Julius
+ */
+
 @Service
 public class CustomerService {
     @Autowired

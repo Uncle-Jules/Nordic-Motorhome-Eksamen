@@ -10,5 +10,5 @@ Følgende skal være installeret før programmet kan køre
 
 ```
 MySql Server - kør vores DDL og DML for at lave databasen og indsætte en masse testdata
-IntelliJs eller lignende IDE
+IntelliJ eller lignende IDE
 ```

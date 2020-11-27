@@ -1,0 +1,58 @@
+<!--Coded by Rasmus, Julius-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Oplysninger om kunde</title>
+        <link rel="stylesheet" href="/../stylesheet.css" type="text/css"/>
+    </head>
+    <body>
+        <div th:replace="fragments/navbar :: navbar"></div>
+        <h1>Kundeinformation</h1>
+        <table id="myTable" class="table table-one border" style="width: 33.33%">
+                <tr>
+                    <th>ID:</th>
+                    <td th:text = "${customer.id}" />
+                </tr>
+                <tr>
+                    <th>Fornavn:</th>
+                    <td th:text = "${customer.first_name}" />
+                </tr>
+                <tr>
+                    <th>Efternavn:</th>
+                    <td th:text = "${customer.last_name}" />
+                </tr>
+                <tr>
+                    <th>Telefonnummer:</th>
+                    <td th:text = "${customer.phone_number}" />
+                </tr>
+                <tr>
+                    <th>Fødselsdato:</th>
+                    <td th:text = "${customer.birth_date}" />
+                </tr>
+                <tr>
+                    <th>Kørekortnummer:</th>
+                    <td th:text = "${customer.drivers_license}" />
+                </tr>
+                <tr>
+                    <th>Adresse:</th>
+                    <td th:text = "${address.street_name} + ' ' + ${address.street_number} + ${address.apartment_number}"/>
+                </tr>
+                <tr>
+                    <th>Postnummer:</th>
+                    <td th:text = "${zipCode.zip}" />
+                </tr>
+                <tr>
+                    <th>By:</th>
+                    <td th:text = "${zipCode.city}" />
+                </tr>
+                <tr>
+                    <th>Land:</th>
+                    <td th:text = "${zipCode.country}" />
+                </tr>
+        </table>
+        <form action="/customers/list">
+            <input type="submit" value="Tilbage" />
+        </form>
+    </body>
+</html>

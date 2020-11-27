@@ -1,0 +1,50 @@
+<!--Coded by Ammad, Michael-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Tilføj ny autocamper</title>
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<h1>Opret autocamper</h1>
+<form action="/motorhomes/create" id="form" method="post">
+    <table>
+        <tr>
+            <td><label>Type</label></td>
+            <td><select name="type">
+                <option th:each = "type: ${types}" th:text="${type.type}" th:value="${type.type}"></option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><label>Mærke</label></td>
+            <td><input type="text" th:field="*{motorhome.brand_name}"></td>
+            <td th:errors="*{motorhome.brand_name}" class="error"></td>
+
+        </tr>
+        <tr>
+            <td><label>Model</label></td>
+            <td><input type="text" th:field="*{motorhome.model}"></td>
+            <td th:errors="*{motorhome.model}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Kilometertal</label></td>
+            <td><input type="number" th:field="*{motorhome.mileage}"></td>
+            <td th:errors="*{motorhome.mileage}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Pris per dag</label></td>
+            <td><input type="number" step=".01" th:field="*{motorhome.price_per_day}"></td>
+            <td th:errors="*{motorhome.price_per_day}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Registreringsnummer</label></td>
+            <td><input type="text" th:field="*{motorhome.registration_number}"></td>
+            <td th:errors="*{motorhome.registration_number}" class="error"></td>
+        </tr>
+    </table>
+</form>
+<button type="submit" class="btn green-button" form="form" value="Submit">Tilføj autocamper</button>
+</body>
+</html>

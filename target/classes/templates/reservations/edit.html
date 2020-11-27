@@ -1,0 +1,67 @@
+<!--Coded by All-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Redigér reservation</title>
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<h1>Redigér reservation</h1>
+<form action="/reservations/update" method="post">
+    <table>
+        <tr>
+            <td>Startdato</td>
+            <td>
+                <input type="datetime-local" step="1" name="start_date" th:value="${reservation.start_date}">
+            </td>
+        </tr>
+        <tr>
+            <td>Slutdato</td>
+            <td>
+                <input type="datetime-local" step="1" name="end_date" th:value="${reservation.end_date}">
+            </td>
+        </tr>
+        <tr>
+            <td>Distance til afhentningssted</td>
+            <td>
+                <input type="number" name="distance_to_pickup" th:value="${reservation.distance_to_pickup}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="id" name="id" th:value="${reservation.id}" type="hidden"/>
+            </td>
+            <td>
+                <input type="hidden" name="motorhome_id" th:value="${reservation.motorhome_id}"/>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Gem ændringer">
+</form>
+<form th:action="@{/reservations/add-accessory}" method="post">
+    <table>
+        <tr>
+            <td>
+                <label>Tilbehør</label></td>
+            <td>
+                <select name="id">
+                    <option th:each = "accessory: ${accessories}"
+                            th:text = "${accessory.accessory}"
+                            th:value = "${accessory.id}">
+                    </option>
+                </select>
+            </td>
+            <td>
+                <input type="hidden" name="customer_id" th:value="${reservation.id}"/>
+            </td>
+            <td>
+                <input type="submit" value="Tilføj tilbehør">
+            </td>
+        </tr>
+    </table>
+</form>
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
+</body>
+</html>

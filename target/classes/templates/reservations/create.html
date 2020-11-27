@@ -1,0 +1,51 @@
+<!--Coded by All-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret en reservation</title>
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<h1>Opret reservation</h1>
+<form action="/reservations/create" id="form" method="post">
+    <table>
+        <tr>
+            <td><label>Autocamper</label></td>
+            <td><select name="motorhome_id">
+                <option th:each = "motorhome: ${motorhomes}" th:text="${motorhome.brand_name} + ' ' + ${motorhome.model} " th:value="${motorhome.id}"></option>
+            </select></td>
+        </tr>
+            <td><label>Kunde</label></td>
+            <td><select name="customer_id">
+                <option th:each = "customer: ${customers}" th:text="${customer.first_name} + ' ' + ${customer.last_name} " th:value="${customer.id}"></option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><label>Betalingsform</label></td>
+            <td><input type="text" th:field="*{reservation.payment_details}"></td>
+            <td th:errors="*{reservation.payment_details}"></td>
+        </tr>
+        <tr>
+            <td><label>Startdato</label></td>
+            <td><input type="datetime-local" step="1" th:field="*{reservation.start_date}"></td>
+            <td th:errors="*{reservation.start_date}"></td>
+            <td><div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/></td>
+        </tr>
+        <tr>
+            <td><label>Slutdato</label></td>
+            <td><input type="datetime-local" step="1" th:field="*{reservation.end_date}"></td>
+            <td th:errors="*{reservation.end_date}"></td>
+            <td><div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/></td>
+        </tr>
+        <tr>
+            <td><label>Distance til afhentningssted</label></td>
+            <td><input type="number" th:field="*{reservation.distance_to_pickup}"></td>
+            <td th:errors="*{reservation.distance_to_pickup}"></td>
+        </tr>
+    </table>
+</form>
+<button type="submit" class="btn green-button" form="form" value="Submit">Tilføj reservation</button>
+</body>
+</html>

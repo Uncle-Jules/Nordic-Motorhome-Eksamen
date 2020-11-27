@@ -1,0 +1,39 @@
+<!--Coded by Julius-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
+</head>
+<body>
+<div class="navbar" th:fragment="navbar">
+    <a class="dropdown-item" href="/">Hjem</a>
+    <div class="dropdown">
+        <a class="dropbtn" href="/customers/list" >Kunder</a>
+        <div class="dropdown-content">
+            <a href="/customers/list">Se alle kunder</a>
+            <a href="/customers/create">Opret kunde</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a class="dropbtn" href="/motorhomes/list">Autocampere</a>
+        <div class="dropdown-content">
+            <a href="/motorhomes/list">Se alle autocampere</a>
+            <a href="/motorhomes/create">Opret autocamper</a>
+            <a href="/types/list">Se alle typer</a>
+            <a href="/types/create">Opret typer</a>
+            <a href="/accessories/list">Se tilbehør</a>
+            <a href="/accessories/create">Opret tilbehør</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a class="dropbtn" href="/reservations/list">Reservationer</a>
+        <div class="dropdown-content">
+            <a href="/reservations/list">Se alle reservationer</a>
+            <a href="/reservations/create">Opret reservation</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!--Coded by Rasmus, Julius-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Redigér Kunde</title>
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+    <h1>Redigér kunde</h1>
+    <form action="/customers/update" method="post">
+        <table>
+            <tr>
+                <td>Telefonnummer</td>
+                <td>
+                    <input type="text" name="phone_number" th:value="${customer.phone_number}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="id" name="id" th:value="${customer.id}" type="hidden"/>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Gem ændringer">
+    </form>
+</body>
+</html>

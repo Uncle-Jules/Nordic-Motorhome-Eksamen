@@ -1,0 +1,27 @@
+<!--Coded by Michael-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Oplysninger om type</title>
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<h1>Typeinformation</h1>
+<table id="myTable" class="table table-one border" style="width: 33.33%">
+    <tr>
+        <th>Type:</th>
+        <td th:text = "${type.type}" />
+    </tr>
+    <tr>
+        <th>Sengepladser:</th>
+        <td th:text = "${type.beds}" />
+    </tr>
+</table>
+<form action="/types/list">
+    <input type="submit" value="Tilbage" />
+</form>
+
+</body>
+</html>

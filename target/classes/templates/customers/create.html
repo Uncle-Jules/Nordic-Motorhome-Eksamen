@@ -1,0 +1,73 @@
+<!--Coded by Rasmus, Julius-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Tilføj Kunde</title>
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
+</head>
+    <body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <h1>Opret kunde</h1>
+        <form action="/customers/create" id="form" method="post">
+            <table>
+                <tr>
+                    <td><label>Fornavn:</label></td>
+                    <td><input type="text" th:field="*{customer.first_name}"></td>
+                    <td th:errors="*{customer.first_name}" class="error"></td>
+                </tr>
+                <tr>
+                    <td><label>Efternavn:</label></td>
+                    <td><input type="text" th:field="*{customer.last_name}"></td>
+                    <td th:errors="*{customer.last_name}" class="error"></td>
+                </tr>
+                <tr>
+                    <td><label>Telefonnummer</label></td>
+                    <td><input type="text" th:field="*{customer.phone_number}"></td>
+                    <td th:errors="*{customer.phone_number}" class="error"></td>
+                </tr>
+                <tr>
+                    <td><label>Gadenavn</label></td>
+                    <td><input type="text" th:field="*{address.street_name}"></td>
+                    <td th:errors="*{address.street_name}" class="error"></td>
+                </tr>
+                <tr>
+                    <td><label>Gadenummer</label></td>
+                    <td><input type="text" th:field="*{address.street_number}"></td>
+                    <td th:errors="*{address.street_number}" class="error"></td>
+                </tr>
+                <tr>
+                    <td><label>Lejlighedsnummer</label></td>
+                    <td><input type="text" th:field="*{address.apartment_number}"></td>
+                    <td th:errors="*{address.apartment_number}" class="error"></td>
+                </tr>
+                <tr>
+                    <td><label>Postnummer</label></td>
+                    <td><input type="text" th:field="*{zipCode.zip}"></td>
+                    <td th:errors="*{zipCode.zip}" class="error"></td>
+                </tr>
+                <tr>
+                    <td><label>By</label></td>
+                    <td><input type="text" th:field="*{zipCode.city}"></td>
+                    <td th:errors="*{zipCode.city}" class="error"></td>
+                </tr>
+                <tr>
+                    <td><label>Land</label></td>
+                    <td><input type="text" th:field="*{zipCode.country}"></td>
+                    <td th:errors="*{zipCode.country}" class="error"></td>
+                </tr>
+                <tr>
+                    <td><label>Fødselsdato</label></td>
+                    <td><input type="date" th:field="*{customer.birth_date}"></td>
+                    <td th:errors="*{customer.birth_date}" class="error"></td>
+                </tr>
+                <tr>
+                    <td><label>Kørekortnummer</label></td>
+                    <td><input type="text" th:field="*{customer.drivers_license}"></td>
+                    <td th:errors="*{customer.drivers_license}" class="error"></td>
+                </tr>
+            </table>
+        </form>
+    <button type="submit" class="btn green-button" form="form" value="Submit">Tilføj kunde</button>
+    </body>
+</html>

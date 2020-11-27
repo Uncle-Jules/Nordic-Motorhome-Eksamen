@@ -1,0 +1,76 @@
+<!--Coded by All-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Liste over alle reservationer</title>
+        <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="fragments/navbar :: navbar"></div>
+        <div class="header">
+            <h1>Reservationsliste</h1>
+        </div>
+        <div class="search-bar">
+            <h2>Søg</h2>
+            <p>Skriv noget i søgefeltet for, at søge efter reservationer baseret på id, kundenavn, startdato, slutdato, autocampertype, mærke eller model:</p>
+            <input id="myInput" type="text" placeholder="Søg..">
+            <br>
+        </div>
+        <a href="/reservations/create" class="btn green-button" style="display: inline-block; position: absolute; margin-top: 143px">Opret reservation</a>
+        <table id="main-table" class="table table-many border table-header-sticky">
+            <thead>
+            <tr>
+                <th class="border-right">ID</th>
+                <th class="border-right">Fornavn</th>
+                <th class="border-right">Efternavn</th>
+                <th class="border-right">Mærke</th>
+                <th class="border-right">Model</th>
+                <th class="border-right">Type</th>
+                <th class="border-right">Startdato</th>
+                <th class="border-right">Slutdato</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each = "reservation: ${reservations}">
+                <td th:text = "${reservation.id}" />
+                <td th:text = "${reservation.first_name}" />
+                <td th:text = "${reservation.last_name}" />
+                <td th:text = "${reservation.brand_name}" />
+                <td th:text = "${reservation.model}" />
+                <td th:text = "${reservation.type}" />
+                <td th:text = "${reservation.start_date}" />
+                <td th:text = "${reservation.end_date}" />
+                <td>
+                    <a th:href="@{'/reservations/view-one/'+${reservation.id}}">
+                        <button class="btn green-button">Se reservation</button>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/reservations/edit/'+${reservation.id}}">
+                        <button class="btn blue-button">Redigér reservation</button>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/reservations/delete/'+${reservation.id}}">
+                        <button class="btn red-button">Slet reservation</button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <script>
+            $("#myInput").on("keyup", function() {
+                const value = $(this).val().toLowerCase();
+                console.log("value:", value)
+                $("#main-table tbody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        </script>
+    </body>
+</html>

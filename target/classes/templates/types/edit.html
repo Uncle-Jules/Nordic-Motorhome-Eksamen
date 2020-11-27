@@ -1,0 +1,34 @@
+<!--Coded by Michael-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Redigér Type</title>
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<h1>Redigér type</h1>
+<form action="/types/update" method="post">
+
+    <table>
+        <tr>
+            <td>Type</td>
+            <td>
+                <input name="type" th:field="*{type.type}" type="hidden">
+            </td>
+            <td th:errors="*{type.type}" class="error"></td>
+        </tr>
+        <tr>
+            <td>Sengepladser</td>
+            <td>
+                <input type="number" name="beds" th:field="*{type.beds}">
+            </td>
+            <td th:errors="*{type.beds}" class="error"></td>
+            <td><div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/></td>
+        </tr>
+    </table>
+    <input type="submit" value="Gem ændringer">
+</form>
+</body>
+</html>

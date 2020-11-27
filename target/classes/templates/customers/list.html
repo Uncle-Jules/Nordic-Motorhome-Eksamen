@@ -1,0 +1,75 @@
+<!--Coded by Rasmus, Julius-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Liste over alle kunder</title>
+        <link rel="stylesheet" href="/../stylesheet.css" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="fragments/navbar :: navbar"></div>
+        <div class="header">
+            <h1>Kundeliste</h1>
+        </div>
+        <div class="search-bar">
+            <h2>Søg</h2>
+            <p>Skriv noget i søgefeltet for, at søge efter kunder baseret på id, fornavn, efternavn, addresse, tlf, eller kørekortnummer:</p>
+            <input id="myInput" type="text" placeholder="Søg..">
+            <br>
+        </div>
+        <a href="/customers/create" class="btn green-button" style="display: inline-block; position: absolute; margin-top: 143px">Opret kunde</a>
+        <table id="main-table" class="table table-many table-header-sticky">
+            <thead>
+                <tr>
+                    <th class="border-right">ID</th>
+                    <th class="border-right">Fornavn</th>
+                    <th class="border-right">Efternavn</th>
+                    <th class="border-right">Adresse</th>
+                    <th class="border-right">Telefonnummer</th>
+                    <th class="border-right">Fødselsdato</th>
+                    <th class="border-right">Kørekortnummer</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each = "customer: ${customers}">
+                    <td th:text = "${customer.id}" />
+                    <td th:text = "${customer.first_name}" />
+                    <td th:text = "${customer.last_name}" />
+                    <td th:text = "${customer.address_id}" />
+                    <td th:text = "${customer.phone_number}" />
+                    <td th:text = "${customer.birth_date}" />
+                    <td th:text = "${customer.drivers_license}" />
+                    <td>
+                        <a th:href="@{'/customers/view-one/'+${customer.id}}">
+                            <button class="btn green-button">Se kunde</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/customers/edit/'+${customer.id}}">
+                            <button class="btn blue-button">Redigér kunde</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/customers/delete/'+${customer.id}}">
+                            <button class="btn red-button">Slet kunde</button>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            $("#myInput").on("keyup", function() {
+                const value = $(this).val().toLowerCase();
+                console.log("value:", value)
+                $("#main-table tbody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        </script>
+    </body>
+</html>

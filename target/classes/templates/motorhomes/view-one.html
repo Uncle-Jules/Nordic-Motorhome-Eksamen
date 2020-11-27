@@ -1,0 +1,47 @@
+<!--Coded by Ammad, Michael-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Oplysninger om autocamper</title>
+    <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<h1>Autocamperinformation</h1>
+<table id="myTable" class="table table-one border" style="width: 33.33%">
+    <tr>
+        <th>ID:</th>
+        <td th:text = "${motorhome.id}" />
+    </tr>
+    <tr>
+        <th>Type:</th>
+        <td th:text = "${motorhome.type}" />
+    </tr>
+    <tr>
+        <th>Mærke:</th>
+        <td th:text = "${motorhome.brand_name}" />
+    </tr>
+    <tr>
+        <th>Model:</th>
+        <td th:text = "${motorhome.model}" />
+    </tr>
+    <tr>
+        <th>Kilometertal:</th>
+        <td th:text = "${motorhome.mileage}" />
+    </tr>
+    <tr>
+        <th>Registreringsnummer:</th>
+        <td th:text = "${motorhome.registration_number}" />
+    </tr>
+    <tr>
+        <th>Pris per dag:</th>
+        <td th:text = "${motorhome.price_per_day}" />
+    </tr>
+</table>
+<form action="/motorhomes/list">
+    <input type="submit" value="Tilbage" />
+</form>
+
+</body>
+</html>

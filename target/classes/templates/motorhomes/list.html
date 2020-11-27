@@ -1,0 +1,77 @@
+<!--Coded by Ammad, Michael-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Liste over alle autocampere</title>
+        <link rel="stylesheet" href="/../stylesheet.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="fragments/navbar :: navbar"></div>
+        <div class="header">
+            <h1>Autocamperliste</h1>
+        </div>
+        <div class="search-bar">
+            <h2>Søg</h2>
+            <p>Skriv noget i søgefeltet for, at søge efter autocampere baseret på id, type, mærke, model, kilometertal, pris per dag, eller registreringsnummer:</p>
+            <input id="myInput" type="text" placeholder="Søg..">
+            <br>
+        </div>
+        <a href="/motorhomes/create" class="btn green-button" style="display: inline-block; position: absolute; margin-top: 143px">Opret autocamper</a>
+        <a href="/accessories/create" class="btn green-button" style="display: inline-block; position: absolute; margin-top: 143px; margin-left: 180px">Opret tilbehør</a>
+        <a href="/types/create" class="btn green-button" style="display: inline-block; position: absolute; margin-top: 143px; margin-left: 327px">Opret type</a>
+        <table id="main-table" class="table table-many border table-header-sticky">
+            <thead>
+            <tr>
+                <th class="border-right">ID</th>
+                <th class="border-right">Type</th>
+                <th class="border-right">Mærke</th>
+                <th class="border-right">Model</th>
+                <th class="border-right">Kilometertal</th>
+                <th class="border-right">Pris per dag (Basispris)</th>
+                <th class="border-right">Registreringsnummer</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each = "motorhome: ${motorhomes}">
+                    <td th:text="${motorhome.id}"/>
+                    <td th:text="${motorhome.type}"/>
+                    <td th:text="${motorhome.brand_name}"/>
+                    <td th:text="${motorhome.model}"/>
+                    <td th:text="${motorhome.mileage}"/>
+                    <td th:text="${motorhome.price_per_day}"/>
+                    <td th:text="${motorhome.registration_number}"/>
+                    <td>
+                        <a th:href="@{'/motorhomes/view-one/'+${motorhome.id}}">
+                            <button class="btn green-button">Se autocamper</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/motorhomes/edit/'+${motorhome.id}}">
+                            <button class="btn blue-button">Redigér autocamper</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/motorhomes/delete/'+${motorhome.id}}">
+                            <button class="btn red-button">Slet autocamper</button>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            $("#myInput").on("keyup", function() {
+                const value = $(this).val().toLowerCase();
+                console.log("value:", value)
+                $("#main-table tbody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        </script>
+    </body>
+</html>

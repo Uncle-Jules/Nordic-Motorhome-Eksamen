@@ -21,13 +21,13 @@ public class AccessoryController {
     public String accessoryList(Model model) {
         List<Accessory> accessories = accessoryService.fetchAll();
         model.addAttribute("accessories", accessories);
-        return "/accessories/list";
+        return "accessories/list";
     }
 
     @GetMapping("/create")
     public String createAccessory(Model model) {
         model.addAttribute("accessory", new Accessory());
-        return "/accessories/create";
+        return "accessories/create";
     }
 
     @PostMapping("/create")
@@ -40,7 +40,7 @@ public class AccessoryController {
     public String viewCustomer(@PathVariable("id") int id, Model model) {
         Accessory accessory = accessoryService.findById(id);
         model.addAttribute("accessory", accessory);
-        return "/accessories/view-one";
+        return "accessories/view-one";
     }
 
     @GetMapping("/delete/{id}")

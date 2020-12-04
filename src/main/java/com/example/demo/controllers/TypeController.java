@@ -26,19 +26,19 @@ public class TypeController {
     public String typeList(Model model){
         List<Type> types = typeService.fetchAll();
         model.addAttribute("types", types);
-        return "/types/list";
+        return "types/list";
     }
 
     @GetMapping("/create")
     public String createType(Model model){
         model.addAttribute("type", new Type());
-        return "/types/create";
+        return "types/create";
     }
     @PostMapping("/create")
     public String addType(@ModelAttribute @Valid Type type, Errors errors, RedirectAttributes redirectAttributes, Model model){
         if(errors.hasErrors()){
             model.addAttribute("type", type);
-            return "/types/create";
+            return "types/create";
         }
         // If type does not already exists it is created and user is returned to list of types
         if(typeService.findById(type.getType()) == null){
@@ -56,13 +56,13 @@ public class TypeController {
     @GetMapping("/view-one/{id}")
     public String viewType(@PathVariable("id") String type, Model model) {
         model.addAttribute("type", typeService.findById(type));
-        return "/types/view-one";
+        return "types/view-one";
     }
 
     @GetMapping("/edit/{id}")
     public String editType(@PathVariable("id") String type, Model model) {
         model.addAttribute("type", typeService.findById(type));
-        return "/types/edit";
+        return "types/edit";
     }
     @PostMapping("/update")
     public String updateType(@ModelAttribute Type type, RedirectAttributes redirectAttributes) {

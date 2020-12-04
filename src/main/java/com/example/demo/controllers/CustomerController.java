@@ -26,7 +26,7 @@ public class CustomerController {
     public String customerList(Model model) {
         List<Customer> customers = customerService.fetchAll();
         model.addAttribute("customers", customers);
-        return "/customers/list";
+        return "customers/list";
     }
 
     @GetMapping("/create")
@@ -34,7 +34,7 @@ public class CustomerController {
         model.addAttribute("customer", new Customer());
         model.addAttribute("address", new Address());
         model.addAttribute("zipCode", new ZipCode());
-        return "/customers/create";
+        return "customers/create";
     }
 
     @PostMapping("/create")
@@ -42,7 +42,7 @@ public class CustomerController {
                               Errors errors2, @ModelAttribute @Valid ZipCode zipCode, Errors errors3) {
         // Each model-attribute has its own error object, so we must check all here
         if(errors1.hasErrors() || errors2.hasErrors() || errors3.hasErrors()){
-            return "/customers/create";
+            return "customers/create";
         }
         customerService.add(customer, address, zipCode);
         return "redirect:/customers/list";
@@ -55,13 +55,13 @@ public class CustomerController {
         model.addAttribute("customer", customer);
         model.addAttribute("address", address);
         model.addAttribute("zipCode", customerService.getZipCode(address));
-        return "/customers/view-one";
+        return "customers/view-one";
     }
 
     @GetMapping("/edit/{id}")
     public String editCustomer(@PathVariable("id") int id, Model model) {
         model.addAttribute("customer", customerService.findById(id));
-        return "/customers/edit";
+        return "customers/edit";
     }
     @PostMapping("/update")
     public String updateCustomer(@ModelAttribute Customer customer) {

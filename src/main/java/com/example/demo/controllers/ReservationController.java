@@ -39,7 +39,7 @@ public class ReservationController {
         model.addAttribute("reservations", reservations);
         model.addAttribute("customers", customers);
         model.addAttribute("motorhomes", motorhomes);
-        return "/reservations/list";
+        return "reservations/list";
     }
 
     // Let's the user view a reservation with all the relevant information
@@ -60,7 +60,7 @@ public class ReservationController {
         model.addAttribute("motorhome", motorhome);
         model.addAttribute("address", address);
         model.addAttribute("zipCode", zipCode);
-        return "/reservations/view-one";
+        return "reservations/view-one";
     }
 
     @GetMapping("/create")
@@ -70,7 +70,7 @@ public class ReservationController {
         model.addAttribute("motorhomes", motorhomes);
         model.addAttribute("customers", customers);
         model.addAttribute("reservation", new Reservation());
-        return "/reservations/create";
+        return "reservations/create";
     }
 
     @PostMapping("/create")
@@ -82,7 +82,7 @@ public class ReservationController {
             model.addAttribute("motorhomes", motorhomes);
             model.addAttribute("customers", customers);
             model.addAttribute("reservation", reservation);
-            return "/reservations/create";
+            return "reservations/create";
         }
         // Checking if dates are valid
         if(reservationService.checkIfReserved(reservation)){
@@ -106,7 +106,7 @@ public class ReservationController {
         reservation.setEnd_date(reservation.getEnd_date().replace(" ", "T"));
         model.addAttribute("reservation", reservation);
         model.addAttribute("accessories", accessories);
-        return "/reservations/edit";
+        return "reservations/edit";
     }
     @PostMapping("/update")
     public String updateReservation(@ModelAttribute Reservation reservation, RedirectAttributes redirectAttributes) {

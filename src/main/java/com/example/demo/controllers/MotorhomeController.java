@@ -29,7 +29,7 @@ public class MotorhomeController {
     public String motorhomeList(Model model){
         List<Motorhome> motorhomes = motorhomeService.fetchAll();
         model.addAttribute("motorhomes", motorhomes);
-        return "motorhomes/list";
+        return "/motorhomes/list";
     }
     @GetMapping("/create")
     public String createMotorhome(Model model){

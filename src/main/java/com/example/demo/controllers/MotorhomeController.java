@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping(value = {"/motorhomes"})
+//@RequestMapping(value = {"/motorhomes"})
 public class MotorhomeController {
     @Autowired
     MotorhomeService motorhomeService;

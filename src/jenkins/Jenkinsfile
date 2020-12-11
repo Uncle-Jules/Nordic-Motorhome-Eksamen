@@ -43,7 +43,7 @@ pipeline {
             post{
                 success {
                     script{
-                        sh 'nohup /usr/bin/mvn /var/lib/jenkins/workspace/NMP-Pipeline/target/NMP-1.0.0.jar &'
+                        sh 'nohup java -jar /var/lib/jenkins/workspace/NMP-Pipeline/target/NMP-1.0.0.jar &'
                     }
                 }
             }

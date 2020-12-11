@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                sh 'sudo kill $(ps -fC java | grep \'ubuntu\' | awk \'{print $2}\')'
+                sh 'gdb --batch --eval-command 'call exit(0)' --pid $(ps -fC java | grep \'ubuntu\' | awk \'{print $2}\')'
             }
             post{
                 success {

@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
  * Coded by Ammad, Rasmus
  */
 
-/*@SpringBootTest
+@SpringBootTest
 class DemoApplicationTests {
 	@Autowired
 	ReservationRepo reservationRepo;
@@ -49,4 +49,4 @@ class DemoApplicationTests {
 		assertThat(season3).isEqualTo("Højsæson");
 	}
 
-}*/
+}

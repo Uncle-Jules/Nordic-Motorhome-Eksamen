@@ -39,11 +39,6 @@ pipeline {
                 sh 'kill $(ps -fC java | grep \'ubuntu\' | awk \'{print $2}\')'
                 sh 'nohup java -jar /var/lib/jenkins/workspace/NMP-Pipeline/target/NMP-1.0.0.jar &'
             }
-            post{
-                success {
-
-                }
-            }
         }
     }
 }

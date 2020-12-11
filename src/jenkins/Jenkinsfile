@@ -9,6 +9,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'kill $(ps -fC java | grep \'ubuntu\' | awk \'{print $2}\') || true'
+
                 // Get some code from a GitHub repository
                 git poll: true, branch: 'jenkinsFriendly', url: 'https://github.com/Uncle-Jules/Nordic-Motorhome-Eksamen.git'
 
@@ -37,9 +39,6 @@ pipeline {
 
 
         stage('Deploy'){
-            steps{
-                sh 'kill $(ps -fC java | grep \'ubuntu\' | awk \'{print $2}\') || true'
-            }
             post{
                 success {
                     sh 'JENKINS_NODE_COOKIE=dontKillMe nohup java -jar /var/lib/jenkins/workspace/NMP-Pipeline/target/NMP-1.0.0.jar &'

@@ -34,7 +34,16 @@ pipeline {
                 }
             }
         }
-        stage('Deploy'){
+
+        stage("Staging") {
+            sh "pid=\$(lsof -i:9090 -t); kill -TERM \$pid "
+              + "|| kill -KILL \$pid"
+            withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+                sh 'nohup ./mvnw spring-boot:run -Dserver.port=9090 &'
+            }
+        }
+
+        /*stage('Deploy'){
             steps{
                 sh 'kill $(ps -fC java | grep \'ubuntu\' | awk \'{print $2}\') || true'
             }
@@ -45,6 +54,6 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
     }
 }

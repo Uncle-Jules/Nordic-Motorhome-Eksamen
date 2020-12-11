@@ -38,9 +38,8 @@ pipeline {
 
         stage('Deploy'){
             steps{
-                sh '''#!/bin/bash
-                         kill $(ps -fC java | grep \'ubuntu\' | awk \'{print $2}\') || true
-                         '''
+
+                sh 'kill $(ps -fC java | grep \'jenkins\' | awk \'{print $2}\') || true'
             }
             post{
                 success {

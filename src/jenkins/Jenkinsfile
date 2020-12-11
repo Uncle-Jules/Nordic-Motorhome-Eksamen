@@ -40,7 +40,7 @@ pipeline {
             }
             post{
                 success {
-                    sh 'nohup java -jar demo-0.0.1-SNAPSHOT.jar & echo $! >> demo-0.0.1-SNAPSHOT.pid sleep 1'
+                    sh 'nohup java -jar NMP-1.0.0.jar & echo $! >> demo-0.0.1-SNAPSHOT.pid sleep 1'
                 }
             }
         }

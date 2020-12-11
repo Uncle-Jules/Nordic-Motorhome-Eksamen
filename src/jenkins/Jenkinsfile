@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                sh 'kill $(ps -fC java | grep \'ubuntu\' | awk \'{print $2}\') & exit 1'
+                sh 'kill $(ps -fC java | grep \'ubuntu\' | awk \'{print $2}\') & exit 0'
             }
             post{
                 success {

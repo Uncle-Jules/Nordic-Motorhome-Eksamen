@@ -39,7 +39,7 @@ pipeline {
         stage('Deploy'){
             steps{
 
-                sh 'kill $(ps -fC java | grep \'jenkins\' | awk \'{print $2}\') || true'
+                sh 'kill $(ps -fC java | grep \'jenkins\' | grep \'NMP-1.0.0.jar\' | awk \'{print $2}\') || true'
             }
             post{
                 success {

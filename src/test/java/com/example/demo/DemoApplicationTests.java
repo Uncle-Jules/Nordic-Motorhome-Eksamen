@@ -47,7 +47,6 @@ class DemoApplicationTests {
 		assertThat(season).isEqualTo("Mellemsæson");
 		assertThat(season2).isEqualTo("Lavsæson");
 		assertThat(season3).isEqualTo("Højsæson");
-		assertThat(false).isTrue();
 	}
 
 

@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                sh '#!/bin/bash FILE=/var/lib/jenkins/workspace/NMP-Pipeline/target/NMP-1.0.0.pid if [ -f "$FILE" ]; then read pid < "$FILE" kill "$pid" rm "$FILE" fi'
+                sh '#!/bin/bash FILE=NMP-1.0.0.pid if [ -f "$FILE" ]; then read pid < "$FILE" kill "$pid" rm "$FILE" fi'
             }
             post{
                 success {

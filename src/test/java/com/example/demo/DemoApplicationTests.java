@@ -44,7 +44,7 @@ class DemoApplicationTests {
 		String season = reservationRepo.calculateSeason("2020-05-31 23:59:59");
 		String season2 = reservationRepo.calculateSeason("2020-01-31 10:00:00");
 		String season3 = reservationRepo.calculateSeason("2020-06-04 15:26:30");
-		assertThat(season).isEqualTo("Højsæson");
+		assertThat(season).isEqualTo("Mellemsæson");
 		assertThat(season2).isEqualTo("Lavsæson");
 		assertThat(season3).isEqualTo("Højsæson");
 	}

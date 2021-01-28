@@ -49,9 +49,4 @@ class DemoApplicationTests {
 		assertThat(season3).isEqualTo("Højsæson");
 	}
 
-	@Test
-	void failingTest(){
-		assertThat(0).isEqualTo(10);
-	}
-
 }
